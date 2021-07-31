@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
   def new
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, notice: "Post was successfully created."
     else

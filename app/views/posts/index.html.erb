@@ -27,6 +27,10 @@
           <% post.tags.each do |tag| %>
             <%= tag.name %>
           <% end %>
+        <td>
+          <% post.categories.each do |category| %>
+            <%= category.name %>
+          <% end %>
         </td>
       </tr>
     <% end %>

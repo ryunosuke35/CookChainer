@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :categories
   resources :favorites, only: [:create, :destroy]
+  resources :tag_categories
   root 'posts#index'
 
 

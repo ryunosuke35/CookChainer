@@ -10,6 +10,7 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    @tag_categories = TagCategory.all
   end
 
   def edit
@@ -17,6 +18,8 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
+    @tag.tag_category_id = tag_params[:tag_category_id][1]
+
     if @tag.save
       redirect_to @tag, notice: "Tag was successfully created."
     else
@@ -43,6 +46,6 @@ class TagsController < ApplicationController
     end
 
     def tag_params
-      params.require(:tag).permit(:name)
+      params.require(:tag).permit(:name, tag_category_id: [])
     end
 end

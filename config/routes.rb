@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :tags
   resources :categories
+  resources :favorites, only: [:create, :destroy]
   root 'posts#index'
 
 

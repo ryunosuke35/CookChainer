@@ -5,6 +5,7 @@ ruby '2.6.5'
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'rails_admin', '~> 2.0'
 
 gem 'rails', '~> 5.2.5'
 gem 'pg', '>= 0.18', '< 2.0'

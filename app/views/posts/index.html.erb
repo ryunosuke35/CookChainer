@@ -1,49 +1,37 @@
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path %>
 
-
-
   <tbody>
     <% @array = {} %>
 
     <% @posts.each_with_index do |post, id| %>
-    <div class="box_style">
-      <%= content_tag :div, id: "box_#{id}" do %>
-        <tr>
-          <td><%= link_to "#{post.name}", post_path(post) %></td><br>
-          <td>
-            <% post.tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          </td>
-          <td><%= image_tag post.image.url if post.image.present? %></td>
-          <td><%= link_to 'Show', post %></td>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-
-      <% if @posts[id + 1].present? %>
-        <% array1 = post.tags.pluck(:name) %>
-        <% array2 = @posts[id + 1].tags.pluck(:name) %>
-        <% a = array1.concat(array2) %>
-        <% b = a.uniq %>
-        <% if a.length != b.length %>
-          <% match = true %>
-        <% else %>
-          <% match = false %>
+      <div class="box_style">
+        <%= content_tag :div, id: "box_#{id}" do %>
+          <%= link_to "#{post.name}", post_path(post) %><br>
+          <% post.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
         <% end %>
-        <% @array[id] = match %>
-      <% end %>
 
-      <%= javascript_tag do %>
-        var data = <%= @array.to_json.html_safe %>
-      <% end %>
-    </div>
+        <% if @posts[id + 1].present? %>
+          <% array1 = post.tags.pluck(:name) %>
+          <% array2 = @posts[id + 1].tags.pluck(:name) %>
+          <% a = array1.concat(array2) %>
+          <% b = a.uniq %>
+          <% if a.length != b.length %>
+            <% match = true %>
+          <% else %>
+            <% match = false %>
+          <% end %>
+          <% @array[id] = match %>
+        <% end %>
 
+        <%= javascript_tag do %>
+          var data = <%= @array.to_json.html_safe %>
+        <% end %>
+
+      </div>
     <% end %>
-
-
 
 
     <% chain_array = []
@@ -59,6 +47,5 @@
 
     <h3>最大連鎖数</h3>
     <%= chain_array.max %>
-
 
   </tbody>

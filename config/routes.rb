@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :tags
   resources :categories
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy, :index]
   resources :tag_categories
   root 'posts#index'
 

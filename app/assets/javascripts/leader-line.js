@@ -16,7 +16,7 @@ $(document).ready(function () {
       new LeaderLine(
       document.getElementById("box_" + key),
         document.getElementById("box_" + num),{
-          dash: {len: 4, gap: 9},
+          dash: {animation: true, len: 5, gap: 9},
           color: '#696969',
           endPlugSize: 0.1
         }

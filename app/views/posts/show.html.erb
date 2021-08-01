@@ -1,9 +1,5 @@
 <p>
-  <%= @post.name %>
-</p>
-
-<p>
-  <%= @post.url %>
+  <%= link_to "#{@post.name}", @post.url, target: :_blank %>
 </p>
 
 <p>

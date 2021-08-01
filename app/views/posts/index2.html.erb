@@ -1,1 +1,13 @@
-<h1>index2</h1>
+<h1>Posts</h1>
+<%= link_to 'New Post', new_post_path %>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <div class="box_style">
+        <%= link_to "#{post.name}", post_path(post) %><br>
+        <% post.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </div>
+    <% end %>
+  </tbody>

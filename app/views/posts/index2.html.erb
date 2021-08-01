@@ -1,13 +1,14 @@
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <div class="box_style">
-        <%= link_to "#{post.name}", post_path(post) %><br>
-        <% post.tags.each do |tag| %>
-          <%= tag.name %>
-        <% end %>
-      </div>
-    <% end %>
-  </tbody>
+  <body>
+      <% @posts.each do |post| %>
+        <div class="box_style2">
+          <%= image_tag post.image.url if post.image.present?%>
+          <%= link_to "#{post.name}", post_path(post) %><br>
+          <% post.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </div>
+      <% end %>
+  </body>

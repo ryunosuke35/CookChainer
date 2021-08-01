@@ -40,4 +40,22 @@
     <% end %>
 
 
+
+
+    <%
+    chain = 0
+    chain_max = 0
+    @array.each { |key, value|
+      if value
+        chain += 1
+      else
+        chain_max = chain if chain > chain_max
+        chain = 0
+      end
+    } %>
+
+    <h3>最大連鎖数</h3>
+    <%= chain_max %>
+
+
   </tbody>

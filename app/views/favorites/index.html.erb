@@ -1,0 +1,10 @@
+<h1>favorite index</h1>
+<table>
+  <% @favorites.each do |favorite| %>
+    <tr>
+      <td><%= image_tag favorite.image.url if favorite.image.present? %></td>
+      <td><%= link_to "#{favorite.name}", favorite.url, target: :_blank %></td>
+      <td><%= favorite.user.email %></td>
+    </tr>
+  <% end %>
+</table>

@@ -2,11 +2,9 @@
 <table>
   <% @favorites.each do |favorite| %>
     <tr>
-      <td><%= link_to "#{favorite.name}", favorite.url, target: :_blank %></td>
       <td><%= image_tag favorite.image.url if favorite.image.present? %></td>
-      <% favorite.tags.each do |tag| %>
-        <td><%= tag.name %></td>
-      <% end %>
+      <td><%= link_to "#{favorite.name}", favorite.url, target: :_blank %></td>
+      <td><%= favorite.user.email %></td>
     </tr>
   <% end %>
 </table>

@@ -15,7 +15,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @post.image %>
+  <%= image_tag @post.image.url if @post.image.present? %>
 </p>
 
 <% unless @post.user_id == current_user.id %>

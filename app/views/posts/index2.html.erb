@@ -1,6 +1,10 @@
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path %>
 
+<% @categories.each do |category| %>
+  <%= category.name %>
+<% end %>
+
   <body>
       <% @posts.each do |post| %>
         <div class="box_style2">

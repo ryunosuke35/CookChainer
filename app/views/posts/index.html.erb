@@ -42,7 +42,7 @@
 
 
 
-    <%
+    <% array = []
     chain = 0
     chain_max = 0
     @array.each { |key, value|
@@ -52,10 +52,11 @@
         chain_max = chain if chain > chain_max
         chain = 0
       end
+      array << chain
     } %>
 
     <h3>最大連鎖数</h3>
-    <%= chain_max %>
+    <%= array.max %>
 
 
   </tbody>

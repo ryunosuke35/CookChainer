@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+body {
+  height: 100%;
+}
+
 .box_style {
     width: 300px;
     // padding: 70px;
@@ -12,4 +16,16 @@
     border: solid 5px;
     border-radius: 10px;
     text-align: center;
+}
+
+.box_style2 {
+    width: 300px;
+    padding: 70px;
+    margin: 50px 20px;
+    font-weight: bold;
+    color: #6091d3;
+    border: solid 5px;
+    border-radius: 10px;
+    text-align: center;
+    float: left;
 }

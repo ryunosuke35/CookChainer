@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   #   sessions: 'users/sessions'
   # }
 
-  resources :posts
+  resources :posts do
+    collection do
+      get :index2
+    end
+  end
   resources :tags
   resources :categories
   resources :favorites, only: [:create, :destroy]

@@ -1,41 +1,63 @@
 <h1>Posts</h1>
+<%= link_to 'New Post', new_post_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Url</th>
-      <th>Memo</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+
 
   <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= post.url %></td>
-        <td><%= post.memo %></td>
-        <td><%= post.image %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-          <% post.tags.each do |tag| %>
-            <%= tag.name %>
-          <% end %>
-        <td>
-          <% post.categories.each do |category| %>
-            <%= category.name %>
-          <% end %>
-        </td>
-        <td><%= post.user.email %></td>
-      </tr>
+    <% @array = {} %>
+
+    <% @posts.each_with_index do |post, id| %>
+    <div class="box_style">
+      <%= content_tag :div, id: "box_#{id}" do %>
+        <tr>
+          <td><%= link_to "#{post.name}", post_path(post) %></td><br>
+          <td>
+            <% post.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+      <% if @posts[id + 1].present? %>
+        <% array1 = post.tags.pluck(:name) %>
+        <% array2 = @posts[id + 1].tags.pluck(:name) %>
+        <% a = array1.concat(array2) %>
+        <% b = a.uniq %>
+        <% if a.length != b.length %>
+          <% match = true %>
+        <% else %>
+          <% match = false %>
+        <% end %>
+        <% @array[id] = match %>
+      <% end %>
+
+      <%= javascript_tag do %>
+        var data = <%= @array.to_json.html_safe %>
+      <% end %>
+    </div>
+
     <% end %>
+
+
+
+
+    <% chain_array = []
+    chain = 0
+    @array.each { |key, value|
+      if value
+        chain += 1
+      else
+        chain = 0
+      end
+      chain_array << chain
+    } %>
+
+    <h3>最大連鎖数</h3>
+    <%= chain_array.max %>
+
+
   </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>

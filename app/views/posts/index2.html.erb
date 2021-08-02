@@ -1,27 +1,9 @@
-<section class="card">
-  <img class="card-img" src="images/bear.jpg" alt="">
-  <div class="card-content">
-    <h1 class="card-title">Webクリエイターボックス</h1>
-    <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
-  </div>
-  <div class="card-link">
-    <a href="http://webcreatorbox.com/about">About</a>
-    <a href="http://webcreatorbox.com/">Website</a>
-  </div>
-</section>
-
-
-
-
-
-
 <div class="container">
   <aside class = "side_menu">
     <% @categories.each do |category| %>
       <%= category.name %>
     <% end %>
   </aside>
-
 
   <% @posts.each do |post| %>
     <section class="card">
@@ -42,10 +24,6 @@
       </div>
     </section>
   <% end %>
-
-
-
-
 
   <%= paginate @posts %>
   <%= link_to 'New Post', new_post_path %>

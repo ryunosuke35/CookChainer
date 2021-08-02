@@ -1,3 +1,20 @@
+<section class="card">
+  <img class="card-img" src="images/bear.jpg" alt="">
+  <div class="card-content">
+    <h1 class="card-title">Webクリエイターボックス</h1>
+    <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
+  </div>
+  <div class="card-link">
+    <a href="http://webcreatorbox.com/about">About</a>
+    <a href="http://webcreatorbox.com/">Website</a>
+  </div>
+</section>
+
+
+
+
+
+
 <div class="container">
   <aside class = "side_menu">
     <% @categories.each do |category| %>
@@ -5,15 +22,30 @@
     <% end %>
   </aside>
 
-  <div class="main">
-    <% @posts.each do |post| %>
-      <p><%= image_tag post.image.url if post.image.present?%></p>
-      <p><%= link_to "#{post.name}", post_path(post) %></p>
-      <% post.tags.each do |tag| %>
-        <%= tag.name %>
-      <% end %>
-    <% end %>
-  </div>
+
+  <% @posts.each do |post| %>
+    <section class="card">
+      <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
+      <div class="card-content">
+        <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
+        <p class="card-text">
+          <% post.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </p>
+      </div>
+      <div class="card-link">
+
+        <a href=#>About</a>
+        <a href=#>Website</a>
+
+      </div>
+    </section>
+  <% end %>
+
+
+
+
 
   <%= paginate @posts %>
   <%= link_to 'New Post', new_post_path %>

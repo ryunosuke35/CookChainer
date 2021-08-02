@@ -1,35 +1,37 @@
-<div class="container">
-  <aside class = "side_menu">
+<div class="contain row">
+    <aside class = "side_menu col-md-2">
     <% @categories.each do |category| %>
       <%= category.name %>
     <% end %>
   </aside>
 
-  <% @posts.each do |post| %>
-    <section class="card">
-      <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
-      <div class="card-content">
-        <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
-        <p class="card-text">
-          <% post.tags.each do |tag| %>
-            <%= tag.name %>
+  <div class="cards col-md-10 row">
+    <% @posts.each do |post| %>
+      <section class="card col-md-3">
+        <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
+        <div class="card-content">
+          <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
+          <p class="card-text">
+            <% post.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </p>
+        </div>
+        <div class="card-link">
+          <% if post.user_id != current_user.id %>
+            <% favorite = current_user.favorites.find_by(post_id: post.id) %>
+            <% if favorite.present? %>
+              <%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete %>
+            <% else %>
+              <%= link_to 'お気に入りする', favorites_path(post_id: post.id), method: :post %>
+            <% end %>
           <% end %>
-        </p>
-      </div>
-      <div class="card-link">
-        <% if post.user_id != current_user.id %>
-          <% favorite = current_user.favorites.find_by(post_id: post.id) %>
-          <% if favorite.present? %>
-            <%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete %>
-          <% else %>
-            <%= link_to 'お気に入りする', favorites_path(post_id: post.id), method: :post %>
-          <% end %>
-        <% end %>
-      </div>
-    </section>
-  <% end %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+
 
   <%= paginate @posts %>
   <%= link_to 'New Post', new_post_path %>
-
 </div>

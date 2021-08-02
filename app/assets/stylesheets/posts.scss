@@ -26,17 +26,17 @@ body {
 // }
 
 // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-// @for $i from 0 through 100 {
-//   #box_#{$i} {
-//     width: 40%;
-//     margin: 100px auto;
-//     font-weight: bold;
-//     color: #d2b48c;
-//     border: solid 4px;
-//     border-radius: 20px;
-//     text-align: center;
-//   }
-// }
+@for $i from 0 through 100 {
+  #box_#{$i} {
+    width: 40%;
+    margin: 100px auto;
+    font-weight: bold;
+    color: #d2b48c;
+    border: solid 4px;
+    border-radius: 20px;
+    text-align: center;
+  }
+}
 
 
 

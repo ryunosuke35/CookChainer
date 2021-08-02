@@ -10,30 +10,31 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-        <%= link_to "記録", posts_path, data: {"turbolinks" => false} %>
-        <%= link_to "検索", index2_posts_path %>
-        <% if current_user.admin? %>
-          <%= link_to "カテゴリ", categories_path %>
-          <%= link_to "タグ", tags_path %>
-          <%= link_to "タグテゴリ", tag_categories_path %>
+    <div class="container">
+      <header>
+        <% if user_signed_in? %>
+          <%= link_to "記録", posts_path, data: {"turbolinks" => false} %>
+          <%= link_to "検索", index2_posts_path %>
+          <% if current_user.admin? %>
+            <%= link_to "カテゴリ", categories_path %>
+            <%= link_to "タグ", tags_path %>
+            <%= link_to "タグテゴリ", tag_categories_path %>
+          <% end %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "ログイン", new_user_session_path %>
         <% end %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to "ログイン", new_user_session_path %>
+      </header>
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
       <% end %>
-    </header>
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
-    <%= yield %>
-    <footer>
-
-    </footer>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+      <footer>
+      </footer>
+    </div>
   </body>
 </html>

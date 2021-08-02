@@ -3,17 +3,14 @@
 
   <tbody>
     <% @array = {} %>
-
     <% @posts.each_with_index do |post, id| %>
-      <div class="box_style">
-        <%= content_tag :div, id: "box_#{id}" do %>
-          <%= image_tag post.image.url if post.image.present? %>
-          <%= link_to "#{post.name}", post_path(post) %><br>
-          <% post.tags.each do |tag| %>
-            <%= tag.name %>
-          <% end %>
+      <%= content_tag :div, id: "box_#{id}" do %>
+        <h4><%= link_to "#{post.name}", post_path(post) %></h4>
+        <p><%= image_tag post.image.url if post.image.present? %></p>
+        <% post.tags.each do |tag| %>
+          <li><%= tag.name %></li>
         <% end %>
-      </div>
+      <% end %>
 
       <% if @posts[id + 1].present? %>
         <% array1 = post.tags.pluck(:name) %>

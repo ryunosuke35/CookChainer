@@ -7,12 +7,11 @@ class PostsController < ApplicationController
   end
 
   def index2
-    @posts = Post.all.page(params[:page]).per(6)
+    @posts = Post.all.page(params[:page]).per(10)
     @categories = Category.all
   end
 
   def show
-    @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
   def new

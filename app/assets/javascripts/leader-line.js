@@ -8,7 +8,8 @@ $(document).ready(function () {
       new LeaderLine(
         document.getElementById("box_" + key),
         document.getElementById("box_" + num), {
-          color: '#696969',
+          color: '#d2b48c',
+          dropShadow: {color: '#aaa', dx: 4, dy: 3, blur: 3, opacity: 1},
           endPlugSize: 0.1
         }
       );
@@ -16,8 +17,9 @@ $(document).ready(function () {
       new LeaderLine(
       document.getElementById("box_" + key),
         document.getElementById("box_" + num),{
-          dash: {animation: true, len: 5, gap: 9},
           color: '#696969',
+          dropShadow: {color: '#aaa', dx: 4, dy: 3, blur: 3, opacity: 1},
+          dash: {animation: true, len: 5, gap: 9},
           endPlugSize: 0.1
         }
       );

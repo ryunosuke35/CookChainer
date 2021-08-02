@@ -1,20 +1,21 @@
-<h1>Posts</h1>
-<%= link_to 'New Post', new_post_path %>
+<div class="container">
+  <aside class = "side_menu">
+    <% @categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
+  </aside>
 
-<% @categories.each do |category| %>
-  <%= category.name %>
-<% end %>
-
-  <body>
-      <% @posts.each do |post| %>
-        <div class="box_style2">
-          <%= image_tag post.image.url if post.image.present?%>
-          <%= link_to "#{post.name}", post_path(post) %><br>
-          <% post.tags.each do |tag| %>
-            <%= tag.name %>
-          <% end %>
-        </div>
+  <div class="main">
+    <% @posts.each do |post| %>
+      <p><%= image_tag post.image.url if post.image.present?%></p>
+      <p><%= link_to "#{post.name}", post_path(post) %></p>
+      <% post.tags.each do |tag| %>
+        <%= tag.name %>
       <% end %>
+    <% end %>
+  </div>
 
-      <%= paginate @posts %>
-  </body>
+  <%= paginate @posts %>
+  <%= link_to 'New Post', new_post_path %>
+
+</div>

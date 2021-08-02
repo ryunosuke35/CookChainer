@@ -25,15 +25,13 @@ body {
 //     background: tomato;
 // }
 
-//each color-のクラス
-@post
-$classList: 0, 1, 2, 3, 4, 5;
-@each $classId in $classList{
-  #box_#{$classId} {
+// index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
+@for $i from 0 through 100 {
+  #box_#{$i} {
     width: 40%;
     margin: 100px auto;
     font-weight: bold;
-    color: #6091d3;
+    color: #d2b48c;
     border: solid 4px;
     border-radius: 20px;
     text-align: center;

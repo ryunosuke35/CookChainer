@@ -1,14 +1,19 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
-  before_action :set_q, only: [:index2, :search]
+  before_action :set_q, only: [:index2]
 
   def index
     @posts = Post.where(user_id: current_user.id)
   end
 
   def index2
-    @posts = Post.all.page(params[:page]).per(10)
+    if params[:q].present?
+      @posts = @q.result
+    else
+      @posts = Post.all
+    end
+    @posts = @posts.page(params[:page]).per(10)
     @categories = Category.all
     @tag_categories = TagCategory.all
   end
@@ -45,9 +50,6 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: "Post was successfully destroyed."
   end
 
-  def search
-    @results = @q.result
-  end
 
   private
 

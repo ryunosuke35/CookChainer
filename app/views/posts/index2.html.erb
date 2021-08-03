@@ -1,11 +1,5 @@
 <div class="contain row">
 
-  <%= form_with(url: index2_posts_path, local: true, method: :get) do |form| %>
-
-    <%= form.text_field :search, placeholder:"何かお探しですか？" %>
-    <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
-    <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
-    <%= form.submit %>
 
 
 

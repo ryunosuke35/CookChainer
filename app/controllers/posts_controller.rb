@@ -8,11 +8,7 @@ class PostsController < ApplicationController
   end
 
   def index2
-    if params[:search].present?
-      @posts = Post.where("name LIKE ?", "%#{params[:search]}%").page(params[:page]).per(10)
-    else
-      @posts = Post.all.page(params[:page]).per(10)
-    end
+    @posts = Post.all.page(params[:page]).per(10)
     @categories = Category.all
     @tag_categories = TagCategory.all
   end

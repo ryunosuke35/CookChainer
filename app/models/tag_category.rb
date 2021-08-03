@@ -1,3 +1,3 @@
 class TagCategory < ApplicationRecord
-  has_one :tag
+  has_many :tags
 end

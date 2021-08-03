@@ -24,6 +24,8 @@ gem 'mimemagic', '0.3.7'
 
 gem 'kaminari'
 
+gem 'ransack'
+
 
 
 gem 'bootsnap', '>= 1.1.0', require: false

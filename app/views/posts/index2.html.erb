@@ -1,9 +1,28 @@
 <div class="contain row">
-    <aside class = "side_menu col-md-2">
+
+
+  <aside class = "side_menu col-md-2">
+    <%= search_form_for @q, url: index2_posts_path do |f| %>
+      <%= f.label :name_cont, '料理名の検索' %>
+      <%= f.search_field :name_cont %>
+      <br>
+      <%= f.submit '検索' %>
+    <% end %>
+
     <% @categories.each do |category| %>
       <%= category.name %>
     <% end %>
+    <% @tag_categories.each do |tag_category| %>
+      <%= tag_category.name %>
+      <% tag_category.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+    <% end %>
   </aside>
+
+
+
+
 
   <div class="cards col-md-10 row">
     <% @posts.each do |post| %>

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
+  before_action :set_q, only: [:index2, :search]
 
   def index
     @posts = Post.where(user_id: current_user.id)
@@ -48,12 +49,21 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: "Post was successfully destroyed."
   end
 
-  private
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def search
+    @results = @q.result
+  end
 
-    def post_params
-      params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, tag_ids: [], category_ids: [])
-    end
+  private
+
+  def set_q
+    @q = Post.ransack(params[:q])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, tag_ids: [], category_ids: [])
+  end
 end

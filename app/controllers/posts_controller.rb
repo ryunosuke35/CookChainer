@@ -7,7 +7,11 @@ class PostsController < ApplicationController
   end
 
   def index2
-    @posts = Post.all.page(params[:page]).per(10)
+    if params[:search].present?
+      @posts = Post.where("name LIKE ?", "%#{params[:search]}%").page(params[:page]).per(10)
+    else
+      @posts = Post.all.page(params[:page]).per(10)
+    end
     @categories = Category.all
     @tag_categories = TagCategory.all
   end
@@ -50,6 +54,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:name, :url, :memo, :image, :image_cache, tag_ids: [], category_ids: [])
+      params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, tag_ids: [], category_ids: [])
     end
 end

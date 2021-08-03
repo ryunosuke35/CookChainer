@@ -11,7 +11,7 @@
 
 
     <%= form_with(url:index2_posts_path, local: true, method: :get) do |form| %>
-      <%= form.select("id", Category.pluck(:name, :id), { include_blank: '選択してください' }) %>
+      <%= form.select("id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
       <%= form.submit "検索する" %>
     <% end %>
 

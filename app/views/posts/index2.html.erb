@@ -1,13 +1,14 @@
 <div class="contain row">
 
-  <%= search_form_for @q, url: index2_posts_path do |f| %>
-    <%= f.label :name_cont, '料理名' %>
-    <%= f.search_field :name_cont %>
-    <br>
-    <%= f.submit '検索' %>
-  <% end %>
 
   <aside class = "side_menu col-md-2">
+    <%= search_form_for @q, url: index2_posts_path do |f| %>
+      <%= f.label :name_cont, '料理名の検索' %>
+      <%= f.search_field :name_cont %>
+      <br>
+      <%= f.submit '検索' %>
+    <% end %>
+
     <% @categories.each do |category| %>
       <%= category.name %>
     <% end %>

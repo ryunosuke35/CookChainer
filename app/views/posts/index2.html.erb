@@ -3,6 +3,12 @@
     <% @categories.each do |category| %>
       <%= category.name %>
     <% end %>
+    <% @tag_categories.each do |tag_category| %>
+      <%= tag_category.name %>
+      <% tag_category.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+    <% end %>
   </aside>
 
   <div class="cards col-md-10 row">

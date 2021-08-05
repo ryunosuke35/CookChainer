@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/level_up'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
@@ -17,8 +16,5 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy, :index]
   resources :tag_categories
   root 'posts#index'
-
-
-
 
 end

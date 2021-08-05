@@ -37,10 +37,9 @@ class PostsController < ApplicationController
 
 
       user = current_user
-      totalExp = user.exp_point
-      user.update(exp_point: totalExp + 5)
+      user.update(exp_point: user.exp_point + 5)
 
-      levelSetting = LevelSetting.find_by(level: user.level + 1);
+      levelSetting = LevelSetting.find_by(level: user.level + 1)
       if levelSetting.thresold <= user.exp_point
         user.update(level: user.level + 1)
       end

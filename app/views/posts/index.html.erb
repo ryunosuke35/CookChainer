@@ -4,12 +4,11 @@
 <h3>レベル:<%= user.level %></h3>
 <h3>経験値:<%= user.exp_point %></h3><br>
 <h3>次のレベル:<%= user.level + 1 %></h3>
-<h3>必要経験値:<%= @levelSetting.thresold %></h3><br>
+<h3>必要経験値:<%= @levelSetting.thresold - user.exp_point %></h3><br>
 
-<% @levelSetting.thresold %>
-<% exp_ratio = (user.exp_point / @levelSetting.thresold.to_f * 100).to_i %>
+<% exp_ratio = (user.exp_point.to_f / @levelSetting.thresold.to_f) * 100 %>
 
-<h3>経験値の割合:<%= exp_ratio %>%</h3>
+<h3>経験値の割合:<%= exp_ratio.round %>%</h3>
 
 <div style="width: 200px">
   <div style="background-color: #41A077; border-radius: 4px;">

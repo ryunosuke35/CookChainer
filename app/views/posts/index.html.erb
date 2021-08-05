@@ -1,5 +1,8 @@
 <h1>Posts</h1>
 
+<h3>レベル:<%= current_user.level %></h3>
+
+
     <% @array = {} %>
 
     <% @posts.each_with_index do |post, id| %>

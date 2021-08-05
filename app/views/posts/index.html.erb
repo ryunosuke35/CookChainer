@@ -1,6 +1,11 @@
 <h1>Posts</h1>
 
 <h3>レベル:<%= current_user.level %></h3>
+<h3>経験値:<%= current_user.exp_point %></h3>
+<% @levelSetting.thresold %>
+<% exp_ratio = (current_user.exp_point / @levelSetting.thresold.to_f * 100).to_i %>
+
+<h3>経験値の割合:<%= exp_ratio %>%</h3>
 
 
     <% @array = {} %>

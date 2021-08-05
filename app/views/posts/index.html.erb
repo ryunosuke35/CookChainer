@@ -1,7 +1,7 @@
 <h1>Posts</h1>
 
-  <tbody>
     <% @array = {} %>
+
     <% @posts.each_with_index do |post, id| %>
       <%= content_tag :div, id: "box_#{id}" do %>
         <h4><%= link_to "#{post.name}", post_path(post) %></h4>
@@ -30,7 +30,16 @@
     <% end %>
 
 
-    <%= render 'chain_max_calculation' %>
+    <% @chain_array = []
+    chain = 0
+    @array.each { |key, value|
+      if value
+        chain += 1
+      else
+        chain = 0
+      end
+      @chain_array << chain
+    } %>
 
-
-  </tbody>
+    <h3>連鎖数</h3>
+    <%= @chain_array.max %>

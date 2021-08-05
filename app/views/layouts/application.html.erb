@@ -13,9 +13,10 @@
     <div class="container">
       <header>
         <% if user_signed_in? %>
-          <%= link_to '新規', new_post_path %>
+          <%= link_to 'マイページ', user_path(current_user.id) %>
+          <%= link_to '投稿', new_post_path %>
           <%= link_to "記録", posts_path, data: {"turbolinks" => false} %>
-          <%= link_to "検索", index2_posts_path %>
+          <%= link_to "一覧", index2_posts_path %>
           <% if current_user.admin? %>
             <%= link_to "カテゴリ", categories_path %>
             <%= link_to "タグ", tags_path %>
@@ -23,6 +24,7 @@
           <% end %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         <% else %>
+          <%= link_to "一覧", index2_posts_path %>
           <%= link_to "新規登録", new_user_registration_path %>
           <%= link_to "ログイン", new_user_session_path %>
         <% end %>

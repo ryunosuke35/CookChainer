@@ -30,6 +30,17 @@ User.create!(
 end
 
 
+category_array = ["肉料理", "魚料理", "和食", "デザート", "丼もの", "麺類", "サラダ", "汁もの"]
+category_array.each do |array|
+  Category.create!(
+    name: array
+  )
+end
+
+
+
+
+
 array = []
 i = 0
 10.times { array << i += 5 }

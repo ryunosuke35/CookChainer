@@ -17,7 +17,4 @@ Rails.application.routes.draw do
   resources :tag_categories
   root 'posts#index'
 
-
-
-
 end

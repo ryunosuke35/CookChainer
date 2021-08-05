@@ -39,12 +39,30 @@ end
 
 
 tag_category_array = ["肉類", "魚類", "野菜・果物類", "麺類", "大豆・豆腐類", "きのこ類", "調味料", "乳製品"]
-tag_category_array.each do |array|
+tag_category_array.each do |tag_category|
   TagCategory.create!(
-    name: array
+    name: tag_category
   )
 end
 
+tag_array = [
+  ["鶏肉", "豚肉", "牛肉"],
+  ["鮭", "あじ", "さば"],
+  ["にんじん", "じゃがいも", "トマト"],
+  ["パスタ", "うどん", "そば"],
+  ["豆腐", "油揚げ", "納豆"],
+  ["しいたけ", "しめじ", "エリンギ"],
+  ["しょうゆ", "みりん", "コンソメ"],
+  ["牛乳", "チーズ", "バター"]
+]
+
+tag_array.each_with_index do |array, i|
+  array.each do |tag|
+    TagCategory.find(i + 1).tags.create!(
+      name: tag
+    )
+  end
+end
 
 array = []
 i = 0

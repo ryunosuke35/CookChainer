@@ -38,7 +38,12 @@ category_array.each do |array|
 end
 
 
-
+tag_category_array = ["肉類", "魚類", "野菜・果物類", "麺類", "大豆・豆腐類", "きのこ類", "調味料", "乳製品"]
+tag_category_array.each do |array|
+  TagCategory.create!(
+    name: array
+  )
+end
 
 
 array = []

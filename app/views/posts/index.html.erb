@@ -30,9 +30,11 @@
     <% end %>
 
 
+    <%= render 'chain_max', array: @array %>
+
     <% chain_array = []
     chain = 0
-    @array.each { |key, value|
+    array.each { |key, value|
       if value
         chain += 1
       else

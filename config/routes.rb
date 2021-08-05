@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :favorites, only: [:create, :destroy, :index]
   resources :tag_categories
+  resources :users, only: [:show]
+  
   root 'posts#index'
 
 end

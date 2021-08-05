@@ -1,8 +1,20 @@
 <h3>プロフィール編集</h3>
 
+<div class="icon_image">
+  <% if @user.image.present? %>
+    <%= image_tag @user.image.url %>
+  <% else %>
+    <%= image_tag 'default_image.png' %>
+  <% end %>
+</div>
+
+
 <%= form_with model: @user do |form| %>
+  <p><%= form.file_field :image %></p>
+  <p><%= form.text_area :profile %></p>
   <p><%= form.text_field :name %></p>
   <p><%= form.text_field :email %></p>
-  <p><%= form.file_field :image %></p>
   <%= form.submit "保存" %>
 <% end %>
+
+<%= link_to "戻る", user_path(@user) %>

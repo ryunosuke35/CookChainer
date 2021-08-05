@@ -32,18 +32,5 @@
 
     <%= render 'chain_max', array: @array %>
 
-    <% chain_array = []
-    chain = 0
-    array.each { |key, value|
-      if value
-        chain += 1
-      else
-        chain = 0
-      end
-      chain_array << chain
-    } %>
-
-    <h3>最大連鎖数</h3>
-    <%= chain_array.max %>
 
   </tbody>

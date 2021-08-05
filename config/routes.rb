@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :tag_categories
   resources :favorites, only: [:create, :destroy, :index]
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
 end

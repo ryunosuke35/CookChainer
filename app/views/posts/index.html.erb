@@ -1,20 +1,27 @@
-<h1>Posts</h1>
 
-<% user = current_user %>
-<h3>レベル:<%= user.level %></h3>
-<h3>経験値:<%= user.exp_point %></h3><br>
-<h3>次のレベル:<%= user.level + 1 %></h3>
-<h3>必要経験値:<%= @levelSetting.thresold - user.exp_point %></h3><br>
+<div class="level_display">
+  <% user = current_user %>
+  <% user.level %>
+  <% user.exp_point %>
+  <% user.level + 1 %>
+  <% @levelSetting.thresold - user.exp_point %>
+  <% exp_ratio = (user.exp_point.to_f / @levelSetting.thresold.to_f) * 100 %>
+  <% exp_ratio.round %>
 
-<% exp_ratio = (user.exp_point.to_f / @levelSetting.thresold.to_f) * 100 %>
-
-<h3>経験値の割合:<%= exp_ratio.round %>%</h3>
-
-<div style="width: 200px">
-  <div style="background-color: #41A077; border-radius: 4px;">
-    <div style="background-color: #61EDB0; border-radius: 4px; height:6px; width:<%= exp_ratio %>%"></div>
+  <div style="width: 25%;">
+    <div class="level_bar" style="background-color: #41A077; border-radius: 7px;">
+      <div style="background-color: #61EDB0; border-radius: 7px; height:10px; width:<%= exp_ratio %>%"></div>
+    </div>
   </div>
+
+  <h5>レベル:<%= user.level %></h5>
+  <h5>経験値:<%= user.exp_point %></h5><br>
+  <h5>次のレベル:<%= user.level + 1 %></h5>
+  <h5>必要経験値:<%= @levelSetting.thresold - user.exp_point %></h5><br>
+  <h5>経験値の割合:<%= exp_ratio.round %>%</h5>
 </div>
+
+
 
     <% @array = {} %>
 
@@ -57,5 +64,5 @@
       @chain_array << chain
     } %>
 
-    <h3>連鎖数</h3>
-    <%= @chain_array.max %>
+    <h3>現在の連鎖記録</h3>
+    <h3><%= @chain_array.max %>回</h3>

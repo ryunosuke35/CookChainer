@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :tags
   resources :categories, except: [:show]
-  resources :tag_categories
+  resources :tag_categories, except: [:show]
   resources :favorites, only: [:create, :destroy, :index]
   resources :users, only: [:show, :edit, :update]
 

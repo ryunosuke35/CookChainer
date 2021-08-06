@@ -51,12 +51,10 @@ end
 
 
 #post_category
-post_category_array = [1, 3, 1, 6, 3, 6, 3, 3, 6, 1, 4, 3, 5, 2, 1, 3, 4, 6, 7, 8]
-post_category_array.each_with_index do |n, i|
-  PostCategory.create!(
-    post_id: i + 1,
-    category_id: n
-  )
+CSV.foreach('db/post_category_seed.csv', headers: true) do |row|
+  PostCategory.create!(post_id: row['post_id'],
+                      category_id: row['category_id']
+                      )
 end
 
 
@@ -92,9 +90,10 @@ end
 
 #post_tag
 CSV.foreach('db/post_tag_seed.csv', headers: true) do |row|
-  PostTag.create!(post_id: row['post_id'],
-                  tag_id: row['tag_id']
-                  )
+  PostTag.create!(
+    post_id: row['post_id'],
+    tag_id: row['tag_id']
+  )
 end
 
 

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :tags
-  resources :categories
+  resources :categories, except: [:show]
   resources :tag_categories
   resources :favorites, only: [:create, :destroy, :index]
   resources :users, only: [:show, :edit, :update]

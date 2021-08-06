@@ -40,15 +40,55 @@ body {
   }
 }
 
+.post_index {
+  position:  relative;
+  border: solid 2px red;
+}
+
+
+.level_display {
+  position:  absolute;
+  padding: 0px;
+  right: 5%;
+  top: 100px;
+  width: 20%;
+
+}
+
+
+
+// .post_index {
+//   position: relative;
+// }
+//
+// .level_display {
+//   position: relative;
+//   background-color: #ccc;
+//   padding:  20px;
+//   left:  50px;
+//   top: 50px;
+// }
+//
+// .post {
+//   position: relative;
+//   background-color: #ccc;
+//   padding:  20px;
+//   left:  50px;
+//   top: 50px;
+// }
+
+
+
+
+
+
 .side_menu {
   margin: 0;
   padding: 0
 }
-
 .title_search {
   margin-top: 13px;
 }
-
 .category_search {
   margin: 30px;
 }

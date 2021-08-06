@@ -37,6 +37,11 @@
             <li><%= tag.name %></li>
           <% end %>
         </div>
+        <div class="category_list">
+          <% post.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+        </div>
       <% end %>
 
       <% if @posts[id + 1].present? %>

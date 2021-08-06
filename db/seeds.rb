@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+#user
 user = User.create!(
   name: "松村龍之介",
   email: "matsumura@gmail.com",
@@ -16,29 +16,20 @@ user = User.create!(
   admin: true,
   public_or_private: true
 )
-#
-# (2..9).each do |n|
-#   User.create!(
-#     name: "松村龍之介#{n}",
-#     email: "matsumura#{n}@gmail.com",
-#     password: "asdf123",
-#     password_confirmation:"asdf123",
-#     profile: "こんにちは！一般ユーザーの松村龍之介#{n}です。",
-#     admin: false,
-#     public_or_private: true
-#   )
-# end
+(2..9).each do |n|
+  User.create!(
+    name: "松村龍之介#{n}",
+    email: "matsumura#{n}@gmail.com",
+    password: "asdf123",
+    password_confirmation:"asdf123",
+    profile: "こんにちは！一般ユーザーの松村龍之介#{n}です。",
+    admin: false,
+    public_or_private: true
+  )
+end
 
 
-
-# user.posts.create!(name: "test",
-#                   url: "test",
-#                   memo: "test",
-#                   image:File.open("./public/images/test.jpeg")
-# )
-
-
-
+#post
 require "csv"
 
 CSV.foreach('db/post_seed.csv', headers: true) do |row|
@@ -50,52 +41,50 @@ CSV.foreach('db/post_seed.csv', headers: true) do |row|
 end
 
 
-
-# require "csv"
-#
-# CSV.foreach('db/test2.csv', headers: true) do |row|
-#   Category.create(name: row['name'])
-# end
+#post_category
+# post_id category_id
 
 
+#category
+category_array = ["肉料理", "魚料理", "和食", "デザート", "丼もの", "麺類", "サラダ", "汁もの"]
+category_array.each do |array|
+  Category.create!(
+    name: array
+  )
+end
 
 
+#tag_category
+tag_category_array = ["肉類", "魚類", "野菜・果物類", "麺類", "大豆・豆腐類", "きのこ類", "調味料", "乳製品"]
+tag_category_array.each do |tag_category|
+  TagCategory.create!(
+    name: tag_category
+  )
+end
 
 
-# category_array = ["肉料理", "魚料理", "和食", "デザート", "丼もの", "麺類", "サラダ", "汁もの"]
-# category_array.each do |array|
-#   Category.create!(
-#     name: array
-#   )
-# end
-#
-#
-# tag_category_array = ["肉類", "魚類", "野菜・果物類", "麺類", "大豆・豆腐類", "きのこ類", "調味料", "乳製品"]
-# tag_category_array.each do |tag_category|
-#   TagCategory.create!(
-#     name: tag_category
-#   )
-# end
-#
-# tag_array = [
-#   ["鶏肉", "豚肉", "牛肉"],
-#   ["鮭", "あじ", "さば"],
-#   ["にんじん", "じゃがいも", "トマト"],
-#   ["パスタ", "うどん", "そば"],
-#   ["豆腐", "油揚げ", "納豆"],
-#   ["しいたけ", "しめじ", "エリンギ"],
-#   ["しょうゆ", "みりん", "コンソメ"],
-#   ["牛乳", "チーズ", "バター"]
-# ]
-#
-# tag_array.each_with_index do |array, i|
-#   array.each do |tag|
-#     TagCategory.find(i + 1).tags.create!(
-#       name: tag
-#     )
-#   end
-# end
-#
+#tag
+tag_array = [
+  ["鶏肉", "豚肉", "牛肉"],
+  ["鮭", "あじ", "さば"],
+  ["にんじん", "じゃがいも", "トマト"],
+  ["パスタ", "うどん", "そば"],
+  ["豆腐", "油揚げ", "納豆"],
+  ["しいたけ", "しめじ", "エリンギ"],
+  ["しょうゆ", "みりん", "コンソメ"],
+  ["牛乳", "チーズ", "バター"]
+]
+
+tag_array.each_with_index do |array, i|
+  array.each do |tag|
+    TagCategory.find(i + 1).tags.create!(
+      name: tag
+    )
+  end
+end
+
+
+#level_setting
 array = []
 i = 0
 10.times { array << i += 5 }

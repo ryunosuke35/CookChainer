@@ -15,16 +15,6 @@ body {
     margin-top:20px;
     padding-bottom: 100px;
 }
-// .box_style {
-//     width: 40%;
-//     margin: 100px auto;
-//     font-weight: bold;
-//     color: #6091d3;
-//     border: solid 4px;
-//     border-radius: 20px;
-//     text-align: center;
-//     background: tomato;
-// }
 
 // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
 @for $i from 0 through 100 {
@@ -40,20 +30,32 @@ body {
   }
 }
 
+
+
+
+
+
 .post_index {
-  position:  relative;
+  position: relative;
+  text-align: center;
   border: solid 2px red;
 }
 
+.chains {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin: 0 auto;
+}
 
 .level_display {
-  position:  absolute;
+  position: absolute;
   padding: 0px;
   right: 5%;
   top: 100px;
   width: 20%;
-
 }
+
 
 
 

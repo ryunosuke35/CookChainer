@@ -1,5 +1,5 @@
 <div class="post_index">
-  
+
   <div class="level_display">
     <% user = current_user %>
     <% user.level %>
@@ -31,10 +31,12 @@
     <% @posts.each_with_index do |post, id| %>
       <%= content_tag :div, id: "box_#{id}" do %>
         <h4><%= link_to "#{post.name}", post_path(post) %></h4>
-        <p><%= image_tag post.image.url if post.image.present? %></p>
-        <% post.tags.each do |tag| %>
-          <li><%= tag.name %></li>
-        <% end %>
+        <%= image_tag post.image.url if post.image.present? %>
+        <div class="tag_list">
+          <% post.tags.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </div>
       <% end %>
 
       <% if @posts[id + 1].present? %>

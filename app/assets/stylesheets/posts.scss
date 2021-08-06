@@ -16,24 +16,10 @@ body {
     padding-bottom: 100px;
 }
 
-// index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-@for $i from 0 through 100 {
-  #box_#{$i} {
-    width: 40%;
-    margin: 100px auto;
-    font-weight: bold;
-    color: #d2b48c;
-    border: solid 4px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 5px 3px 4px #ccc;
-  }
-}
 
 
 
-
-
+// index
 
 .post_index {
   position: relative;
@@ -56,33 +42,62 @@ body {
   width: 20%;
 }
 
+// index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
+@for $i from 0 through 100 {
+  #box_#{$i} {
+    position: relative;
+    width: 40%;
+    height: 208px;
+    margin: 100px auto;
+    font-weight: bold;
+    color: #d2b48c;
+    border: solid 4px;
+    border-radius: 20px;
+    box-shadow: 5px 3px 4px #ccc;
+    background-color: #fff;
+  }
+}
+
+.posts {
+  list-style: none;
+}
+
+.posts img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 16px;
+}
+
+.posts h4 {
+}
+
+.posts .tag_list {
+  position: absolute;
+  top: 100px;
+  right: 150px;
+}
+
+.posts li {
+  width: 90px;
+  margin: 5px auto;
+  color: #d2b48c;
+  border: solid 1px;
+  border-radius: 20px;
+  box-shadow: 1px 2px 3px #ccc;
+  background-color: #fff;
+}
 
 
 
-// .post_index {
-//   position: relative;
-// }
-//
-// .level_display {
-//   position: relative;
-//   background-color: #ccc;
-//   padding:  20px;
-//   left:  50px;
-//   top: 50px;
-// }
-//
-// .post {
-//   position: relative;
-//   background-color: #ccc;
-//   padding:  20px;
-//   left:  50px;
-//   top: 50px;
-// }
 
 
 
-
-
+// index2
 
 .side_menu {
   margin: 0;

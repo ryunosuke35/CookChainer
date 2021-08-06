@@ -41,13 +41,15 @@ user = User.create!(
 
 require "csv"
 
-CSV.foreach('db/test.csv', headers: true) do |row|
+CSV.foreach('db/post_seed.csv', headers: true) do |row|
   user.posts.create!(name: row['name'],
                     url: row['url'],
                     memo: row['memo'],
                     image:File.open(row['image'])
                     )
 end
+
+
 
 # require "csv"
 #
@@ -66,8 +68,8 @@ end
 #     name: array
 #   )
 # end
-
-
+#
+#
 # tag_category_array = ["肉類", "魚類", "野菜・果物類", "麺類", "大豆・豆腐類", "きのこ類", "調味料", "乳製品"]
 # tag_category_array.each do |tag_category|
 #   TagCategory.create!(
@@ -94,11 +96,11 @@ end
 #   end
 # end
 #
-# array = []
-# i = 0
-# 10.times { array << i += 5 }
-#
-# i = 0
-# array.each_with_index do |value, n|
-#   LevelSetting.create!(level: n + 1, thresold: i += value)
-# end
+array = []
+i = 0
+10.times { array << i += 5 }
+
+i = 0
+array.each_with_index do |value, n|
+  LevelSetting.create!(level: n + 1, thresold: i += value)
+end

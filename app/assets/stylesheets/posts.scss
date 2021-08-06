@@ -41,11 +41,12 @@ body {
 }
 
 .side_menu {
-  margin: 15px 0;
+  margin: 0;
+  padding: 0
 }
 
 .title_search {
-  margin: 30px;
+  margin-top: 13px;
 }
 
 .category_search {
@@ -54,8 +55,7 @@ body {
 
 
 .cards {
-  margin: 15px 0;
-  // background-color: #aaa;
+  margin: 0;
 }
 .card {
   width: 22%;

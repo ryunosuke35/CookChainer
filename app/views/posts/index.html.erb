@@ -23,46 +23,53 @@
 
 
 
-    <% @array = {} %>
+<div class="posts">
 
-    <% @posts.each_with_index do |post, id| %>
-      <%= content_tag :div, id: "box_#{id}" do %>
-        <h4><%= link_to "#{post.name}", post_path(post) %></h4>
-        <p><%= image_tag post.image.url if post.image.present? %></p>
-        <% post.tags.each do |tag| %>
-          <li><%= tag.name %></li>
-        <% end %>
-      <% end %>
+  <% @array = {} %>
 
-      <% if @posts[id + 1].present? %>
-        <% array1 = post.tags.pluck(:name) %>
-        <% array2 = @posts[id + 1].tags.pluck(:name) %>
-        <% a = array1.concat(array2) %>
-        <% b = a.uniq %>
-        <% if a.length != b.length %>
-          <% match = true %>
-        <% else %>
-          <% match = false %>
-        <% end %>
-        <% @array[id] = match %>
-      <% end %>
-
-      <%= javascript_tag do %>
-        var data = <%= @array.to_json.html_safe %>
+  <% @posts.each_with_index do |post, id| %>
+    <%= content_tag :div, id: "box_#{id}" do %>
+      <h4><%= link_to "#{post.name}", post_path(post) %></h4>
+      <p><%= image_tag post.image.url if post.image.present? %></p>
+      <% post.tags.each do |tag| %>
+        <li><%= tag.name %></li>
       <% end %>
     <% end %>
 
+    <% if @posts[id + 1].present? %>
+      <% array1 = post.tags.pluck(:name) %>
+      <% array2 = @posts[id + 1].tags.pluck(:name) %>
+      <% a = array1.concat(array2) %>
+      <% b = a.uniq %>
+      <% if a.length != b.length %>
+        <% match = true %>
+      <% else %>
+        <% match = false %>
+      <% end %>
+      <% @array[id] = match %>
+    <% end %>
 
-    <% @chain_array = []
-    chain = 0
-    @array.each { |key, value|
-      if value
-        chain += 1
-      else
-        chain = 0
-      end
-      @chain_array << chain
-    } %>
+    <%= javascript_tag do %>
+      var data = <%= @array.to_json.html_safe %>
+    <% end %>
 
-    <h3>現在の連鎖記録</h3>
-    <h3><%= @chain_array.max %>回</h3>
+  <% end %>
+
+</div>
+
+
+<div class="chains">
+  <% @chain_array = []
+  chain = 0
+  @array.each { |key, value|
+    if value
+      chain += 1
+    else
+      chain = 0
+    end
+    @chain_array << chain
+  } %>
+
+  <h3>現在の連鎖記録</h3>
+  <h3><%= @chain_array.max %>回</h3>
+</div>

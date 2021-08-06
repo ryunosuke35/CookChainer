@@ -73,7 +73,8 @@ body {
   border-bottom-left-radius: 16px;
 }
 
-.posts h4 {
+.posts h4 .link {
+  color: #332f29;
 }
 
 .posts .tag_list {
@@ -89,7 +90,6 @@ body {
   border: solid 1px;
   border-radius: 20px;
   box-shadow: 1px 2px 3px #ccc;
-  background-color: #fff;
 }
 
 

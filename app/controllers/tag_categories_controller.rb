@@ -5,9 +5,6 @@ class TagCategoriesController < ApplicationController
     @tag_categories = TagCategory.all
   end
 
-  def show
-  end
-
   def new
     @tag_category = TagCategory.new
   end

@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :tags
-  resources :categories
-  resources :tag_categories
+  resources :tags, except: [:show]
+  resources :categories, except: [:show]
+  resources :tag_categories, except: [:show]
+  
   resources :favorites, only: [:create, :destroy, :index]
   resources :users, only: [:show, :edit, :update]
 

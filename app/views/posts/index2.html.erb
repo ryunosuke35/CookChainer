@@ -1,52 +1,55 @@
 <div class="contain row">
 
 
-  <aside class = "side_menu col-md-2">
+
+  <div class="title_search">
     <%= search_form_for @q, url: index2_posts_path do |f| %>
       <%= f.label :name_cont, '料理名の検索' %>
       <%= f.search_field :name_cont %>
-      <br>
       <%= f.submit '検索' %>
     <% end %>
+  </div>
 
+<aside class = "side_menu col-md-2">
+  <div class="category_search">
     <%= form_with(url:index2_posts_path, local: true, method: :get) do |form| %>
       <%= form.select("id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
       <%= form.submit "検索する" %>
     <% end %>
+  </div>
 
 
-
-<div class="dropdown drop-hover">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">食材を選択</button>
-  <ul class = "dropdown-menu">
-    <% @tag_categories.each do |tag_category| %>
-      <li class="dropright drop-hover">
-        <%= link_to index2_posts_path do %>
-          <%= tag_category.name %>
-        <% end %>
-        <ul class="dropdown-menu">
-          <% tag_category.tags.each do |tag| %>
-            <li class="dropright drop-hover">
-            <%= link_to tag_categories_path do %>
-              <%= tag.name %>
+    <div class="dropdown drop-hover">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">食材を選択</button>
+      <ul class = "dropdown-menu">
+        <% @tag_categories.each do |tag_category| %>
+          <li class="dropright drop-hover">
+            <%= link_to index2_posts_path do %>
+              <%= tag_category.name %>
             <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-</div>
+            <ul class="dropdown-menu">
+              <% tag_category.tags.each do |tag| %>
+                <li class="dropright drop-hover">
+                <%= link_to tag_categories_path do %>
+                  <%= tag.name %>
+                <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-<style>
-.drop-hover:hover > .dropdown-menu {
-  display: block !important;
-}
-</style>
-
-
-
+    <style>
+    .drop-hover:hover > .dropdown-menu {
+      display: block !important;
+    }
+    </style>
   </aside>
+
+
+
 
 
   <div class="cards col-md-10 row">
@@ -55,20 +58,15 @@
         <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
         <div class="card-content">
           <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
-          <p class="card-text">
-            <% post.tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          </p>
         </div>
         <div class="card-link">
           <% if user_signed_in? %>
             <% if post.user_id != current_user.id %>
               <% favorite = current_user.favorites.find_by(post_id: post.id) %>
               <% if favorite.present? %>
-                <%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete %>
+                <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
               <% else %>
-                <%= link_to 'お気に入りする', favorites_path(post_id: post.id), method: :post %>
+                <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
               <% end %>
             <% end %>
           <% end %>

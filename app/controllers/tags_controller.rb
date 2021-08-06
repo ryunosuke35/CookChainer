@@ -2,7 +2,6 @@ class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
 
   def index
-    @tags = Tag.all
     @tag_categories = TagCategory.all
   end
 

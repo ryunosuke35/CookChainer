@@ -41,27 +41,32 @@ body {
 }
 
 .side_menu {
-  height: 1000px;
+  height: 2000px;
   // background-color: #ccc;
 }
 .cards {
+  top: 50px;
   // background-color: #aaa;
-  text-align: center;
 }
 .card {
-  width: 350px;
-  background: #fff;
+  width: 25%;
+  height: 350px;
+  background: #F7F7F7;
   border-radius: 5px;
   box-shadow: 0 2px 10px #ccc;
-  margin: 60px 30px;
+  margin: 15px;
+  padding: 0;
 }
 .card-img {
   border-radius: 5px 5px 0 0;
-  max-width: 100%;
-  height: auto;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  margin-top: 20px;
 }
 .card-content {
   padding: 20px;
+  height: 180px;
 }
 .card-title {
   font-size: 20px;

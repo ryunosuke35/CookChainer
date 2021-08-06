@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-    @posts = @posts.page(params[:page]).per(10)
+    @posts = @posts.page(params[:page]).per(30)
     @categories = Category.all
     @tag_categories = TagCategory.all
   end

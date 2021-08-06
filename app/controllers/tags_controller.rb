@@ -18,7 +18,7 @@ class TagsController < ApplicationController
     @tag.tag_category_id = tag_params[:tag_category_id][1]
 
     if @tag.save
-      redirect_to @tag, notice: "Tag was successfully created."
+      redirect_to tags_path, notice: "Tag was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

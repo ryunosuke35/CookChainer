@@ -82,8 +82,12 @@
       end
       @chain_array << chain
     } %>
-
-    <h3>現在の連鎖記録</h3>
-    <h3><%= @chain_array.max %>回</h3>
+    <div>
+      <% if @chain_array.empty? %>
+        <div>連鎖回数：0回</div>
+      <% else %>
+        <div>連鎖記録：<%= @chain_array.max %>回</div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -99,11 +99,10 @@ end
 
 
 #level_setting
-array = []
-i = 0
-10.times { array << i += 5 }
+require "csv"
 
-i = 0
-array.each_with_index do |value, n|
-  LevelSetting.create!(level: n + 1, thresold: i += value)
+CSV.foreach('db/level_setting_seed.csv', headers: true) do |row|
+  LevelSetting.create!(level: row['level'],
+                      thresold: row['thresold']
+                      )
 end

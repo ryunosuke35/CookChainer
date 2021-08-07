@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -31,42 +30,22 @@
     <%= form.file_field :image %>
   </div>
 
-  <div class="field">
-    <div class="accordion">
-      <dl id="accordion">
-        <% @tag_categories.each do |tag_category| %>
-          <dd>
-            <%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %>
-          </dd>
-        <% end %>
-      </dl>
+
+  <% @tag_categories.each do |tag_category| %>
+    <div class="field">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= tag_category.name %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="field">
-    <div class="accordion">
-      <dl id="accordion">
-        <% @tag_categories.each do |tag_category| %>
-          <dt><%= tag_category.name %></dt>
-          <dd>
-            <% tag_category.tags.each do |tag| %>
-              <p><%= tag.name %></p>
-            <% end %>
-          </dd>
-        <% end %>
-      </dl>
-    </div>
-  </div>
+  <% end %>
 
 
-
-
-
-
-
-  <div class="field">
-    <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
-  </div>
+  <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
 
   <div class="actions">
     <%= form.submit %>

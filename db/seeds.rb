@@ -32,7 +32,7 @@ end
 #post
 require "csv"
 
-CSV.foreach('db/post_seed.csv', headers: true) do |row|
+CSV.foreach('db/csv/post.csv', headers: true) do |row|
   user.posts.create!(name: row['name'],
                     url: row['url'],
                     memo: row['memo'],
@@ -51,7 +51,7 @@ end
 
 
 #post_category
-CSV.foreach('db/post_category_seed.csv', headers: true) do |row|
+CSV.foreach('db/csv/post_category.csv', headers: true) do |row|
   PostCategory.create!(post_id: row['post_id'],
                       category_id: row['category_id']
                       )
@@ -89,7 +89,7 @@ end
 
 
 #post_tag
-CSV.foreach('db/post_tag_seed.csv', headers: true) do |row|
+CSV.foreach('db/csv/post_tag.csv', headers: true) do |row|
   PostTag.create!(
     post_id: row['post_id'],
     tag_id: row['tag_id']
@@ -99,9 +99,7 @@ end
 
 
 #level_setting
-require "csv"
-
-CSV.foreach('db/level_setting_seed.csv', headers: true) do |row|
+CSV.foreach('db/csv/level_setting.csv', headers: true) do |row|
   LevelSetting.create!(level: row['level'],
                       thresold: row['thresold']
                       )

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(user_id: current_user.id)
     @next_level = LevelSetting.find_by(level: current_user.level + 1)
-    @prev_level = LevelSetting.find_by(level: current_user.level - 1)
+    @now_level = LevelSetting.find_by(level: current_user.level)
   end
 
   def index2

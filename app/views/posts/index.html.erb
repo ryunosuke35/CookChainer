@@ -2,21 +2,31 @@
 
   <div class="level_display">
     <% user = current_user %>
-    <h5>Lv.<%= user.level %></h5>
-    <h5>経験値:<%= user.exp_point %></h5>
-    <% user.level + 1 %>
-    <h5>必要経験値:<%= a = @next_level.thresold - user.exp_point %></h5>
-    <h5><%= b = @next_level.thresold - @prev_level.thresold %></h5>
-    <% exp_ratio = (a.to_f / b.to_f) * 100 %>
-    <h5>経験値の割合:<%= exp_ratio.round %>%</h5>
 
-    <div style="width: 100%;">
-      <div style="background-color: #808080; border-radius: 3px;">
-        <div style="background-color: #ffa200; border-radius: 3px; height:13px; width:<%= exp_ratio %>%"></div>
+    <div class="user_level">
+      <div>Lv.<%= user.level %></div>
+    </div>
+
+    <div class="exp_ratio2">
+      <div><%= user.exp_point %>/<%= @next_level.thresold %></div>
+    </div>
+
+    <div class="exp_ratio">
+      <% a = @next_level.thresold - user.exp_point %>
+      <% b = @next_level.thresold - @now_level.thresold %>
+      <% exp_ratio = (100 - (a.to_f / b.to_f) * 100).round %>
+      <div><%= exp_ratio %>%</div>
+    </div>
+
+
+    <div class="exp_bar">
+      <div style="width: 80%;">
+        <div style="background-color: #808080; border-radius: 3px;">
+          <div style="background-color: #669eff; border-radius: 3px; height:13px; width:<%= exp_ratio %>%"></div>
+        </div>
       </div>
     </div>
   </div>
-
 
 
   <div class="posts">

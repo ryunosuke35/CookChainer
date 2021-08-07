@@ -39,10 +39,31 @@ body {
 
 .level_display {
   position: absolute;
+  text-align: center;
   padding: 0px;
-  right: 5%;
-  top: 100px;
-  width: 20%;
+  right: 0px;
+  top: 40px;
+  width: 25%;
+}
+
+.user_level {
+  float: left;
+  margin-right: 10px;
+}
+
+.exp_ratio {
+  position: absolute;
+  right: 23px;
+  bottom: -3px;
+}
+
+.exp_ratio2 {
+  float: left;
+  margin-right: 10px;
+}
+
+.exp_bar {
+  clear: both;
 }
 
 // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
@@ -78,8 +99,16 @@ body {
 
 .posts .tag_list {
   position: absolute;
-  top: 100px;
-  right: 150px;
+  top: 60px;
+  right: 50px;
+}
+
+
+.posts .category_list {
+  position: absolute;
+  top: 60px;
+  right: 165px;
+
 }
 
 .posts li {

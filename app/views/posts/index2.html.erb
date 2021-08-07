@@ -19,33 +19,20 @@
   </div>
 
 
-    <div class="dropdown drop-hover">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">食材を選択</button>
-      <ul class = "dropdown-menu">
-        <% @tag_categories.each do |tag_category| %>
-          <li class="dropright drop-hover">
-            <%= link_to index2_posts_path do %>
-              <%= tag_category.name %>
-            <% end %>
-            <ul class="dropdown-menu">
-              <% tag_category.tags.each do |tag| %>
-                <li class="dropright drop-hover">
-                <%= link_to tag_categories_path do %>
-                  <%= tag.name %>
-                <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-        <% end %>
-      </ul>
-    </div>
 
-    <style>
-    .drop-hover:hover > .dropdown-menu {
-      display: block !important;
-    }
-    </style>
+<div class="accordion">
+  <dl id="accordion">
+    <% @tag_categories.each do |tag_category| %>
+      <dt><%= tag_category.name %></dt>
+      <dd>
+        <% tag_category.tags.each do |tag| %>
+          <p><%= link_to tag.name, index2_posts_path(tag_id: "#{tag.id}") %></p>
+        <% end %>
+      </dd>
+    <% end %>
+  </dl>
+</div>
+
   </aside>
 
 

@@ -12,8 +12,8 @@ class PostsController < ApplicationController
   def index2
     if params[:q].present?
       @posts = @q.result
-    elsif params[:id].present?
-      @posts = Category.find(params[:id]).posts
+    elsif params[:tag_id].present?
+      @posts = Tag.find(params[:tag_id]).posts
     else
       @posts = Post.all
     end

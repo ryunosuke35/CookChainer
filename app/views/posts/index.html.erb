@@ -30,42 +30,45 @@
 
 
   <div class="posts">
-
     <% @array = {} %>
 
-    <% @posts.each_with_index do |post, id| %>
-      <%= content_tag :div, id: "box_#{id}" do %>
-        <h4><%= link_to "#{post.name}", post_path(post),class: "link" %></h4>
-        <%= image_tag post.image.url if post.image.present? %>
-        <div class="tag_list">
-          <% post.tags.each do |tag| %>
-            <li><%= tag.name %></li>
-          <% end %>
-        </div>
-        <div class="category_list">
-          <% post.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-        </div>
-      <% end %>
-
-      <% if @posts[id + 1].present? %>
-        <% array1 = post.tags.pluck(:name) %>
-        <% array2 = @posts[id + 1].tags.pluck(:name) %>
-        <% a = array1.concat(array2) %>
-        <% b = a.uniq %>
-        <% if a.length != b.length %>
-          <% match = true %>
-        <% else %>
-          <% match = false %>
+    <% if @posts.present? %>
+      <% @posts.each_with_index do |post, id| %>
+        <%= content_tag :div, id: "box_#{id}" do %>
+          <h4><%= link_to "#{post.name}", post_path(post),class: "link" %></h4>
+          <%= image_tag post.image.url if post.image.present? %>
+          <div class="tag_list">
+            <% post.tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <% end %>
+          </div>
+          <div class="category_list">
+            <% post.categories.each do |category| %>
+              <li><%= category.name %></li>
+            <% end %>
+          </div>
         <% end %>
-        <% @array[id] = match %>
-      <% end %>
 
-      <%= javascript_tag do %>
-        var data = <%= @array.to_json.html_safe %>
-      <% end %>
+        <% if @posts[id + 1].present? %>
+          <% array1 = post.tags.pluck(:name) %>
+          <% array2 = @posts[id + 1].tags.pluck(:name) %>
+          <% a = array1.concat(array2) %>
+          <% b = a.uniq %>
+          <% if a.length != b.length %>
+            <% match = true %>
+          <% else %>
+            <% match = false %>
+          <% end %>
+          <% @array[id] = match %>
+        <% end %>
 
+        <%= javascript_tag do %>
+          var data = <%= @array.to_json.html_safe %>
+        <% end %>
+
+      <% end %>
+    <% else %>
+      <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
     <% end %>
 
   </div>

@@ -1,75 +1,96 @@
+<div class="post_index">
 
-<div class="level_display">
-  <% user = current_user %>
-  <% user.level %>
-  <% user.exp_point %>
-  <% user.level + 1 %>
-  <% @levelSetting.thresold - user.exp_point %>
-  <% exp_ratio = (user.exp_point.to_f / @levelSetting.thresold.to_f) * 100 %>
-  <% exp_ratio.round %>
+  <div class="level_display">
+    <% user = current_user %>
 
-  <div style="width: 25%;">
-    <div class="level_bar" style="background-color: #41A077; border-radius: 7px;">
-      <div style="background-color: #61EDB0; border-radius: 7px; height:10px; width:<%= exp_ratio %>%"></div>
+    <div class="user_level">
+      <div>Lv.<%= user.level %></div>
+    </div>
+
+    <div class="exp_ratio2">
+      <div><%= user.exp_point %>/<%= @next_level.thresold %></div>
+    </div>
+
+    <div class="exp_ratio">
+      <% a = @next_level.thresold - user.exp_point %>
+      <% b = @next_level.thresold - @now_level.thresold %>
+      <% exp_ratio = (100 - (a.to_f / b.to_f) * 100).round %>
+      <div><%= exp_ratio %>%</div>
+    </div>
+
+
+    <div class="exp_bar">
+      <div style="width: 80%;">
+        <div style="background-color: #808080; border-radius: 3px;">
+          <div style="background-color: #669eff; border-radius: 3px; height:13px; width:<%= exp_ratio %>%"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <h5>レベル:<%= user.level %></h5>
-  <h5>経験値:<%= user.exp_point %></h5><br>
-  <h5>次のレベル:<%= user.level + 1 %></h5>
-  <h5>必要経験値:<%= @levelSetting.thresold - user.exp_point %></h5><br>
-  <h5>経験値の割合:<%= exp_ratio.round %>%</h5>
-</div>
 
+  <div class="posts">
+    <% @array = {} %>
 
+    <% if @posts.present? %>
+      <% @posts.each_with_index do |post, id| %>
+        <%= content_tag :div, id: "box_#{id}" do %>
+          <h4><%= link_to "#{post.name}", post_path(post),class: "link" %></h4>
+          <%= image_tag post.image.url if post.image.present? %>
+          <div class="tag_list">
+            <% post.tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <% end %>
+          </div>
+          <div class="category_list">
+            <% post.categories.each do |category| %>
+              <li><%= category.name %></li>
+            <% end %>
+          </div>
+        <% end %>
 
-<div class="posts">
+        <% if @posts[id + 1].present? %>
+          <% array1 = post.tags.pluck(:name) %>
+          <% array2 = @posts[id + 1].tags.pluck(:name) %>
+          <% a = array1.concat(array2) %>
+          <% b = a.uniq %>
+          <% if a.length != b.length %>
+            <% match = true %>
+          <% else %>
+            <% match = false %>
+          <% end %>
+          <% @array[id] = match %>
+        <% end %>
 
-  <% @array = {} %>
+        <%= javascript_tag do %>
+          var data = <%= @array.to_json.html_safe %>
+        <% end %>
 
-  <% @posts.each_with_index do |post, id| %>
-    <%= content_tag :div, id: "box_#{id}" do %>
-      <h4><%= link_to "#{post.name}", post_path(post) %></h4>
-      <p><%= image_tag post.image.url if post.image.present? %></p>
-      <% post.tags.each do |tag| %>
-        <li><%= tag.name %></li>
       <% end %>
+    <% else %>
+      <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
     <% end %>
 
-    <% if @posts[id + 1].present? %>
-      <% array1 = post.tags.pluck(:name) %>
-      <% array2 = @posts[id + 1].tags.pluck(:name) %>
-      <% a = array1.concat(array2) %>
-      <% b = a.uniq %>
-      <% if a.length != b.length %>
-        <% match = true %>
+  </div>
+
+
+  <div class="chains">
+    <% @chain_array = []
+    chain = 0
+    @array.each { |key, value|
+      if value
+        chain += 1
+      else
+        chain = 0
+      end
+      @chain_array << chain
+    } %>
+    <div>
+      <% if @chain_array.empty? %>
+        <div>連鎖回数：0回</div>
       <% else %>
-        <% match = false %>
+        <div>連鎖記録：<%= @chain_array.max %>回</div>
       <% end %>
-      <% @array[id] = match %>
-    <% end %>
-
-    <%= javascript_tag do %>
-      var data = <%= @array.to_json.html_safe %>
-    <% end %>
-
-  <% end %>
-
-</div>
-
-
-<div class="chains">
-  <% @chain_array = []
-  chain = 0
-  @array.each { |key, value|
-    if value
-      chain += 1
-    else
-      chain = 0
-    end
-    @chain_array << chain
-  } %>
-
-  <h3>現在の連鎖記録</h3>
-  <h3><%= @chain_array.max %>回</h3>
+    </div>
+  </div>
 </div>

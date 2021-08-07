@@ -15,7 +15,7 @@
         <% if user_signed_in? %>
           <%= link_to 'マイページ', user_path(current_user.id) %>
           <%= link_to '投稿', new_post_path %>
-          <%= link_to "記録", posts_path, data: {"turbolinks" => false} %>
+          <%= link_to "記録", posts_path %>
           <%= link_to "一覧", index2_posts_path %>
           <% if current_user.admin? %>
             <%= link_to "カテゴリ", categories_path %>

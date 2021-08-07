@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   def index2
     if params[:q].present?
       @posts = @q.result
+    elsif params[:category_id].present?
+      @posts = Category.find(params[:category_id]).posts
     elsif params[:tag_id].present?
       @posts = Tag.find(params[:tag_id]).posts
     else
@@ -27,9 +29,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tag_categories = TagCategory.all
   end
 
   def edit
+    @tag_categories = TagCategory.all
   end
 
   def create

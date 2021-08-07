@@ -13,7 +13,7 @@
 <aside class = "side_menu col-md-2">
   <div class="category_search">
     <%= form_with(url:index2_posts_path, local: true, method: :get) do |form| %>
-      <%= form.select("id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
+      <%= form.select("category_id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
       <%= form.submit "検索する" %>
     <% end %>
   </div>

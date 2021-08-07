@@ -11,9 +11,12 @@ html {
 body {
   text-align: center;
 }
-.container{
+.container {
     margin-top:20px;
     padding-bottom: 100px;
+}
+.container a {
+  text-decoration: none;
 }
 
 
@@ -24,7 +27,7 @@ body {
 .post_index {
   position: relative;
   text-align: center;
-  border: solid 2px red;
+  border: solid 2px #fff;
 }
 
 .chains {
@@ -71,10 +74,6 @@ body {
   object-fit: cover;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 16px;
-}
-
-.posts h4 .link {
-  color: #332f29;
 }
 
 .posts .tag_list {

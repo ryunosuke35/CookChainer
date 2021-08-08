@@ -22,6 +22,12 @@ body {
 
 
 
+
+
+
+
+
+
 // index
 
 .post_index {
@@ -89,6 +95,9 @@ body {
   }
 }
 
+
+
+
 .posts {
   list-style: none;
 }
@@ -128,14 +137,6 @@ body {
 }
 
 
-
-.posts .category_list {
-  position: absolute;
-  top: 60px;
-  right: 165px;
-
-}
-
 .posts li {
   width: 90px;
   margin: 5px auto;
@@ -144,6 +145,16 @@ body {
   border-radius: 20px;
   box-shadow: 1px 2px 3px #ccc;
 }
+
+.conecting_name {
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+}
+
+
+
+
 
 
 

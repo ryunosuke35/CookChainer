@@ -43,7 +43,11 @@
               <% duplicate_element_array.push(element) %>
             <% end %>
           <% end %>
-          <p class="conecting_name"><%= duplicate_element_array[0] %></p>
+          <% if duplicate_element_array.present? %>
+            <p class="conecting_name"><%= duplicate_element_array[0] %></p>
+          <% else %>
+            <p class="conecting_name">　</p>
+          <% end %>
           <% if array.length != array_uniq.length %>
             <% match = true %>
           <% else %>

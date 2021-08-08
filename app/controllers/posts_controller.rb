@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_q, only: [:index2]
 
   def index
-    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC") 
+    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC")
     @next_level = LevelSetting.find_by(level: current_user.level + 1)
     @now_level = LevelSetting.find_by(level: current_user.level)
   end
@@ -37,6 +37,9 @@ class PostsController < ApplicationController
   end
 
   def create
+
+    binding.pry
+
     @post = current_user.posts.build(post_params)
     if @post.save
 
@@ -81,6 +84,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, tag_ids: [], category_ids: [])
+    params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, tag_ids: [], category_ids:[] )
   end
 end

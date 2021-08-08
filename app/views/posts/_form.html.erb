@@ -45,7 +45,8 @@
   <% end %>
 
 
-  <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+  <%= form.collection_radio_buttons(:category_ids, Category.all, :id, :name) %>
+
 
   <div class="actions">
     <%= form.submit %>

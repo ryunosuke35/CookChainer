@@ -42,7 +42,7 @@ end
 
 
 #category
-category_array = ["肉料理", "魚料理", "和食", "デザート", "丼もの", "麺類", "サラダ", "汁もの"]
+category_array = ["主菜", "副菜", "汁もの", "主食", "デザート", "その他"]
 category_array.each do |array|
   Category.create!(
     name: array

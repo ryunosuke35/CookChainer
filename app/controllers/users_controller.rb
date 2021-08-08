@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to new_user_registration_path, notice: "退会しました"
+  end
+
   private
 
   def set_user

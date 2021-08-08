@@ -72,81 +72,73 @@ body {
   clear: both;
 }
 
-// index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-@for $i from 0 through 100 {
-  #box_#{$i} {
-    position: relative;
-    width: 40%;
-    height: 208px;
-    margin: 50px auto;
-    font-weight: bold;
-    color: #d2b48c;
-    border: solid 4px;
-    border-radius: 20px;
-    box-shadow: 5px 3px 4px #ccc;
-    background-color: #fff;
+
+
+
+.posts {
+  // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
+  @for $i from 0 through 100 {
+    #box_#{$i} {
+      position: relative;
+      width: 40%;
+      height: 208px;
+      margin: 50px auto;
+      font-weight: bold;
+      color: #d2b48c;
+      border: solid 4px;
+      border-radius: 20px;
+      box-shadow: 5px 3px 4px #ccc;
+      background-color: #fff;
+    }
+    #box_#{$i} .cooking_name {
+      width: 100%;
+      height: 20%;
+      margin: 0;
+      padding-top: 10px;
+      border-bottom: 1px solid red;
+      background-color: red;
+      // border-radius: 20px;
+    }
   }
-  #box_#{$i} .cooking_name {
-    width: 100%;
+  %card_style {
     height: 20%;
-    margin: 0;
     padding-top: 10px;
-    border-bottom: 1px solid red;
-    background-color: red;
-    // border-radius: 20px;
-  }
-}
-
-.posts {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+   }
   .red {
-    height: 20%;
+    @extend %card_style;
     background-color: red;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
   .blue {
-    height: 20%;
+    @extend %card_style;
     background-color: blue;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
   .yellow {
-    height: 20%;
+    @extend %card_style;
     background-color: yellow;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
   .gray {
-    height: 20%;
+    @extend %card_style;
     background-color: gray;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
   .pink {
-    height: 20%;
+    @extend %card_style;
     background-color: pink;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
   .black {
-    height: 20%;
+    @extend %card_style;
     background-color: black;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
   .white {
-    height: 20%;
+    @extend %card_style;
     background-color: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+    }
+
 }
 
 
 
-.posts {
-  list-style: none;
-}
 
 .posts .guide {
   color: gray;

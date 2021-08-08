@@ -2,23 +2,14 @@
 
   <div class="level_display">
     <% user = current_user %>
-
-    <div class="user_level">
-      <div>Lv.<%= user.level %></div>
-    </div>
-
-    <div class="exp_ratio2">
-      <div><%= user.exp_point %>/<%= @next_level.thresold %></div>
-    </div>
-
+    <div class="user_level">Lv.<%= user.level %></div>
+    <div class="exp_ratio2"><%= user.exp_point %>/<%= @next_level.thresold %></div>
     <div class="exp_ratio">
       <% a = @next_level.thresold - user.exp_point %>
       <% b = @next_level.thresold - @now_level.thresold %>
-      <% exp_ratio = (100 - (a.to_f / b.to_f) * 100).round %>
+      <% exp_ratio = ((1 - a.to_f / b.to_f) * 100).round %>
       <div><%= exp_ratio %>%</div>
     </div>
-
-
     <div class="exp_bar">
       <div style="width: 80%;">
         <div style="background-color: #808080; border-radius: 3px;">
@@ -28,51 +19,46 @@
     </div>
   </div>
 
-
   <div class="posts">
     <% @array = {} %>
-
     <% if @posts.present? %>
       <% @posts.each_with_index do |post, id| %>
         <%= content_tag :div, id: "box_#{id}" do %>
-          <h4><%= link_to "#{post.name}", post_path(post),class: "link" %></h4>
+          <h4><%= link_to "#{post.name}", post_path(post) %></h4>
           <%= image_tag post.image.url if post.image.present? %>
           <div class="tag_list">
             <% post.tags.each do |tag| %>
               <li><%= tag.name %></li>
             <% end %>
           </div>
-          <div class="category_list">
-            <% post.categories.each do |category| %>
-              <li><%= category.name %></li>
-            <% end %>
-          </div>
         <% end %>
-
         <% if @posts[id + 1].present? %>
           <% array1 = post.tags.pluck(:name) %>
           <% array2 = @posts[id + 1].tags.pluck(:name) %>
-          <% a = array1.concat(array2) %>
-          <% b = a.uniq %>
-          <% if a.length != b.length %>
+          <% array = array1.concat(array2) %>
+          <% array_uniq = array.uniq %>
+          <% duplicate_element_array = [] %>
+          <% array_uniq.each do |element| %>
+            <% if array.grep(element).size > 1 %>
+              <% duplicate_element_array.push(element) %>
+            <% end %>
+          <% end %>
+          <p><%= duplicate_element_array[0] %></p>
+          <% if array.length != array_uniq.length %>
             <% match = true %>
           <% else %>
             <% match = false %>
           <% end %>
           <% @array[id] = match %>
         <% end %>
-
         <%= javascript_tag do %>
           var data = <%= @array.to_json.html_safe %>
         <% end %>
-
       <% end %>
     <% else %>
       <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
     <% end %>
-
   </div>
-
 
   <div class="chains">
     <% @chain_array = []
@@ -87,9 +73,9 @@
     } %>
     <div>
       <% if @chain_array.empty? %>
-        <div>連鎖回数：0回</div>
+        <p>連鎖回数：0回</p>
       <% else %>
-        <div>連鎖記録：<%= @chain_array.max %>回</div>
+        <p>連鎖記録：<%= @chain_array.max %>回</p>
       <% end %>
     </div>
   </div>

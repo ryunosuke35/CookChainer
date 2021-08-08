@@ -29,166 +29,141 @@ body {
 
 
 // index
-
 .post_index {
   position: relative;
   text-align: center;
   border: solid 2px #fff;
-}
 
-.chains {
-  position: absolute;
-  top: 100px;
-  right: 10%;
-  width: 10%;
-}
+  .level_display {
+    position: absolute;
+    text-align: center;
+    padding: 0px;
+    right: 0px;
+    top: 40px;
+    width: 25%;
 
-.level_display {
-  position: absolute;
-  text-align: center;
-  padding: 0px;
-  right: 0px;
-  top: 40px;
-  width: 25%;
-}
-
-.user_level {
-  float: left;
-  margin-right: 10px;
-}
-
-.exp_ratio {
-  position: absolute;
-  right: 23px;
-  bottom: -3px;
-}
-
-.exp_ratio2 {
-  float: left;
-  margin-right: 10px;
-}
-
-.exp_bar {
-  clear: both;
-}
-
-
-
-
-.posts {
-  // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-  @for $i from 0 through 100 {
-    #box_#{$i} {
-      position: relative;
-      width: 40%;
-      height: 208px;
-      margin: 50px auto;
-      font-weight: bold;
-      color: #d2b48c;
-      border: solid 4px;
-      border-radius: 20px;
-      box-shadow: 5px 3px 4px #ccc;
-      background-color: #fff;
+    .user_level {
+      float: left;
+      margin-right: 10px;
     }
-    #box_#{$i} .cooking_name {
-      width: 100%;
-      height: 20%;
-      margin: 0;
-      padding-top: 10px;
-      border-bottom: 1px solid red;
-      background-color: red;
-      // border-radius: 20px;
+    .exp_ratio {
+      position: absolute;
+      right: 23px;
+      bottom: -3px;
+    }
+    .exp_ratio2 {
+      float: left;
+      margin-right: 10px;
+    }
+    .exp_bar {
+      clear: both;
     }
   }
-  %card_style {
-    height: 20%;
-    padding-top: 10px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-   }
-  .red {
-    @extend %card_style;
-    background-color: red;
+
+  .chains {
+    position: absolute;
+    top: 100px;
+    right: 10%;
+    width: 10%;
+  }
+
+  .posts {
+    // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
+    @for $i from 0 through 100 {
+      #box_#{$i} {
+        position: relative;
+        width: 40%;
+        height: 208px;
+        margin: 50px auto;
+        font-weight: bold;
+        color: #d2b48c;
+        border: solid 4px;
+        border-radius: 20px;
+        box-shadow: 5px 3px 4px #ccc;
+        background-color: #fff;
+
+        .cooking_name {
+          width: 100%;
+          height: 20%;
+          margin: 0;
+          padding-top: 10px;
+          border-bottom: 1px solid red;
+          background-color: red;
+          // border-radius: 20px;
+        }
+        %card_style {
+          height: 20%;
+          padding-top: 10px;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+        }
+        .red {
+          @extend %card_style;
+          background-color: red;
+        }
+        .blue {
+          @extend %card_style;
+          background-color: blue;
+        }
+        .yellow {
+          @extend %card_style;
+          background-color: yellow;
+        }
+        .gray {
+          @extend %card_style;
+          background-color: gray;
+        }
+        .pink {
+          @extend %card_style;
+          background-color: pink;
+        }
+        .black {
+          @extend %card_style;
+          background-color: black;
+        }
+        img {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 40%;
+          height: 80%;
+          object-fit: cover;
+          border-bottom-left-radius: 16px;
+        }
+        .tag_list {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 60%;
+          height: 80%;
+          display: flex;
+          flex-wrap: wrap;
+          padding: 17px;
+
+          li {
+            width: 90px;
+            height: 22px;
+            list-style: none;
+            margin: 0 13px 10px 13px;
+            border: solid 1px;
+            border-radius: 20px;
+            box-shadow: 1px 2px 3px #ccc;
+          }
+        }
+      }
     }
-  .blue {
-    @extend %card_style;
-    background-color: blue;
+
+    .conecting_name {
+      padding: 0;
+      margin-left: 20%;
+      font-size: 30px;
     }
-  .yellow {
-    @extend %card_style;
-    background-color: yellow;
+    .guide {
+      color: gray;
+      margin: 300px 0;
     }
-  .gray {
-    @extend %card_style;
-    background-color: gray;
-    }
-  .pink {
-    @extend %card_style;
-    background-color: pink;
-    }
-  .black {
-    @extend %card_style;
-    background-color: black;
-    }
-  .white {
-    @extend %card_style;
-    background-color: white;
-    }
-
+  }
 }
-
-
-
-
-.posts .guide {
-  color: gray;
-  margin: 300px 0;
-}
-
-.posts img {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 40%;
-  height: 80%;
-  object-fit: cover;
-  border-bottom-left-radius: 16px;
-}
-
-.posts .tag_list {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 60%;
-  height: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 17px;
-}
-
-.posts .tag_list li {
-  width: 90px;
-  height: 22px;
-  list-style: none;
-  margin: 0 13px 10px 13px;
-}
-
-.posts li {
-  width: 90px;
-  margin: 5px auto;
-  color: #d2b48c;
-  border: solid 1px;
-  border-radius: 20px;
-  box-shadow: 1px 2px 3px #ccc;
-}
-
-.posts .conecting_name {
-  padding: 0;
-  margin-left: 20%;
-  font-size: 30px;
-}
-
-
 
 
 

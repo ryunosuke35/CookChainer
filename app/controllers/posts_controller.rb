@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    binding.pry
     @post = current_user.posts.build(post_params)
     if @post.save
 
@@ -81,6 +82,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, tag_ids: [], category_ids:[] )
+    params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, :category_ids, tag_ids: [] )
   end
 end

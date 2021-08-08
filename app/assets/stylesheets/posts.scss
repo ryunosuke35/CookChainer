@@ -94,35 +94,52 @@ body {
     border-bottom: 1px solid red;
     background-color: red;
     // border-radius: 20px;
-
   }
 }
 
-
-
-.red {
-  height: 20%;
-  background-color: red;
-}
-.blue {
-  height: 20%;
-  background-color: blue;
-}
-.yellow {
-  height: 20%;
-  background-color: yellow;
-}
-.gray {
-  height: 20%;
-  background-color: gray;
-}
-.pink {
-  height: 20%;
-  background-color: pink;
-}
-.black {
-  height: 20%;
-  background-color: black;
+.posts {
+  .red {
+    height: 20%;
+    background-color: red;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .blue {
+    height: 20%;
+    background-color: blue;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .yellow {
+    height: 20%;
+    background-color: yellow;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .gray {
+    height: 20%;
+    background-color: gray;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .pink {
+    height: 20%;
+    background-color: pink;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .black {
+    height: 20%;
+    background-color: black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .white {
+    height: 20%;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 }
 
 
@@ -143,7 +160,6 @@ body {
   width: 40%;
   height: 80%;
   object-fit: cover;
-  border-top-right-radius: 10px;
   border-bottom-left-radius: 16px;
 }
 

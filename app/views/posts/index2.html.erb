@@ -18,20 +18,18 @@
     <% end %>
   </div>
 
-
-
-<div class="accordion">
-  <dl id="accordion">
-    <% @tag_categories.each do |tag_category| %>
-      <dt><%= tag_category.name %></dt>
-      <dd>
-        <% tag_category.tags.each do |tag| %>
-          <p><%= link_to tag.name, index2_posts_path(tag_id: "#{tag.id}") %></p>
-        <% end %>
-      </dd>
-    <% end %>
-  </dl>
-</div>
+  <div class="accordion">
+    <dl id="accordion">
+      <% @tag_categories.each do |tag_category| %>
+        <dt><%= tag_category.name %></dt>
+        <dd>
+          <% tag_category.tags.each do |tag| %>
+            <p><%= link_to tag.name, index2_posts_path(tag_id: "#{tag.id}") %></p>
+          <% end %>
+        </dd>
+      <% end %>
+    </dl>
+  </div>
 
   </aside>
 

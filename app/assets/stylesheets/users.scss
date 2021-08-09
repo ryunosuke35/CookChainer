@@ -3,11 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.icon_image {
-margin: 30px;
+.container {
+  border: solid 2px black;
 }
 
-.icon_image img {
+.user_show {
+  border: solid 2px black;
+  height: 500px;
+}
+
+
+.left_side {
+  width: 30%;
+margin: 0px;
+padding: 0;
+}
+
+.left_side img {
   width: 150px;
   height: 150px;
   object-fit: cover;

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
+    @next_level = LevelSetting.find_by(level: current_user.level + 1)
+    @now_level = LevelSetting.find_by(level: current_user.level)
   end
 
   def edit

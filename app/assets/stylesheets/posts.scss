@@ -47,13 +47,13 @@ body {
       margin-right: 10px;
     }
     .exp_ratio {
+      float: left;
+      margin-right: 10px;
+    }
+    .exp_ratio2 {
       position: absolute;
       right: 23px;
       bottom: -3px;
-    }
-    .exp_ratio2 {
-      float: left;
-      margin-right: 10px;
     }
     .exp_bar {
       clear: both;
@@ -82,6 +82,7 @@ body {
         box-shadow: 5px 3px 4px #ccc;
         background-color: #fff;
 
+
         .cooking_name {
           width: 100%;
           height: 20%;
@@ -99,27 +100,27 @@ body {
         }
         .red {
           @extend %card_style;
-          background-color: red;
+          background-color: #ffcccc;
         }
         .blue {
           @extend %card_style;
-          background-color: blue;
+          background-color: #cefcff;
         }
         .yellow {
           @extend %card_style;
-          background-color: yellow;
+          background-color: #fff0ce;
+        }
+        .green {
+          @extend %card_style;
+          background-color: #e7ffce;
+        }
+        .purple {
+          @extend %card_style;
+          background-color: #ebccff;
         }
         .gray {
           @extend %card_style;
-          background-color: gray;
-        }
-        .pink {
-          @extend %card_style;
-          background-color: pink;
-        }
-        .black {
-          @extend %card_style;
-          background-color: black;
+          background-color: #bebfc6;
         }
         img {
           position: absolute;

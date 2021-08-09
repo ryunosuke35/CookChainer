@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_q, only: [:index2]
 
   def index
-    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC")
+    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC").page(params[:page]).per(10)
     @next_level = LevelSetting.find_by(level: current_user.level + 1)
     @now_level = LevelSetting.find_by(level: current_user.level)
   end

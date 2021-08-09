@@ -60,9 +60,11 @@
             <% end %>
           <% end %>
           <% if conecting_name_array.present? %>
-            <p class="conecting_name"><%= conecting_name_array[0] %></p>
+          <div class="conect">
+            <p ><%= conecting_name_array[0] %></p>
+          </div>
           <% else %>
-            <p class="conecting_name">　</p>
+            <p class="not_conect">　</p>
           <% end %>
         <% end %>
         <%= javascript_tag do %>

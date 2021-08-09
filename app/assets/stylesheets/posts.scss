@@ -77,7 +77,7 @@ body {
         margin: 50px auto;
         font-weight: bold;
         color: #d2b48c;
-        border: solid 4px;
+        border: solid 6px;
         border-radius: 20px;
         box-shadow: 5px 3px 4px #ccc;
         background-color: #fff;
@@ -90,13 +90,12 @@ body {
           padding-top: 10px;
           border-bottom: 1px solid red;
           background-color: red;
-          // border-radius: 20px;
         }
         %card_style {
           height: 20%;
           padding-top: 10px;
-          border-top-left-radius: 15px;
-          border-top-right-radius: 15px;
+          border-top-left-radius: 14px;
+          border-top-right-radius: 14px;
         }
         .red {
           @extend %card_style;
@@ -129,7 +128,7 @@ body {
           width: 40%;
           height: 80%;
           object-fit: cover;
-          border-bottom-left-radius: 16px;
+          border-bottom-left-radius: 14px;
         }
         .tag_list {
           position: absolute;
@@ -139,7 +138,7 @@ body {
           height: 80%;
           display: flex;
           flex-wrap: wrap;
-          padding: 17px;
+          padding: 16px;
 
           li {
             width: 90px;
@@ -154,11 +153,22 @@ body {
       }
     }
 
-    .conecting_name {
-      padding: 0;
-      margin-left: 20%;
-      font-size: 30px;
+    .conect {
+      margin-left: 55%;
+      width: 100px;
+      height: 30px;
+      border: solid 1px;
+      border-radius: 20px;
+      box-shadow: 5px 5px 3px #ccc;
+      background: linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);
+      opacity: 0.4;
+
+      p {
+        color: #black;
+        font-size: 20px;
+      }
     }
+
     .guide {
       color: gray;
       margin: 300px 0;

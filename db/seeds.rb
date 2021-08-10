@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+require "csv"
+
+
 #user
 user = User.create!(
   name: "松村龍之介",
@@ -29,15 +33,13 @@ user = User.create!(
 end
 
 
-#post
-require "csv"
-
+# #post
 CSV.foreach('db/csv/post.csv', headers: true) do |row|
   user.posts.create!(name: row['name'],
-                    url: row['url'],
-                    memo: row['memo'],
-                    image:File.open(row['image'])
-                    )
+    url: row['url'],
+    memo: row['memo'],
+    image:File.open(row['image'])
+  )
 end
 
 
@@ -53,8 +55,8 @@ end
 #post_category
 CSV.foreach('db/csv/post_category.csv', headers: true) do |row|
   PostCategory.create!(post_id: row['post_id'],
-                      category_id: row['category_id']
-                      )
+    category_id: row['category_id']
+  )
 end
 
 
@@ -67,24 +69,12 @@ tag_category_array.each do |tag_category|
 end
 
 
-#tag
-tag_array = [
-  ["鶏肉", "豚肉", "牛肉"],
-  ["鮭", "あじ", "さば"],
-  ["にんじん", "じゃがいも", "トマト"],
-  ["パスタ", "うどん", "そば"],
-  ["豆腐", "油揚げ", "納豆"],
-  ["しいたけ", "しめじ", "エリンギ"],
-  ["しょうゆ", "みりん", "コンソメ"],
-  ["牛乳", "チーズ", "バター"]
-]
-
-tag_array.each_with_index do |array, i|
-  array.each do |tag|
-    TagCategory.find(i + 1).tags.create!(
-      name: tag
-    )
-  end
+# #tag
+CSV.foreach('db/csv/tag.csv', headers: true) do |row|
+  Tag.create!(
+    name: row['name'],
+    tag_category_id: row['tag_category_id']
+  )
 end
 
 
@@ -97,10 +87,9 @@ CSV.foreach('db/csv/post_tag.csv', headers: true) do |row|
 end
 
 
-
 #level_setting
 CSV.foreach('db/csv/level_setting.csv', headers: true) do |row|
   LevelSetting.create!(level: row['level'],
-                      thresold: row['thresold']
-                      )
+    thresold: row['thresold']
+  )
 end

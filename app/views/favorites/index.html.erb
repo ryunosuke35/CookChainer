@@ -4,7 +4,7 @@
     <tr>
       <td><%= image_tag favorite.image.url if favorite.image.present? %></td>
       <td><%= link_to "#{favorite.name}", favorite.url, target: :_blank %></td>
-      <td><%= favorite.user.email %></td>
+      <td><%= favorite.user.name %>さん</td>
     </tr>
   <% end %>
 </table>

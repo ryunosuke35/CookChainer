@@ -1,0 +1,18 @@
+<div class="level_display">
+  <% user = current_user %>
+  <div class="user_level">Lv.<%= user.level %></div>
+  <div class="exp_ratio"><%= user.exp_point %>/<%= @next_level.thresold %></div>
+  <div class="exp_ratio2">
+    <% a = @next_level.thresold - user.exp_point %>
+    <% b = @next_level.thresold - @now_level.thresold %>
+    <% exp_ratio = ((1 - a.to_f / b.to_f) * 100).round %>
+    <div><%= exp_ratio %>%</div>
+  </div>
+  <div class="exp_bar">
+    <div style="width: 80%;">
+      <div style="background-color: #808080; border-radius: 3px;">
+        <div style="background-color: #669eff; border-radius: 3px; height:13px; width:<%= exp_ratio %>%"></div>
+      </div>
+    </div>
+  </div>
+</div>

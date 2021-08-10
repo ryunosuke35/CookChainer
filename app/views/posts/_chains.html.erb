@@ -1,0 +1,19 @@
+<div class="chains">
+  <% chain_array = []
+  chain = 0
+  @array.each { |key, value|
+    if value
+      chain += 1
+    else
+      chain = 0
+    end
+    chain_array << chain
+  } %>
+  <div>
+    <% if chain_array.empty? %>
+      <p>連鎖回数：0回</p>
+    <% else %>
+      <p>連鎖記録：<%= chain_array.max %>回</p>
+    <% end %>
+  </div>
+</div>

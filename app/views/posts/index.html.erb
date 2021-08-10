@@ -1,67 +1,72 @@
 <div class="post_index">
 
-  <div class="level_display">
-    <% user = current_user %>
-
-    <div class="user_level">
-      <div>Lv.<%= user.level %></div>
-    </div>
-
-    <div class="exp_ratio2">
-      <div><%= user.exp_point %>/<%= @next_level.thresold %></div>
-    </div>
-
-    <div class="exp_ratio">
-      <% a = @next_level.thresold - user.exp_point %>
-      <% b = @next_level.thresold - @now_level.thresold %>
-      <% exp_ratio = (100 - (a.to_f / b.to_f) * 100).round %>
-      <div><%= exp_ratio %>%</div>
-    </div>
-
-
-    <div class="exp_bar">
-      <div style="width: 80%;">
-        <div style="background-color: #808080; border-radius: 3px;">
-          <div style="background-color: #669eff; border-radius: 3px; height:13px; width:<%= exp_ratio %>%"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <%= render 'level' %>
 
   <div class="posts">
     <% @array = {} %>
 
     <% if @posts.present? %>
       <% @posts.each_with_index do |post, id| %>
+
         <%= content_tag :div, id: "box_#{id}" do %>
-          <h4><%= link_to "#{post.name}", post_path(post),class: "link" %></h4>
+          <%# 料理名 %>
+          <% if post.categories.empty? %>
+            <%= link_to "#{post.name}", post_path(post) %>
+          <% else %>
+            <% post.categories.each do |category| %>
+              <% if category.name == "主菜" %>
+                <% name = "red" %>
+              <% elsif category.name == "副菜" %>
+                <% name = "green" %>
+              <% elsif category.name == "汁もの" %>
+                <% name = "yellow" %>
+              <% elsif category.name == "主食" %>
+                <% name = "purple" %>
+              <% elsif category.name == "デザート" %>
+                <% name = "blue" %>
+              <% elsif category.name == "その他"%>
+                <% name = "gray" %>
+              <% end %>
+              <%= content_tag :div, class: "#{name}" do %>
+                <%= link_to "#{post.name}", post_path(post) %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <%# 画像とタグ %>
           <%= image_tag post.image.url if post.image.present? %>
           <div class="tag_list">
             <% post.tags.each do |tag| %>
               <li><%= tag.name %></li>
             <% end %>
           </div>
-          <div class="category_list">
-            <% post.categories.each do |category| %>
-              <li><%= category.name %></li>
-            <% end %>
-          </div>
         <% end %>
 
+        <%# 計算 %>
         <% if @posts[id + 1].present? %>
           <% array1 = post.tags.pluck(:name) %>
           <% array2 = @posts[id + 1].tags.pluck(:name) %>
-          <% a = array1.concat(array2) %>
-          <% b = a.uniq %>
-          <% if a.length != b.length %>
+          <% array = array1.concat(array2) %>
+          <% array_uniq = array.uniq %>
+          <% if array.length != array_uniq.length %>
             <% match = true %>
           <% else %>
             <% match = false %>
           <% end %>
           <% @array[id] = match %>
+          <% conecting_name_array = [] %>
+          <% array_uniq.each do |element| %>
+            <% if array.grep(element).size > 1 %>
+              <% conecting_name_array.push(element) %>
+            <% end %>
+          <% end %>
+          <% if conecting_name_array.present? %>
+          <div class="conect">
+            <p ><%= conecting_name_array[0] %></p>
+          </div>
+          <% else %>
+            <p class="not_conect">　</p>
+          <% end %>
         <% end %>
-
         <%= javascript_tag do %>
           var data = <%= @array.to_json.html_safe %>
         <% end %>
@@ -70,27 +75,9 @@
     <% else %>
       <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
     <% end %>
-
   </div>
 
+  <%= render 'chains' %>
 
-  <div class="chains">
-    <% @chain_array = []
-    chain = 0
-    @array.each { |key, value|
-      if value
-        chain += 1
-      else
-        chain = 0
-      end
-      @chain_array << chain
-    } %>
-    <div>
-      <% if @chain_array.empty? %>
-        <div>連鎖回数：0回</div>
-      <% else %>
-        <div>連鎖記録：<%= @chain_array.max %>回</div>
-      <% end %>
-    </div>
-  </div>
+  <%= paginate @posts %>
 </div>

@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true, length: { in: 1..100 }
-  validates :memo, length: { in: 1..255 }
+  validates :memo, length: { in: 0..255 }
 
   belongs_to :user
 

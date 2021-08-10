@@ -20,7 +20,6 @@ body {
 }
 
 .container {
-  border: solid 0px #fff;
   position: relative;
   min-height: 100vh;
   box-sizing: border-box;
@@ -30,10 +29,21 @@ body {
 
 header {
   border-bottom: 1px solid #d2b48c;
-  padding: 17px 20px 13px;
+  padding: 15px 20px 12px;
   height: 50px;
   font-size: 1.5rem;
 }
+
+header a {
+  padding: 20px;
+  color: black;
+}
+
+header a:hover {
+  color: black;
+  opacity: 0.4;
+}
+
 
 footer{
   border-top: 1px solid #d2b48c;

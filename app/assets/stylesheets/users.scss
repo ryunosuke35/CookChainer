@@ -3,27 +3,43 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
 .user_show {
-  border: solid 2px black;
+  // border: solid 1px black;
+
   height: 500px;
+  width:  800px;
+  margin: 50px auto;
+  position: relative;
+
 }
 
-
-.left_side {
-  width: 30%;
-margin: 0px;
-padding: 0;
-}
-
-.left_side img {
+.user_show img {
+  // position: absolute;
+  // left:0;
   width: 150px;
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
+  margin: 50px;
 }
+//
+// .user_show p {
+//   width: 400px;
+//   font-size: 25px;
+// }
+//
+// .user_show .name {
+//   position: absolute;
+//   top: 200px;
+// }
+//
+// .user_show .email {
+//   position: absolute;
+//   top: 250px;
+// }
 
-.user_info {
-  font-size: 15px;
-  margin: 30px;
+.user_show .profile {
+  margin: 0 auto;
+  width: 50%;
+  height: 20%;
 }

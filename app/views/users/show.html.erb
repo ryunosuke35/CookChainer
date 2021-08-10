@@ -1,22 +1,15 @@
-<div class="user_show">
-  <div class="left_side">
+  <div class="user_show">
     <% if @user.image.present? %>
       <%= image_tag @user.image.url %>
     <% else %>
       <%= image_tag 'default_image.png' %>
     <% end %>
-    <p>名前：<%= @user.name %></p>
-    <p>メールアドレス：<%= @user.email %></p>
-  </div>
-
-  <div class="user_info">
-    <p>プロフィール：<%= @user.profile %></p>
-    <p>レベル：<%= @user.level %></p>
+    <p class="name">名前：<%= @user.name %></p>
+    <p class="email">アドレス：<%= @user.email %></p>
+    <p class="profile">プロフィール：<%= @user.profile %></p>
+    <p class="lebel">レベル：<%= @user.level %></p>
     <% if @user == current_user %>
       <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
       <%= link_to "退会", user_path(@user.id), method: :delete %>
     <% end %>
-
   </div>
-
-</div>

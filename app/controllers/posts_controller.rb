@@ -3,6 +3,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
   before_action :set_q, only: [:index2]
 
+  def top
+  end
+
   def index
     @posts = Post.where(user_id: current_user.id).order(created_at: "DESC").page(params[:page]).per(10)
     @next_level = LevelSetting.find_by(level: current_user.level + 1)

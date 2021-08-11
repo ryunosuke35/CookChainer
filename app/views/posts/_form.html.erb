@@ -30,7 +30,7 @@
     <%= form.file_field :image %>
   </div>
 
-
+<div class="fields">
   <% TagCategory.all.each do |tag_category| %>
     <div class="field">
       <div class="dropdown">
@@ -43,7 +43,7 @@
       </div>
     </div>
   <% end %>
-
+</div>
 
   <%= form.collection_radio_buttons(:category_ids, Category.all, :id, :name) %>
 

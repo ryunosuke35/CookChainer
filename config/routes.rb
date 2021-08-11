@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       get :index2
+      get '/top', to: 'posts#top'
     end
   end
 

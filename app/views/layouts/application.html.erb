@@ -9,6 +9,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<% if controller_name == "posts" && action_name == "top" %>
+  <%= yield %>
+<% else %>
   <body>
     <div class="container">
       <header>
@@ -40,4 +43,5 @@
       </footer>
     </div>
   </body>
+<% end %>
 </html>

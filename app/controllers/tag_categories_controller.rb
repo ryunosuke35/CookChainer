@@ -15,7 +15,7 @@ class TagCategoriesController < ApplicationController
   def create
     @tag_category = TagCategory.new(tag_category_params)
     if @tag_category.save
-      redirect_to @tag_category, notice: "TagCategory was successfully created."
+      redirect_to tag_categories_path, notice: "TagCategory was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

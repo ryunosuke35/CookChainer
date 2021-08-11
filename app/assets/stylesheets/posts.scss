@@ -10,6 +10,37 @@ body {
 }
 
 
+
+
+
+
+
+
+// _form
+.fields {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.fields .field {
+  margin: 10px;
+  width: 30%;
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // index
 .post_index {
   position: relative;

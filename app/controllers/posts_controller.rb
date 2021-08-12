@@ -40,22 +40,27 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-    if @post.save
+    if post_params[:tag_ids].reject(&:blank?).count < 9
+
+      @post = current_user.posts.build(post_params)
+      if @post.save
 
 
-      user = current_user
-      user.update(exp_point: user.exp_point + 5)
+        user = current_user
+        user.update(exp_point: user.exp_point + 5)
 
-      levelSetting = LevelSetting.find_by(level: user.level + 1)
-      if levelSetting.thresold <= user.exp_point
-        user.update(level: user.level + 1)
+        levelSetting = LevelSetting.find_by(level: user.level + 1)
+        if levelSetting.thresold <= user.exp_point
+          user.update(level: user.level + 1)
+        end
+        redirect_to action: :index
+
+
+      else
+        render :new, status: :unprocessable_entity
       end
-      redirect_to action: :index
-
-
     else
-      render :new, status: :unprocessable_entity
+      redirect_to new_post_path, notice: "食材は8つまでしか選べません"
     end
   end
 

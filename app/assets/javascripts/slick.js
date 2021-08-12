@@ -2,8 +2,8 @@ $(function() {
 
   $('.top_slider').slick({
     autoplay: true,
-    autoplaySpeed: 1500,
-    speed: 500,
+    autoplaySpeed: 3000,
+    speed: 1000,
     infinite: true,
     pauseOnHover: false,
     slidesToShow: 1,

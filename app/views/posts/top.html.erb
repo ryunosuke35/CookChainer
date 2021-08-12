@@ -36,15 +36,21 @@
       <p>料理は好きだけど、なかなか続かない・・・<br></p>
       <p>そんな経験ありませんか？<br></p>
       <p><strong>CookChainer</strong><br>は、料理初心者の方のためのサービスです。</p>
-      <p>ゲーム要素を取り入れ、楽しく料理を続けることができます。<br></p>
+      <p>ゲームのような感覚で、楽しく料理を続けることができます。<br></p>
       <p>このアプリで、もう一度料理にチャレンジしてみませんか？<br></p>
     </div>
     <div class="button col-md-6">
-      <%= link_to "一覧", index2_posts_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "アカウント作成", new_user_registration_path %>
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br />
-      <%= link_to 'ゲストログイン(管理者)', users_admin_guest_sign_in_path, method: :post %>
+
+
+
+      <div class="button10">
+        <%= link_to "みんなの料理を見る", index2_posts_path %><br>
+        <%= link_to "ログイン", new_user_session_path %><br>
+        <%= link_to "アカウント作成", new_user_registration_path %><br>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path %><br>
+        <%= link_to 'ゲストログイン(管理者)', users_admin_guest_sign_in_path, method: :post %>
+      </div>
+
     </div>
   </div>
 

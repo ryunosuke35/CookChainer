@@ -6,7 +6,7 @@ $(function() {
     dots: true,
     infinite: true,
     pauseOnHover: false,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
   });
   $('.slick-dots li').on('mouseover', function() {

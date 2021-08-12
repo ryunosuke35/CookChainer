@@ -1,0 +1,239 @@
+.post_top {
+
+
+
+// 上
+  .top {
+    position: relative;
+
+    width: 100%;
+    height:1000px;
+    background-color: #eee;
+
+    background-image: url(top_background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-size: cover;
+    background-color: #464646;
+
+
+    // アニメーション
+    .container{
+      position:relative;
+      width:100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+
+      .bound {
+        height: 400px;
+      }
+
+      .bound span{
+        font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top:0;
+        bottom: 765px;
+        margin: auto;
+        font-size:5em;
+        font-weight:bold;
+        color:#0091EA;
+        text-align:center;
+        width:100px;
+        height:100px;
+      }
+
+      /*アニメーション指定
+      文字数に合わせてleftや開始時間（2つ目のs）を設定する*/
+      .bound span:nth-child(1){ left:-7.0em; animation: bound-anim 2s 0.0s infinite;}
+      .bound span:nth-child(2){ left:-5.6em; animation: bound-anim 2s 0.1s infinite;}
+      .bound span:nth-child(3){ left:-4.2em; animation: bound-anim 2s 0.2s infinite;}
+      .bound span:nth-child(4){ left: -2.8em; animation: bound-anim 2s 0.3s infinite;}
+
+      .bound span:nth-child(5){ left: -1.4em; animation: bound-anim 2s 0.3s infinite;}
+
+      .bound span:nth-child(6){ left: 0em; animation: bound-anim 2s 0.4s infinite;}
+      .bound span:nth-child(7){ left: 1.4em; animation: bound-anim 2s 0.5s infinite;}
+      .bound span:nth-child(8){ left:2.8em; animation: bound-anim 2s 0.6s infinite;}
+      .bound span:nth-child(9){ left: 4.2em; animation: bound-anim 2s 0.7s infinite;}
+      .bound span:nth-child(10){ left: 5.6em; animation: bound-anim 2s 0.8s infinite;}
+      .bound span:nth-child(11){ left: 7.0em; animation: bound-anim 2s 0.9s infinite;}
+      .bound span:nth-child(12){ left: 8.4em; animation: bound-anim 2s 1s infinite;}
+
+      /*アニメーションキーフレーム
+      小さいフォントサイズの場合はtopの数値も縮小すると飛び過ぎない*/
+      @keyframes bound-anim {
+        0%,100% {top: 0;transform: scale(1);}
+        30% {top: -5%;}
+        50% {transform: scale(1);}
+        90% {top: 0;transform: scale(1.1,0.9);}
+      }
+    }
+
+
+    // スライダー
+    .top_slider{
+      position: absolute;
+      top: 0;
+    	width:460px;
+    	padding-top: 285px;
+      margin-left: 520px;
+      }
+
+    .top_slider img {
+    	width:100%;
+      height: 100%;
+    }
+    .slick-arrow:before{
+      content:""!important;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+// 真ん中
+  .content {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: #f9f5ea;
+    font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+    padding: 0;
+    margin: 0;
+
+    .text {
+      position: absolute;
+      left: 0;
+      top: 100px;
+      box-sizing: border-box;
+      height: 500px;
+      padding: 0;
+
+
+      p {
+        font-size: 25px;
+        margin: 30px;
+
+        strong {
+          font-size: 40px;
+          color:#0091EA;
+          margin: 10px;
+        }
+
+      }
+    }
+
+
+
+    .button {
+      position: absolute;
+      right: 0;
+      top: 100px;
+      box-sizing: border-box;
+      height: 500px;
+      padding: 0;
+
+      a {
+        margin: 20px;
+      }
+
+      .button10 a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        margin: 0 auto;
+        padding: 1em 2em;
+        width: 300px;
+        color: #333;
+        font-size: 18px;
+        font-weight: 700;
+        background-color: #f7f6f4;
+        border-radius: 50vh;
+        transition: 0.3s;
+      }
+
+      .button10 a::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        border: 2px solid #ff8c00;
+        border-radius: 50vh;
+        transition: 0.2s;
+      }
+
+      .button10 a::after {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-top: 3px solid #333333;
+        border-right: 3px solid #333333;
+        transform: rotate(45deg);
+      }
+
+      .button10 a:hover::before {
+        top: 0;
+        left: 0;
+      }
+
+      .button10 a:hover {
+        text-decoration: none;
+        background-color: #ffe4bf;
+      }
+    }
+  }
+
+
+
+
+
+// 下
+  // .slick-dots {
+  //   li {
+  //     font-size: 20px !important;
+  //     button:before {
+  //       content: "★" !important;
+  //       font-size: 14px !important;
+  //       color: rgb(60, 60, 60) !important;
+  //     }
+  //   }
+  // }
+
+
+  .sliders {
+  	width:100%;
+  	margin:0 auto;
+
+    .slider {
+      margin: 50px;
+
+      img {
+        width:100%;
+        height: 500px;
+      }
+
+      .p {
+      }
+    }
+  }
+
+
+
+
+
+
+}

@@ -10,7 +10,7 @@ $(function() {
     slidesToScroll: 1,
   });
 
-  $('.slider').slick({
+  $('.sliders').slick({
     autoplay: true,
     autoplaySpeed: 3000,
     speed: 1000,
@@ -21,7 +21,7 @@ $(function() {
     slidesToScroll: 1,
   });
   $('.slick-dots li').on('mouseover', function() {
-  $('.slider').slick('goTo', $(this).index());
+  $('.sliders').slick('goTo', $(this).index());
   });
 
 });

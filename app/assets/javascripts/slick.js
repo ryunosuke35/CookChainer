@@ -1,4 +1,15 @@
 $(function() {
+
+  $('.top_slider').slick({
+    autoplay: true,
+    autoplaySpeed: 1500,
+    speed: 500,
+    infinite: true,
+    pauseOnHover: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  });
+
   $('.slider').slick({
     autoplay: true,
     autoplaySpeed: 3000,
@@ -6,10 +17,11 @@ $(function() {
     dots: true,
     infinite: true,
     pauseOnHover: false,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
   });
   $('.slick-dots li').on('mouseover', function() {
   $('.slider').slick('goTo', $(this).index());
   });
+
 });

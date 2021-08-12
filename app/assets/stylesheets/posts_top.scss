@@ -2,42 +2,32 @@
 
 
 
-
+// 上
   .top {
     width: 100%;
     height:1000px;
     background-color: #eee;
-    background-image: url(top_image2.jpg);
 
+    // 背景
+    background-image: url(top_image.jpg);
     /* 画像を常に天地左右の中央に配置 */
     background-position: center center;
-
     /* 画像をタイル状に繰り返し表示しない */
     background-repeat: no-repeat;
-
     /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
     // background-attachment: fixed;
-
     /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
     background-size: cover;
-
     /* 背景画像が読み込まれる前に表示される背景のカラー */
     background-color: #464646;
 
 
-
-
-
+    // アニメーション
     .container{
       position:relative;
       width:100%;
       height:50px;
     }
-
-    /*フォント*/
-
-
-
 
     .bound span{
       font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
@@ -54,7 +44,6 @@
       width:100px;
       height:100px;
     }
-
 
     /*アニメーション指定
     文字数に合わせてleftや開始時間（2つ目のs）を設定する*/
@@ -73,7 +62,6 @@
     .bound span:nth-child(11){ left: 7.4em; animation: bound-anim 2s 0.9s infinite;}
     .bound span:nth-child(12){ left: 9.0em; animation: bound-anim 2s 1s infinite;}
 
-
     /*アニメーションキーフレーム
     小さいフォントサイズの場合はtopの数値も縮小すると飛び過ぎない*/
     @keyframes bound-anim {
@@ -83,22 +71,29 @@
       90% {top: 0;transform: scale(1.1,0.9);}
     }
 
-    .slider{
-    	width:30%;
-    	margin:0 auto;
+    .top_slider{
+    	width:460px;
+    	padding-top: 285px;
+      margin-left: 520px;
+
       }
 
-    .slider img {
+    .top_slider img {
     	width:100%;
-      height: 500px;
-      margin-top: 230px;
+      height: 100%;
     }
-
-
   }
 
 
 
+
+
+
+
+
+
+
+// 真ん中
   .content {
     width: 100%;
     height: 800px;
@@ -110,6 +105,9 @@
 
 
 
+
+
+// 下
   // .slick-dots {
   //   li {
   //     font-size: 20px !important;
@@ -131,4 +129,12 @@
   	width:100%;
     height: 500px;
   }
+
+
+
+
+
+
+
+
 }

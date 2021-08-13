@@ -11,9 +11,22 @@
 
 <%= form_with model: @user do |form| %>
   <p><%= form.file_field :image %></p>
-  <p><%= form.text_area :profile %></p>
-  <p><%= form.text_field :name %></p>
-  <p><%= form.text_field :email %></p>
+
+  <div class="cp_iptxt">
+    <%= form.text_area :profile, class:"ef", style:"width: 400px; height: 100px; margin-top:20px;" %>
+    <%= form.label :profile %>
+  </div>
+
+  <div class="cp_iptxt">
+    <%= form.text_field :name, class:"ef" %>
+    <%= form.label :name %>
+  </div>
+
+  <div class="cp_iptxt">
+    <%= form.text_field :email, class:"ef" %>
+    <%= form.label :email %>
+  </div>
+
   <%= form.submit "保存" %>
 <% end %>
 

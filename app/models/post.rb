@@ -3,6 +3,7 @@ class Post < ApplicationRecord
 
   validates :name, presence: true, length: { in: 1..100 }
   validates :memo, length: { in: 0..255 }
+  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
   belongs_to :user
 

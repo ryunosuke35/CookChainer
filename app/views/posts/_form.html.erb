@@ -10,19 +10,19 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="cp_iptxt">
+    <%= form.text_field :name, class:"ef" %>
     <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="cp_iptxt">
+    <%= form.text_field :url, class:"ef" %>
     <%= form.label :url %>
-    <%= form.text_field :url %>
   </div>
 
-  <div class="field">
+  <div class="cp_iptxt">
+    <%= form.text_area :memo, class:"ef", style:"width: 400px; height: 100px;" %>
     <%= form.label :memo %>
-    <%= form.text_area :memo %>
   </div>
 
   <div class="field">

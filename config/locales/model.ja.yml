@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      category: カテゴリー
+      post: 投稿
+      tag_category: タグカテゴリー
+      tag: タグ
+      user: ユーザー
+    attributes:
+      category:
+        name: カテゴリー名
+      post:
+        name: 料理名
+        url: url
+        memo: メモ
+        image: 画像
+      tag_category:
+        name: タグカテゴリー名
+      tag:
+        name: タグ名
+      user:
+        admin: 管理者
+        level: レベル
+        exp_point: 経験値
+        name: 名前
+        profile: プロフィール
+        image: 画像
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶

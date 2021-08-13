@@ -43,6 +43,10 @@ class PostsController < ApplicationController
     if post_params[:tag_ids].reject(&:blank?).count < 9
 
       @post = current_user.posts.build(post_params)
+
+      binding.pry
+
+
       if @post.save
 
 

@@ -5,8 +5,8 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to '編集する', edit_category_path(category) %></td>
-        <td><%= link_to '削除する', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集', edit_category_path(category) %></td>
+        <td><%= link_to '削除', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

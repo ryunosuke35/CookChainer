@@ -66,7 +66,7 @@ footer{
 	box-sizing: border-box;
 	width: 100%;
 	letter-spacing: 1px;
-	padding-left: 10em;
+	padding-left: 8em;
 }
 .cp_iptxt input[type='text']:focus {
 	outline: none;

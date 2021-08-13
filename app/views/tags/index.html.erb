@@ -1,4 +1,4 @@
-<h1>Tags</h1>
+<h3>タグ</h3>
 
 <table>
   <% @tag_categories.each do |tag_category| %>
@@ -13,8 +13,8 @@
       <% tag_category.tags.each do |tag| %>
         <tr>
           <td><%= tag.name %></td>
-          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '編集', edit_tag_path(tag) %></td>
+          <td><%= link_to '削除', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'タグを作成する', new_tag_path %>

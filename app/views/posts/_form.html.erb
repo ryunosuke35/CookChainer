@@ -1,8 +1,6 @@
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -21,7 +19,7 @@
   </div>
 
   <div class="cp_iptxt">
-    <%= form.text_area :memo, class:"ef", style:"width: 400px; height: 100px;" %>
+    <%= form.text_area :memo, class:"ef", style:"width: 400px; height: 100px; margin-top:20px;"%>
     <%= form.label :memo %>
   </div>
 

@@ -1,12 +1,12 @@
-<h1>Categories</h1>
+<h1>カテゴリー</h1>
 
 <table>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集する', edit_category_path(category) %></td>
+        <td><%= link_to '削除する', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -14,4 +14,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'カテゴリーを作成する', new_category_path %>

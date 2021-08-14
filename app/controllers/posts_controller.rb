@@ -44,7 +44,6 @@ class PostsController < ApplicationController
 
       @post = current_user.posts.build(post_params)
 
-      binding.pry
 
 
       if @post.save

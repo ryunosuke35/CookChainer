@@ -47,7 +47,8 @@
         <%= link_to "みんなの料理を見る", index2_posts_path %><br>
         <%= link_to "ログイン", new_user_session_path %><br>
         <%= link_to "アカウント作成", new_user_registration_path %><br>
-        <%= link_to 'ゲストログイン', users_guest_sign_in_path %><br>
+
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br>
         <%= link_to 'ゲストログイン(管理者)', users_admin_guest_sign_in_path, method: :post %>
       </div>
 

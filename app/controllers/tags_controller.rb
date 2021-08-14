@@ -31,9 +31,8 @@ class TagsController < ApplicationController
 
   def update
     if tag_params[:tag_category_id].reject(&:blank?).count < 2
-  
+
       if @tag.update(tag_params)
-        bindging.pry
         redirect_to @tag, notice: "タグ名を修正しました"
       else
         render :edit, status: :unprocessable_entity

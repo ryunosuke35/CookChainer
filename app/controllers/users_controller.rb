@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "Tag was successfully updated."
+      redirect_to @user, notice: "プロフフィールを編集しました"
     else
       render :edit, status: :unprocessable_entity
     end

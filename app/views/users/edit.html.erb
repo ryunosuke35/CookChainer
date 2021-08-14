@@ -9,7 +9,7 @@
 </div>
 
 
-<%= form_with model: @user do |form| %>
+<%= form_with(model: @user, local: true) do |form| %>
   <p><%= form.file_field :image %></p>
 
   <div class="cp_iptxt">

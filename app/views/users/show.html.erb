@@ -1,9 +1,13 @@
 <div class="user_show">
-  <% if @user.image.present? %>
-    <%= image_tag @user.image.url %>
-  <% else %>
-    <%= image_tag 'default_image.png' %>
-  <% end %>
+  
+  <div class="icon_image">
+    <% if @user.image.present? %>
+      <%= image_tag @user.image.url %>
+    <% else %>
+      <%= image_tag 'default_image.png' %>
+    <% end %>
+  </div>
+
   <p class="name">名前：<%= @user.name %></p>
   <p class="email">アドレス：<%= @user.email %></p>
   <p class="profile">プロフィール：<%= @user.profile %></p>

@@ -118,3 +118,81 @@ table {
     padding: 5px 10px;
   }
 }
+
+
+
+
+// カテゴリー、タグ、タグカテゴリーのボタン
+.button01 a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 140px;
+  color: #2285b1;
+  font-size: 12px;
+  font-weight: 700;
+  border: 3px solid #a0c4d3;
+  border-radius: 10px;
+}
+
+.button01 a::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #2285b1;
+  border-right: 3px solid #2285b1;
+  transform: rotate(45deg);
+}
+
+.button01 a:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #a0c4d3;
+  transition: 0.3s;
+}
+
+.button01 a:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+}
+
+
+
+
+
+.button02 a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 140px;
+  color: #af2323;
+  font-size: 12px;
+  font-weight: 700;
+  border: 3px solid #d19e9e;
+  border-radius: 10px;
+}
+
+.button02 a::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #af2323;
+  border-right: 3px solid #af2323;
+  transform: rotate(45deg);
+}
+
+.button02 a:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #d19e9e;
+  transition: 0.3s;
+}
+
+.button02 a:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+}

@@ -15,7 +15,7 @@ class TagCategoriesController < ApplicationController
   def create
     @tag_category = TagCategory.new(tag_category_params)
     if @tag_category.save
-      redirect_to tag_categories_path, notice: "TagCategory was successfully created."
+      redirect_to tag_categories_path, notice: "「#{tag_category_params[:name]}」を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class TagCategoriesController < ApplicationController
 
   def update
     if @tag_category.update(tag_category_params)
-      redirect_to @tag_category, notice: "TagCategory was successfully updated."
+      redirect_to tag_categories_path, notice: "タグカテゴリー名を修正しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class TagCategoriesController < ApplicationController
 
   def destroy
     @tag_category.destroy
-    redirect_to tag_categories_url, notice: "TagCategory was successfully destroyed."
+    redirect_to tag_categories_url, notice: "「#{@tag_category.name}」を削除しました"
   end
 
   private

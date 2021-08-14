@@ -15,7 +15,6 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      binding.pry
       redirect_to categories_path, notice: "「#{category_params[:name]}」を作成しました"
     else
       render :new, status: :unprocessable_entity

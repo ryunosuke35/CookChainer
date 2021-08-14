@@ -60,7 +60,7 @@ footer{
 
 
 
-
+/* 入力フォーム */
 .cp_iptxt input[type='text'] {
 	font: 15px/24px sans-serif;
 	box-sizing: border-box;
@@ -106,4 +106,15 @@ footer{
 	top: -16px;
 	transition: 0.3s;
 	color: #da3c41;
+}
+
+
+
+/* カテゴリー、タグ、タグカテゴリーのレイアウト */
+table {
+  margin: 50px auto;
+
+  td {
+    padding: 5px 10px;
+  }
 }

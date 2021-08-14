@@ -9,17 +9,17 @@
   </div>
 
   <div class="cp_iptxt">
-    <%= f.text_field :email, autofocus: true, autocomplete: "email", class:"form-control", class:"ef" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", class:"ef", style: "width: 400px; padding-left: 122px;" %>
     <%= f.label :email %><br/>
   </div>
 
   <div class="cp_iptxt">
-    <%= f.text_field :password, autocomplete: "new-password", class:"form-control", class:"ef" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", class:"ef", style: "width: 400px; padding-left: 122px;" %>
     <%= f.label :password %>
   </div>
 
   <div class="cp_iptxt">
-    <%= f.text_field :password_confirmation, autocomplete: "new-password", class:"form-control", class:"ef" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", class:"ef", style: "width: 400px; padding-left: 122px;" %>
     <%= f.label :password_confirmation %><br/>
   </div>
 

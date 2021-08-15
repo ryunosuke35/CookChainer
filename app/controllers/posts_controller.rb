@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
   before_action :set_q, only: [:index2]
+  skip_before_action :login_required, only: [:top, :index2, :show]
 
   def top
   end

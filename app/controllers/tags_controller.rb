@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
+  before_action :check_admin
 
   def index
     @tag_categories = TagCategory.all
@@ -48,11 +49,17 @@ class TagsController < ApplicationController
   end
 
   private
-    def set_tag
-      @tag = Tag.find(params[:id])
-    end
+  def set_tag
+    @tag = Tag.find(params[:id])
+  end
 
-    def tag_params
-      params.require(:tag).permit(:name, tag_category_id: [])
+  def tag_params
+    params.require(:tag).permit(:name, tag_category_id: [])
+  end
+
+  def check_admin
+    unless current_user.admin?
+      redirect_to user_path(current_user), alert: "権限がありません"
     end
+  end
 end

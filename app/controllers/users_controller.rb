@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_current_user, only: [:edit]
 
   def show
     @next_level = LevelSetting.find_by(level: current_user.level + 1)

@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ edit update destroy ]
+  before_action :ensure_current_user, only: [:edit]
+  before_action :check_admin
 
   def index
     @categories = Category.all
@@ -35,11 +37,17 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    def category_params
-      params.require(:category).permit(:name)
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
+  def check_admin
+    unless current_user.admin?
+      redirect_to user_path(current_user), alert: "権限がありません"
     end
+  end
 end

@@ -9,5 +9,6 @@ FactoryBot.define do
     name { 'デフォルトの料理名2' }
     url { 'https://cookpad.com/' }
     memo { 'デフォルトのメモ2' }
+    association :second_user
   end
 end

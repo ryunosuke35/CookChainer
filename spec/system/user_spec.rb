@@ -2,18 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'User', type: :system do
 
-# before do
   let!(:general_user) { FactoryBot.create(:user) }
   let!(:admin_user) { FactoryBot.create(:second_user) }
-  # let!(:post1) { FactoryBot.create(:post) }
-  # let!(:post2) { FactoryBot.create(:second_post) }
   # FactoryBot.create(:category)
   # FactoryBot.create(:second_category)
   # FactoryBot.create(:tag)
   # FactoryBot.create(:second_tag)
   # FactoryBot.create(:tag_category)
   # FactoryBot.create(:second_tag_category)
-# end
 
   def general_login
     visit new_user_session_path
@@ -105,7 +101,6 @@ RSpec.describe 'User', type: :system do
         expect(page).to have_content '管理者としてログインしました。'
       end
     end
-
     context 'トップページからゲストログインした場合' do
       it '料理の一覧画面に遷移する' do
         visit root_path
@@ -128,40 +123,6 @@ RSpec.describe 'User', type: :system do
         expect(current_path).to eq new_user_session_path
       end
     end
-    # context 'ログインせずに料理一覧画面にとんだ場合' do
-    #   it '料理の一覧画面に遷移する' do
-    #     visit index2_posts_path
-    #     expect(current_path).to eq index2_posts_path
-    #   end
-    # end
-    # context 'ログインせずに料理の詳細画面にとんだ場合' do
-    #   it 'ログイン画面に遷移する' do
-    #     visit post_path(post1.id)
-    #     expect(current_path).to eq post_path(post1.id)
-    #     expect(page).to have_content 'デフォルトの料理名1'
-    #   end
-    # end
-#     context 'ログインせずに料理の投稿画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit new_post_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずに料理の編集画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit edit_post_path(post1.id)
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずに料理の記録画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit posts_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
 #     context 'ログインせずにカテゴリー一覧画面にとぼうとした場合' do
 #       it 'ログイン画面に遷移する' do
 #         visit categories_path

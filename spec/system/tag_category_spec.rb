@@ -99,11 +99,11 @@ RSpec.describe 'TagCategory', type: :system do
         tag_category = FactoryBot.create(:tag_category, name: '野菜')
         admin_login
         visit edit_tag_category_path(tag_category.id)
-        fill_in 'tag_category_name', with: '肉類'
+        fill_in 'tag_category_name', with: '肉'
         click_on '更新する'
         expect(current_path).to eq tag_categories_path
         expect(page).to have_content 'カテゴリー名を修正しました'
-        expect(page).to have_content '肉類'
+        expect(page).to have_content '肉'
         expect(page).not_to have_content '野菜'
       end
     end

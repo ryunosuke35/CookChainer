@@ -4,8 +4,6 @@ RSpec.describe 'User', type: :system do
 
   let!(:general_user) { FactoryBot.create(:user) }
   let!(:admin_user) { FactoryBot.create(:second_user) }
-  # FactoryBot.create(:category)
-  # FactoryBot.create(:second_category)
   # FactoryBot.create(:tag)
   # FactoryBot.create(:second_tag)
   # FactoryBot.create(:tag_category)
@@ -123,27 +121,6 @@ RSpec.describe 'User', type: :system do
         expect(current_path).to eq new_user_session_path
       end
     end
-#     context 'ログインせずにカテゴリー一覧画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit categories_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにカテゴリー作成画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit new_category_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにカテゴリー編集画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit edit_category_path(category1.id)
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
 #     context 'ログインせずにタグ一覧画面にとぼうとした場合' do
 #       it 'ログイン画面に遷移する' do
 #         visit tags_path

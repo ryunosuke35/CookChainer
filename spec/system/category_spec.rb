@@ -7,6 +7,7 @@ RSpec.describe 'Category', type: :system do
   let!(:category1) { FactoryBot.create(:category) }
   let!(:category2) { FactoryBot.create(:second_category) }
 
+
   def general_login
     visit new_user_session_path
     fill_in 'user_name', with: '一般ユーザー'
@@ -27,6 +28,27 @@ RSpec.describe 'Category', type: :system do
     end
   end
 
+
+  describe 'ログインせずに画面遷移した際のテスト' do
+    context 'ログインせずにカテゴリー一覧画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit categories_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにカテゴリー作成画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit new_category_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにカテゴリー編集画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit edit_category_path(category1.id)
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+  end
 
   describe '一覧機能のテスト' do
     context '一覧画面に遷移した場合' do

@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ edit update destroy ]
-  before_action :ensure_current_user, only: [:edit]
   before_action :check_admin
 
   def index

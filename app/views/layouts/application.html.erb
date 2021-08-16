@@ -28,7 +28,7 @@
           <% if current_user.admin? %>
             <%= link_to "カテゴリ", categories_path %>
             <%= link_to "タグ", tags_path %>
-            <%= link_to "タグテゴリ", tag_categories_path %>
+            <%= link_to "タグカテゴリ", tag_categories_path %>
           <% end %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         <% else %>

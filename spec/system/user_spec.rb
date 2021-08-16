@@ -4,12 +4,6 @@ RSpec.describe 'User', type: :system do
 
   let!(:general_user) { FactoryBot.create(:user) }
   let!(:admin_user) { FactoryBot.create(:second_user) }
-  # FactoryBot.create(:category)
-  # FactoryBot.create(:second_category)
-  # FactoryBot.create(:tag)
-  # FactoryBot.create(:second_tag)
-  # FactoryBot.create(:tag_category)
-  # FactoryBot.create(:second_tag_category)
 
   def general_login
     visit new_user_session_path
@@ -27,6 +21,34 @@ RSpec.describe 'User', type: :system do
     fill_in 'user_password', with: 'password'
     within '.actions' do
       click_on 'ログイン'
+    end
+  end
+
+
+  describe 'ログインせずに画面遷移した際のテスト' do
+    context 'ログインせずにマイページにとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit user_path(general_user.id)
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにプロフィール編集画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit edit_user_path(general_user.id)
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにお気に入り一覧画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit favorites_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずに管理者画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit rails_admin_path
+        expect(current_path).to eq new_user_session_path
+      end
     end
   end
 
@@ -69,6 +91,9 @@ RSpec.describe 'User', type: :system do
         expect(page).to have_content 'ログアウトしました。'
       end
     end
+  end
+
+  describe 'ゲストログイン機能のテスト' do
     context 'アカウント作成ページからゲストログインをした場合' do
       it '料理の一覧画面に遷移する' do
         visit new_user_registration_path
@@ -117,74 +142,78 @@ RSpec.describe 'User', type: :system do
         expect(page).to have_content '管理者としてログインしました。'
       end
     end
-    context 'ログインせずにマイページにとぼうとした場合' do
-      it 'ログイン画面に遷移する' do
-        visit user_path(general_user.id)
-        expect(current_path).to eq new_user_session_path
+  end
+
+  describe 'マイページ機能のテスト' do
+    context 'プロフィール編集をクリックした場合' do
+      it 'プロフィールの編集画面へ遷移する' do
+        admin_login
+        visit user_path(admin_user.id)
+        click_link 'プロフィール編集'
+        expect(current_path).to eq edit_user_path(admin_user.id)
+        expect(page).to have_content 'プロフィール編集'
       end
     end
-#     context 'ログインせずにカテゴリー一覧画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit categories_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにカテゴリー作成画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit new_category_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにカテゴリー編集画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit edit_category_path(category1.id)
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグ一覧画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit tags_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグ作成画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit new_tag_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグ編集画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit edit_tag_path(tag1.id)
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグカテゴリー一覧画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit tag_categories_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグカテゴリー作成画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit new_tag_category_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグカテゴリー編集画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit edit_tag_category_path(tag_category1.id)
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
+    context 'お気に入り一覧をクリックした場合' do
+      it 'お気に入り一覧画面へ遷移する' do
+        admin_login
+        visit user_path(admin_user.id)
+        click_link 'お気に入り一覧'
+        expect(current_path).to eq favorites_path
+        expect(page).to have_content 'お気に入り一覧'
+      end
+    end
+    context '一般ユーザーが退会をクリックした場合' do
+      it 'トップページに遷移し、ユーザー情報が削除される' do
+        general_login
+        visit user_path(general_user.id)
+        click_link '退会'
+        expect(current_path).to eq new_user_registration_path
+        expect(page).to have_content '退会しました'
+      end
+    end
+    context '管理者が退会をクリックした場合' do
+      it 'アラートが出てマイページに遷移する' do
+        admin_login
+        visit user_path(admin_user.id)
+        click_link '退会'
+        expect(current_path).to eq user_path(admin_user.id)
+        expect(page).to have_content '管理者は削除できません。'
+      end
+    end
+    context '管理者画面をクリックした場合' do
+      it '管理者画面に遷移する' do
+        admin_login
+        visit user_path(admin_user.id)
+        click_link '管理者画面'
+        expect(current_path).to eq rails_admin_path
+      end
+    end
+  end
+
+  describe 'プロフィール編集機能のテスト' do
+    context 'プロフィール編集をした場合' do
+      it 'マイページに遷移し、プロフィール内容が更新される' do
+        admin_login
+        visit edit_user_path(admin_user.id)
+        attach_file 'user_image', "#{Rails.root}/spec/fixtures/image/top1.jpg"
+        fill_in 'user_profile', with: 'こんにちは！'
+        fill_in 'user_name', with: '管理者(編集済み)'
+        fill_in 'user_email', with: 'edit_admin@gmail.com'
+        click_on '保存'
+        expect(current_path).to eq user_path(admin_user.id)
+        expect(page).to have_content 'プロフィールを編集しました'
+        expect(page).to have_content '管理者(編集済み)'
+        expect(page).to have_content 'edit_admin@gmail.com'
+      end
+    end
+    context 'プロフィール編集画面で戻るボタンをクリックした場合' do
+      it 'マイページに遷移しる' do
+        admin_login
+        visit edit_user_path(admin_user.id)
+        click_on '戻る'
+        expect(current_path).to eq user_path(admin_user.id)
+      end
+    end
   end
 end

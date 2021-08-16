@@ -30,6 +30,41 @@ RSpec.describe 'Post', type: :system do
   end
 
 
+
+  # describe 'ログインせずに画面遷移した際のテスト' do
+  #   context 'ログインせずに料理一覧画面にとんだ場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit index2_posts_path
+  #       expect(current_path).to eq index2_posts_path
+  #     end
+  #   end
+  #   context 'ログインせずに料理の詳細画面にとんだ場合' do
+  #     it 'ログイン画面に遷移する' do
+  #       visit post_path(post1.id)
+  #       expect(current_path).to eq post_path(post1.id)
+  #       expect(page).to have_content 'デフォルトの料理名1'
+  #     end
+  #   end
+  #   context 'ログインせずに料理の投稿画面にとぼうとした場合' do
+  #     it 'ログイン画面に遷移する' do
+  #       visit new_post_path
+  #       expect(current_path).to eq new_user_session_path
+  #     end
+  #   end
+  #   context 'ログインせずに料理の編集画面にとぼうとした場合' do
+  #     it 'ログイン画面に遷移する' do
+  #       visit edit_post_path(post1.id)
+  #       expect(current_path).to eq new_user_session_path
+  #     end
+  #   end
+  #   context 'ログインせずに料理の記録画面にとぼうとした場合' do
+  #     it 'ログイン画面に遷移する' do
+  #       visit posts_path
+  #       expect(current_path).to eq new_user_session_path
+  #     end
+  #   end
+  # end
+
   # describe '新規作成機能のテスト' do
   #   context '新規投稿した場合' do
   #     it '一覧画面に遷移し、投稿内容が表示される' do
@@ -96,57 +131,51 @@ RSpec.describe 'Post', type: :system do
   #       expect(page).not_to have_content 'デフォルトの料理名2'
   #     end
   #   end
+  #
+  #
+  #   # 未実装
+  #   context 'タグ検索をした場合' do
+  #     it 'タグが含まれる料理のみが表示される' do
+  #       visit index2_posts_path
+  #       binding.pry
+  #       click_button 'デフォルトのタグカテゴリー1'
+  #
+  #       click_link 'デフォルトのタグ1'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content 'デフォルトの料理名1'
+  #       expect(page).not_to have_content 'デフォルトの料理名2'
+  #     end
+  #   end
+  # end
 
+  describe 'レベルアップ機能のテスト' do
+    context '料理名をクリックした場合' do
+      it '詳細画面に遷移し、投稿内容が表示される' do
+        FactoryBot.create(:tag, name: '牛肉', tag_category: tag_category1)
+        FactoryBot.create(:second_tag, name: '鶏肉', tag_category: tag_category1)
 
-    # 未実装
-    # context 'タグ検索をした場合' do
-    #   it 'タグが含まれる料理のみが表示される' do
-    #     visit index2_posts_path
-    #     binding.pry
-    #     click_button 'デフォルトのタグカテゴリー1'
-    #
-    #     click_link 'デフォルトのタグ1'
-    #     expect(current_path).to eq index2_posts_path
-    #     expect(page).to have_content 'デフォルトの料理名1'
-    #     expect(page).not_to have_content 'デフォルトの料理名2'
-    #   end
-    # end
+        general_login
+        visit new_post_path
+        fill_in 'post_name', with: 'だしなし簡単！肉じゃがの基本レシピ作り方'
+        fill_in 'post_url', with: 'https://www.sirogohan.com/recipe/nikujaga/'
+        fill_in 'post_memo', with: '醤油は少なめにしたほうがよさそう'
+        attach_file 'post_image', "#{Rails.root}/spec/fixtures/image/top1.jpg"
+        click_button 'デフォルトのタグカテゴリー1'
+        check '牛肉'
+        check '鶏肉'
+        choose 'デフォルトのカテゴリー1'
+        click_on '登録する'
+        expect(current_path).to eq posts_path
+        binding.pry
+        expect(page).to have_content 'だしなし簡単！肉じゃがの基本レシピ作り方'
+        expect(page).to have_content '5/15'
+        expect(page).to have_content '33%'
+      end
+    end
   end
 
 
 
 
-  # describe 'ログインせずに画面遷移した際のテスト' do
-  #   context 'ログインせずに料理一覧画面にとんだ場合' do
-  #     it '料理の一覧画面に遷移する' do
-  #       visit index2_posts_path
-  #       expect(current_path).to eq index2_posts_path
-  #     end
-  #   end
-  #   context 'ログインせずに料理の詳細画面にとんだ場合' do
-  #     it 'ログイン画面に遷移する' do
-  #       visit post_path(post1.id)
-  #       expect(current_path).to eq post_path(post1.id)
-  #       expect(page).to have_content 'デフォルトの料理名1'
-  #     end
-  #   end
-  #   context 'ログインせずに料理の投稿画面にとぼうとした場合' do
-  #     it 'ログイン画面に遷移する' do
-  #       visit new_post_path
-  #       expect(current_path).to eq new_user_session_path
-  #     end
-  #   end
-  #   context 'ログインせずに料理の編集画面にとぼうとした場合' do
-  #     it 'ログイン画面に遷移する' do
-  #       visit edit_post_path(post1.id)
-  #       expect(current_path).to eq new_user_session_path
-  #     end
-  #   end
-  #   context 'ログインせずに料理の記録画面にとぼうとした場合' do
-  #     it 'ログイン画面に遷移する' do
-  #       visit posts_path
-  #       expect(current_path).to eq new_user_session_path
-  #     end
-  #   end
-  # end
+
 end

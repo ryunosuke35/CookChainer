@@ -4,10 +4,6 @@ RSpec.describe 'User', type: :system do
 
   let!(:general_user) { FactoryBot.create(:user) }
   let!(:admin_user) { FactoryBot.create(:second_user) }
-  # FactoryBot.create(:tag)
-  # FactoryBot.create(:second_tag)
-  # FactoryBot.create(:tag_category)
-  # FactoryBot.create(:second_tag_category)
 
   def general_login
     visit new_user_session_path

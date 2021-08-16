@@ -29,47 +29,47 @@ RSpec.describe 'TagCategory', type: :system do
 
 
   describe '一覧機能のテスト' do
-    # context '一覧画面に遷移した場合' do
-    #   it '登録済みのカテゴリーが表示される' do
-    #     FactoryBot.create(:category, name: '主菜')
-    #     admin_login
-    #     visit categories_path
-    #     expect(page).to have_content '主菜'
-    #   end
-    # end
-    # context '編集ボタンをクリックした場合' do
-    #   it '編集画面に遷移する' do
-    #     category = FactoryBot.create(:category, name: '主菜')
-    #     admin_login
-    #     visit categories_path
-    #     all('tbody tr')[2].click_on '編集'
-    #     expect(current_path).to eq edit_category_path(category.id)
-    #     expect(page).not_to have_content '主菜'
-    #   end
-    # end
-    # context '削除ボタンをクリックした場合' do
-    #   it '編集画面に遷移する' do
-    #     FactoryBot.create(:category, name: '主菜')
-    #     admin_login
-    #     visit categories_path
-    #     all('tbody tr')[2].click_on '削除'
-    #     page.driver.browser.switch_to.alert.accept
-    #     expect(page).to have_content '「主菜」を削除しました'
-    #     visit current_path
-    #     expect(current_path).to eq categories_path
-    #     expect(page).not_to have_content '主菜'
-    #   end
-    # end
-    # context 'カテゴリーを作成するをクリックした場合' do
-    #   it '新規作成画面に遷移する' do
-    #     FactoryBot.create(:category, name: '主菜')
-    #     admin_login
-    #     visit categories_path
-    #     click_link 'カテゴリーを作成する'
-    #     expect(current_path).to eq new_category_path
-    #     expect(page).to have_content 'カテゴリー新規作成'
-    #   end
-    # end
+    context '一覧画面に遷移した場合' do
+      it '登録済みのカテゴリーが表示される' do
+        FactoryBot.create(:tag_category, name: '野菜')
+        admin_login
+        visit tag_categories_path
+        expect(page).to have_content '野菜'
+      end
+    end
+    context '編集ボタンをクリックした場合' do
+      it '編集画面に遷移する' do
+        tag_category = FactoryBot.create(:tag_category, name: '野菜')
+        admin_login
+        visit tag_categories_path
+        all('tbody tr')[2].click_on '編集'
+        expect(current_path).to eq edit_tag_category_path(tag_category.id)
+        expect(page).to have_content 'タグカテゴリー編集'
+      end
+    end
+    context '削除ボタンをクリックした場合' do
+      it 'タグカテゴリーが削除され、一覧画面に遷移する' do
+        FactoryBot.create(:tag_category, name: '野菜')
+        admin_login
+        visit tag_categories_path
+        all('tbody tr')[2].click_on '削除'
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content '「野菜」を削除しました'
+        visit current_path
+        expect(current_path).to eq tag_categories_path
+        expect(page).not_to have_content '野菜'
+      end
+    end
+    context 'タグカテゴリーを作成するをクリックした場合' do
+      it '新規作成画面に遷移する' do
+        FactoryBot.create(:tag_category, name: '野菜')
+        admin_login
+        visit tag_categories_path
+        click_link 'タグカテゴリーを作成する'
+        expect(current_path).to eq new_tag_category_path
+        expect(page).to have_content 'タグカテゴリー新規作成'
+      end
+    end
   end
 
   describe '新規作成機能のテスト' do

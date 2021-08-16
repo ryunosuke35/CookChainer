@@ -48,7 +48,7 @@ RSpec.describe 'Category', type: :system do
       end
     end
     context '削除ボタンをクリックした場合' do
-      it '編集画面に遷移する' do
+      it 'カテゴリーが削除され、一覧画面に遷移する' do
         FactoryBot.create(:category, name: '主菜')
         admin_login
         visit categories_path

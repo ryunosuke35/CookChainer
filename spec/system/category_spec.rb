@@ -107,7 +107,7 @@ RSpec.describe 'Category', type: :system do
         expect(page).not_to have_content '主菜'
       end
     end
-    context '新規作成画面で「戻る」をクリックした場合' do
+    context '編集画面で「戻る」をクリックした場合' do
       it '一覧画面に遷移する' do
         admin_login
         category = FactoryBot.create(:category, name: '主菜')

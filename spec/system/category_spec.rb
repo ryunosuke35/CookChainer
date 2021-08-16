@@ -98,31 +98,28 @@ RSpec.describe 'Category', type: :system do
   # end
 
   describe '編集機能のテスト' do
-    # context 'カテゴリーを編集した場合' do
-    #   it '投稿内容が更新される' do
-    #     category = FactoryBot.create(:category, name: '主菜')
-    #     admin_login
-    #     binding.pry
-    #
-    #     # 権限がありません
-    #     visit edit_category_path(category.id)
-    #     fill_in 'category_name', with: '副菜'
-    #     click_on '更新する'
-    #
-    #     binding.pry
-    #     expect(current_path).to eq categories_path
-    #     expect(page).to have_content '投稿内容を更新しました'
-    #   end
-    # end
-    # context '新規作成画面で「戻る」をクリックした場合' do
-    #   it '一覧画面に遷移する' do
-    #     admin_login
-    #     category = FactoryBot.create(:category, name: '主菜')
-    #     visit edit_category_path(category.id)
-    #     click_on '戻る'
-    #     expect(current_path).to eq categories_path
-    #   end
-    # end
+    context 'カテゴリーを編集した場合' do
+      it '投稿内容が更新される' do
+        category = FactoryBot.create(:category, name: '主菜')
+        admin_login
+        visit edit_category_path(category.id)
+        fill_in 'category_name', with: '副菜'
+        click_on '更新する'
+        expect(current_path).to eq categories_path
+        expect(page).to have_content 'カテゴリー名を修正しました'
+        expect(page).to have_content '副菜'
+        expect(page).not_to have_content '主菜'
+      end
+    end
+    context '新規作成画面で「戻る」をクリックした場合' do
+      it '一覧画面に遷移する' do
+        admin_login
+        category = FactoryBot.create(:category, name: '主菜')
+        visit edit_category_path(category.id)
+        click_on '戻る'
+        expect(current_path).to eq categories_path
+      end
+    end
   end
 
 

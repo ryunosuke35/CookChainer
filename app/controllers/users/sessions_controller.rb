@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  skip_before_action :login_required, only: [:new, :guest_sign_in, :admin_guest_sign_in]
 
   def guest_sign_in
     user = User.guest
@@ -15,6 +16,10 @@ class Users::SessionsController < Devise::SessionsController
     sign_in user
     user.update(admin: true)
     redirect_to index2_posts_path, notice: '管理者としてログインしました。'
+  end
+
+  def after_sign_out_path_for(resource)
+    new_user_session_path
   end
 
   # GET /resource/sign_in

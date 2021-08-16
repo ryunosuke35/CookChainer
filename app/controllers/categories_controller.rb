@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ edit update destroy ]
+  before_action :ensure_current_user, only: [:edit]
+  before_action :check_admin
 
   def index
     @categories = Category.all
@@ -15,7 +17,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path, notice: "Category was successfully created."
+      redirect_to categories_path, notice: "「#{category_params[:name]}」を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +25,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: "Category was successfully updated."
+      redirect_to categories_path, notice: "カテゴリー名を修正しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -31,15 +33,21 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_url, notice: "Category was successfully destroyed."
+    redirect_to categories_url, notice: "「#{@category.name}」を削除しました"
   end
 
   private
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    def category_params
-      params.require(:category).permit(:name)
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
+  def check_admin
+    unless current_user.admin?
+      redirect_to user_path(current_user), alert: "権限がありません"
     end
+  end
 end

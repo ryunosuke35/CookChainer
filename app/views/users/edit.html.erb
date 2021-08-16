@@ -1,33 +1,35 @@
-<h3>プロフィール編集</h3>
+<div class="user_edit">
+  
+  <h3>プロフィール編集</h3>
 
-<div class="icon_image">
-  <% if @user.image.present? %>
-    <%= image_tag @user.image.url %>
-  <% else %>
-    <%= image_tag 'default_image.png' %>
+  <div class="icon_image">
+    <% if @user.image.present? %>
+      <%= image_tag @user.image.url %>
+    <% else %>
+      <%= image_tag 'default_image.png' %>
+    <% end %>
+  </div>
+
+  <%= form_with(model: @user, local: true) do |form| %>
+    <p><%= form.file_field :image %></p>
+
+    <div class="cp_iptxt">
+      <%= form.text_area :profile, class:"ef", style:"width: 400px; height: 100px; margin-top:20px;" %>
+      <%= form.label :profile %>
+    </div>
+
+    <div class="cp_iptxt">
+      <%= form.text_field :name, class:"ef" %>
+      <%= form.label :name %>
+    </div>
+
+    <div class="cp_iptxt">
+      <%= form.text_field :email, class:"ef" %>
+      <%= form.label :email %>
+    </div>
+
+    <%= form.submit "保存" %>
   <% end %>
+
+  <%= link_to "戻る", user_path(@user) %>
 </div>
-
-
-<%= form_with model: @user do |form| %>
-  <p><%= form.file_field :image %></p>
-
-  <div class="cp_iptxt">
-    <%= form.text_area :profile, class:"ef", style:"width: 400px; height: 100px; margin-top:20px;" %>
-    <%= form.label :profile %>
-  </div>
-
-  <div class="cp_iptxt">
-    <%= form.text_field :name, class:"ef" %>
-    <%= form.label :name %>
-  </div>
-
-  <div class="cp_iptxt">
-    <%= form.text_field :email, class:"ef" %>
-    <%= form.label :email %>
-  </div>
-
-  <%= form.submit "保存" %>
-<% end %>
-
-<%= link_to "戻る", user_path(@user) %>

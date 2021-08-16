@@ -2,8 +2,7 @@
 
   <div class="title_search">
     <%= search_form_for @q, url: index2_posts_path do |f| %>
-      <%= f.label :name_cont, '料理名の検索' %>
-      <%= f.search_field :name_cont %>
+      <%= f.search_field :name_cont,class: 'field', placeholder: "何かお探しですか？" %>
       <%= f.submit '検索' %>
     <% end %>
   </div>

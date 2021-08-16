@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
   devise_scope :user do

@@ -5,8 +5,8 @@
     <% @tag_categories.each do |tag_category| %>
       <tr>
         <td><%= tag_category.name %></td>
-        <td><%= link_to '編集', edit_tag_category_path(tag_category) %></td>
-        <td><%= link_to '削除', tag_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><div class="button01"><%= link_to '編集', edit_tag_category_path(tag_category) %></div></td>
+        <td><div class="button02"><%= link_to '削除', tag_category, method: :delete, data: { confirm: "「#{tag_category.name}」を削除しますか？" } %></div></td>
       </tr>
     <% end %>
   </tbody>

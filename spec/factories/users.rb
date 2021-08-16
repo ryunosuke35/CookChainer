@@ -4,6 +4,8 @@ FactoryBot.define do
     email { 'general_user@gmail.com' }
     password { 'password' }
     password_confirmation { 'password' }
+    level { 1 }
+    exp_point { 0 }
     admin { false }
   end
   factory :second_user, class: User do
@@ -11,6 +13,8 @@ FactoryBot.define do
     email { 'admin@gmail.com' }
     password { 'password' }
     password_confirmation { 'password' }
+    level { 1 }
+    exp_point { 0 }
     admin { true }
   end
 end

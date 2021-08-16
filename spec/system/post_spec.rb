@@ -65,6 +65,17 @@ RSpec.describe 'Post', type: :system do
   #       expect(page).to have_content 'デフォルトの料理名1'
   #     end
   #   end
+  # end
+
+  # describe '料理の一覧画面のテスト' do
+  #   context '料理名をクリックした場合' do
+  #     it '詳細画面に遷移し、投稿内容が表示される' do
+  #       visit index2_posts_path
+  #       click_link 'デフォルトの料理名1'
+  #       expect(current_path).to eq post_path(post1.id)
+  #       expect(page).to have_content 'デフォルトの料理名1'
+  #     end
+  #   end
   #   context 'タイトル検索をした場合' do
   #     it '検索内容を含む料理のみが表示される' do
   #       visit index2_posts_path
@@ -85,19 +96,24 @@ RSpec.describe 'Post', type: :system do
   #       expect(page).not_to have_content 'デフォルトの料理名2'
   #     end
   #   end
-  #   context 'タグ検索をした場合' do
-  #     it 'タグが含まれる料理のみが表示される' do
-  #       visit index2_posts_path
-  #       binding.pry
-  #       click_button 'デフォルトのタグカテゴリー1'
-  #
-  #       click_link 'デフォルトのタグ1'
-  #       expect(current_path).to eq index2_posts_path
-  #       expect(page).to have_content 'デフォルトの料理名1'
-  #       expect(page).not_to have_content 'デフォルトの料理名2'
-  #     end
-  #   end
-  # end
+
+
+    # 未実装
+    # context 'タグ検索をした場合' do
+    #   it 'タグが含まれる料理のみが表示される' do
+    #     visit index2_posts_path
+    #     binding.pry
+    #     click_button 'デフォルトのタグカテゴリー1'
+    #
+    #     click_link 'デフォルトのタグ1'
+    #     expect(current_path).to eq index2_posts_path
+    #     expect(page).to have_content 'デフォルトの料理名1'
+    #     expect(page).not_to have_content 'デフォルトの料理名2'
+    #   end
+    # end
+  end
+
+
 
 
   # describe 'ログインせずに画面遷移した際のテスト' do

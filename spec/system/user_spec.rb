@@ -121,27 +121,6 @@ RSpec.describe 'User', type: :system do
         expect(current_path).to eq new_user_session_path
       end
     end
-#     context 'ログインせずにタグ一覧画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit tags_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグ作成画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit new_tag_path
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
-#     context 'ログインせずにタグ編集画面にとぼうとした場合' do
-#       it 'ログイン画面に遷移する' do
-#         visit edit_tag_path(tag1.id)
-#         expect(page).to have_content 'ログイン'
-#         expect(page).to have_content 'ログインを記憶'
-#       end
-#     end
 #     context 'ログインせずにタグカテゴリー一覧画面にとぼうとした場合' do
 #       it 'ログイン画面に遷移する' do
 #         visit tag_categories_path

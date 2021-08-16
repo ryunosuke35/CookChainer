@@ -30,6 +30,27 @@ RSpec.describe 'Tag', type: :system do
   end
 
 
+  describe 'ログインせずに画面遷移した際のテスト' do
+    context 'ログインせずにタグ一覧画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit tags_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにタグ作成画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit new_tag_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにタグ編集画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit edit_tag_path(tag1.id)
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+  end
+
   describe '一覧機能のテスト' do
     context '一覧画面に遷移した場合' do
       it '登録済みのカテゴリーが表示される' do

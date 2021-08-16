@@ -44,7 +44,7 @@ RSpec.describe 'Category', type: :system do
         visit categories_path
         all('tbody tr')[2].click_on '編集'
         expect(current_path).to eq edit_category_path(category.id)
-        expect(page).not_to have_content '主菜'
+        expect(page).to have_content 'カテゴリー編集'
       end
     end
     context '削除ボタンをクリックした場合' do

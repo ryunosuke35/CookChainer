@@ -127,8 +127,40 @@ RSpec.describe 'User', type: :system do
   # end
 
   describe 'マイページ機能のテスト' do
-    
+    # context 'プロフィール編集をクリックした場合' do
+    #   it 'プロフィールの編集画面へ遷移する' do
+    #     admin_login
+    #     visit user_path(admin_user.id)
+    #     click_link 'プロフィール編集'
+    #     expect(current_path).to eq edit_user_path(admin_user.id)
+    #     expect(page).to have_content 'プロフィール編集'
+    #   end
+    # end
+  end
 
-
+  describe 'プロフィール編集機能のテスト' do
+    context 'プロフィール編集をした場合' do
+      it 'マイページに遷移し、プロフィール内容が更新される' do
+        admin_login
+        visit edit_user_path(admin_user.id)
+        attach_file 'user_image', "#{Rails.root}/spec/fixtures/image/top1.jpg"
+        fill_in 'user_profile', with: 'こんにちは！'
+        fill_in 'user_name', with: '管理者(編集済み)'
+        fill_in 'user_email', with: 'edit_admin@gmail.com'
+        click_on '保存'
+        expect(current_path).to eq user_path(admin_user.id)
+        expect(page).to have_content 'プロフィールを編集しました'
+        expect(page).to have_content '管理者(編集済み)'
+        expect(page).to have_content 'edit_admin@gmail.com'
+      end
+    end
+    context 'プロフィール編集画面で戻るボタンをクリックした場合' do
+      it 'マイページに遷移しる' do
+        admin_login
+        visit edit_user_path(admin_user.id)
+        click_on '戻る'
+        expect(current_path).to eq user_path(admin_user.id)
+      end
+    end
   end
 end

@@ -79,6 +79,7 @@ RSpec.describe 'Category', type: :system do
         visit new_category_path
         fill_in 'category_name', with: '主菜'
         click_on '登録する'
+        expect(current_path).to eq categories_path
         expect(page).to have_content '「主菜」を作成しました'
       end
     end

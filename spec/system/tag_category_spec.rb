@@ -73,8 +73,8 @@ RSpec.describe 'TagCategory', type: :system do
   end
 
   describe '新規作成機能のテスト' do
-    context 'カテゴリーを新規作成した場合' do
-      it '登録したカテゴリーが表示される' do
+    context 'タグカテゴリーを新規作成した場合' do
+      it '登録したタグカテゴリーが表示される' do
         admin_login
         visit new_tag_category_path
         fill_in 'tag_category_name', with: '野菜'

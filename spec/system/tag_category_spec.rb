@@ -72,50 +72,50 @@ RSpec.describe 'TagCategory', type: :system do
   #   end
   # end
 
-  describe '新規作成機能のテスト' do
-    context 'カテゴリーを新規作成した場合' do
-      it '登録したカテゴリーが表示される' do
+  # describe '新規作成機能のテスト' do
+  #   context 'カテゴリーを新規作成した場合' do
+  #     it '登録したカテゴリーが表示される' do
+  #       admin_login
+  #       visit new_tag_category_path
+  #       fill_in 'tag_category_name', with: '野菜'
+  #       click_on '登録する'
+  #       expect(current_path).to eq tag_categories_path
+  #       expect(page).to have_content '「野菜」を作成しました'
+  #     end
+  #   end
+  #   context '新規作成画面で「戻る」をクリックした場合' do
+  #     it '一覧画面に遷移する' do
+  #       admin_login
+  #       visit new_tag_category_path
+  #       click_on '戻る'
+  #       expect(current_path).to eq tag_categories_path
+  #     end
+  #   end
+  # end
+
+  describe '編集機能のテスト' do
+    context 'カテゴリーを編集した場合' do
+      it '投稿内容が更新される' do
+        tag_category = FactoryBot.create(:tag_category, name: '野菜')
         admin_login
-        visit new_tag_category_path
-        fill_in 'tag_category_name', with: '野菜'
-        click_on '登録する'
+        visit edit_tag_category_path(tag_category.id)
+        fill_in 'tag_category_name', with: '肉類'
+        click_on '更新する'
         expect(current_path).to eq tag_categories_path
-        expect(page).to have_content '「野菜」を作成しました'
+        expect(page).to have_content 'カテゴリー名を修正しました'
+        expect(page).to have_content '肉類'
+        expect(page).not_to have_content '野菜'
       end
     end
-    context '新規作成画面で「戻る」をクリックした場合' do
+    context '編集画面で「戻る」をクリックした場合' do
       it '一覧画面に遷移する' do
         admin_login
-        visit new_tag_category_path
+        tag_category = FactoryBot.create(:tag_category, name: '野菜')
+        visit edit_tag_category_path(tag_category.id)
         click_on '戻る'
         expect(current_path).to eq tag_categories_path
       end
     end
-  end
-
-  describe '編集機能のテスト' do
-    # context 'カテゴリーを編集した場合' do
-    #   it '投稿内容が更新される' do
-    #     category = FactoryBot.create(:category, name: '主菜')
-    #     admin_login
-    #     visit edit_category_path(category.id)
-    #     fill_in 'category_name', with: '副菜'
-    #     click_on '更新する'
-    #     expect(current_path).to eq categories_path
-    #     expect(page).to have_content 'カテゴリー名を修正しました'
-    #     expect(page).to have_content '副菜'
-    #     expect(page).not_to have_content '主菜'
-    #   end
-    # end
-    # context '新規作成画面で「戻る」をクリックした場合' do
-    #   it '一覧画面に遷移する' do
-    #     admin_login
-    #     category = FactoryBot.create(:category, name: '主菜')
-    #     visit edit_category_path(category.id)
-    #     click_on '戻る'
-    #     expect(current_path).to eq categories_path
-    #   end
-    # end
   end
 
 

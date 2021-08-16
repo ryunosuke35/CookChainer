@@ -32,6 +32,24 @@ RSpec.describe 'User', type: :system do
         expect(current_path).to eq new_user_session_path
       end
     end
+    context 'ログインせずにプロフィール編集画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit edit_user_path(general_user.id)
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずにお気に入り一覧画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit favorites_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+    context 'ログインせずに管理者画面にとぼうとした場合' do
+      it 'ログイン画面に遷移する' do
+        visit rails_admin_path
+        expect(current_path).to eq new_user_session_path
+      end
+    end
   end
 
   # describe 'アカウント登録機能のテスト' do
@@ -126,52 +144,52 @@ RSpec.describe 'User', type: :system do
   #   end
   # end
 
-  describe 'マイページ機能のテスト' do
-    context 'プロフィール編集をクリックした場合' do
-      it 'プロフィールの編集画面へ遷移する' do
-        admin_login
-        visit user_path(admin_user.id)
-        click_link 'プロフィール編集'
-        expect(current_path).to eq edit_user_path(admin_user.id)
-        expect(page).to have_content 'プロフィール編集'
-      end
-    end
-    context 'お気に入り一覧をクリックした場合' do
-      it 'お気に入り一覧画面へ遷移する' do
-        admin_login
-        visit user_path(admin_user.id)
-        click_link 'お気に入り一覧'
-        expect(current_path).to eq favorites_path
-        expect(page).to have_content 'お気に入り一覧'
-      end
-    end
-    context '一般ユーザーが退会をクリックした場合' do
-      it 'トップページに遷移し、ユーザー情報が削除される' do
-        general_login
-        visit user_path(general_user.id)
-        click_link '退会'
-        expect(current_path).to eq new_user_registration_path
-        expect(page).to have_content '退会しました'
-      end
-    end
-    context '管理者が退会をクリックした場合' do
-      it 'アラートが出てマイページに遷移する' do
-        admin_login
-        visit user_path(admin_user.id)
-        click_link '退会'
-        expect(current_path).to eq user_path(admin_user.id)
-        expect(page).to have_content '管理者は削除できません。'
-      end
-    end
-    context '管理者画面をクリックした場合' do
-      it '管理者画面に遷移する' do
-        admin_login
-        visit user_path(admin_user.id)
-        click_link '管理者画面'
-        expect(current_path).to eq rails_admin_path
-      end
-    end
-  end
+  # describe 'マイページ機能のテスト' do
+  #   context 'プロフィール編集をクリックした場合' do
+  #     it 'プロフィールの編集画面へ遷移する' do
+  #       admin_login
+  #       visit user_path(admin_user.id)
+  #       click_link 'プロフィール編集'
+  #       expect(current_path).to eq edit_user_path(admin_user.id)
+  #       expect(page).to have_content 'プロフィール編集'
+  #     end
+  #   end
+  #   context 'お気に入り一覧をクリックした場合' do
+  #     it 'お気に入り一覧画面へ遷移する' do
+  #       admin_login
+  #       visit user_path(admin_user.id)
+  #       click_link 'お気に入り一覧'
+  #       expect(current_path).to eq favorites_path
+  #       expect(page).to have_content 'お気に入り一覧'
+  #     end
+  #   end
+  #   context '一般ユーザーが退会をクリックした場合' do
+  #     it 'トップページに遷移し、ユーザー情報が削除される' do
+  #       general_login
+  #       visit user_path(general_user.id)
+  #       click_link '退会'
+  #       expect(current_path).to eq new_user_registration_path
+  #       expect(page).to have_content '退会しました'
+  #     end
+  #   end
+  #   context '管理者が退会をクリックした場合' do
+  #     it 'アラートが出てマイページに遷移する' do
+  #       admin_login
+  #       visit user_path(admin_user.id)
+  #       click_link '退会'
+  #       expect(current_path).to eq user_path(admin_user.id)
+  #       expect(page).to have_content '管理者は削除できません。'
+  #     end
+  #   end
+  #   context '管理者画面をクリックした場合' do
+  #     it '管理者画面に遷移する' do
+  #       admin_login
+  #       visit user_path(admin_user.id)
+  #       click_link '管理者画面'
+  #       expect(current_path).to eq rails_admin_path
+  #     end
+  #   end
+  # end
 
   # describe 'プロフィール編集機能のテスト' do
   #   context 'プロフィール編集をした場合' do

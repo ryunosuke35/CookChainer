@@ -16,7 +16,7 @@
   </div>
 
   <div class="field">
-    <%= form.collection_check_boxes(:tag_category_id, TagCategory.all, :id, :name) %>
+    <%= form.collection_radio_buttons(:tag_category_id, TagCategory.all, :id, :name) %>
   </div>
 
   <div class="actions">

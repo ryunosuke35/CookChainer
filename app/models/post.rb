@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true, length: { in: 1..100 }
-  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
+  validates :url, format: {with: /\A#{URI::regexp(%w(http https))}\z/}, allow_blank: true
 
   belongs_to :user
 

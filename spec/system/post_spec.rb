@@ -205,20 +205,16 @@ RSpec.describe 'Post', type: :system do
       end
     end
 
-
-    # 未実装
-    # context 'タグ検索をした場合' do
-    #   it 'タグが含まれる料理のみが表示される' do
-    #     visit index2_posts_path
-    #     binding.pry
-    #     click_button 'デフォルトのタグカテゴリー1'
-    #
-    #     click_link 'デフォルトのタグ1'
-    #     expect(current_path).to eq index2_posts_path
-    #     expect(page).to have_content 'デフォルトの料理名1'
-    #     expect(page).not_to have_content 'デフォルトの料理名2'
-    #   end
-    # end
+    context 'タグ検索をした場合' do
+      it 'タグが含まれる料理のみが表示される' do
+        visit index2_posts_path
+        find(:xpath, '//*[@id="accordion"]/li/div[1]').click
+        click_on 'デフォルトのタグ1'
+        expect(current_path).to eq index2_posts_path
+        expect(page).to have_content 'デフォルトの料理名1'
+        expect(page).not_to have_content 'デフォルトの料理名2'
+      end
+    end
   end
 
   describe '経験値・レベルアップ機能のテスト' do

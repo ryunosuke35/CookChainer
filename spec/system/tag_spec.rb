@@ -106,7 +106,7 @@ RSpec.describe 'Tag', type: :system do
         admin_login
         visit new_tag_path
         fill_in 'tag_name', with: 'アスパラガス'
-        check '野菜'
+        choose '野菜'
         click_on '登録する'
         expect(page).to have_content '「アスパラガス」を作成しました'
         visit current_path
@@ -125,31 +125,22 @@ RSpec.describe 'Tag', type: :system do
   end
 
   describe '編集機能のテスト' do
-
-
-    # context 'タグを編集した場合' do
-    #   it '投稿内容が更新される' do
-    #     tag_category1 = FactoryBot.create(:tag_category, name: '野菜')
-    #     tag_category2 = FactoryBot.create(:tag_category, name: '肉')
-    #     tag = FactoryBot.create(:tag, name: 'アスパラガス', tag_category: tag_category1)
-    #     admin_login
-    #     visit edit_tag_path(tag.id)
-    #     fill_in 'tag_name', with: '鶏胸肉'
-    #     uncheck '野菜'
-    #     check '肉'
-    #     binding.pry
-    #
-    #     # tag categoryを入力してください
-    #     click_on '更新する'
-    #     expect(current_path).to eq tags_path
-    #     expect(page).to have_content 'タグ名を修正しました'
-    #     expect(page).to have_content '鶏胸肉'
-    #     expect(page).not_to have_content 'アスパラガス'
-    #   end
-    # end
-
-
-
+    context 'タグを編集した場合' do
+      it '投稿内容が更新される' do
+        tag_category1 = FactoryBot.create(:tag_category, name: '野菜')
+        tag_category2 = FactoryBot.create(:tag_category, name: '肉')
+        tag = FactoryBot.create(:tag, name: 'アスパラガス', tag_category: tag_category1)
+        admin_login
+        visit edit_tag_path(tag.id)
+        fill_in 'tag_name', with: '鶏胸肉'
+        choose '肉'
+        click_on '更新する'
+        expect(current_path).to eq tags_path
+        expect(page).to have_content 'タグ名を修正しました'
+        expect(page).to have_content '鶏胸肉'
+        expect(page).not_to have_content 'アスパラガス'
+      end
+    end
     context '編集画面で「戻る」をクリックした場合' do
       it '一覧画面に遷移する' do
         admin_login

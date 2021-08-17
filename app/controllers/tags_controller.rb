@@ -31,16 +31,10 @@ class TagsController < ApplicationController
   end
 
   def update
-    binding.pry
-    if tag_params[:tag_category_id].reject(&:blank?).count < 2
-
-      if @tag.update(tag_params)
-        redirect_to @tag, notice: "タグ名を修正しました"
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @tag.update(tag_params)
+      redirect_to tags_path, notice: "タグ名を修正しました"
     else
-      redirect_to edit_tag_path(@tag), notice: "カテゴリーを1つ選択してください"
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -55,7 +49,7 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.require(:tag).permit(:name, tag_category_id: [1])
+    params.require(:tag).permit(:name, :tag_category_id)
   end
 
   def check_admin

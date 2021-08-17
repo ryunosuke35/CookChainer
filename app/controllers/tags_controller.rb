@@ -31,6 +31,7 @@ class TagsController < ApplicationController
   end
 
   def update
+    binding.pry
     if tag_params[:tag_category_id].reject(&:blank?).count < 2
 
       if @tag.update(tag_params)
@@ -54,7 +55,7 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.require(:tag).permit(:name, tag_category_id: [])
+    params.require(:tag).permit(:name, tag_category_id: [1])
   end
 
   def check_admin

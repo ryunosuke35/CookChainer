@@ -38,8 +38,8 @@ https://cacoo.com/diagrams/Ez2vuxTm91vrSgvJ/E81AB
 
 ##  ER図
 https://cacoo.com/diagrams/NlqBFetvGcy4G1Yv/33C2F
-![ER図](./app/assets/images/ER図.png)
+![ER図](./app/assets/images/readme_img/ER図.png)
 
 ## 画面遷移図
 https://cacoo.com/diagrams/fCW62krYN0JAlFMO/82579
-![画面遷移図](./app/assets/images/画面遷移図.png)
+![画面遷移図](./app/assets/images/readme_img/画面遷移図.png)

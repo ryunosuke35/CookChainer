@@ -34,18 +34,19 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @tag_categories = TagCategory.all
+    @categories = Category.all
   end
 
   def edit
     @tag_categories = TagCategory.all
+    @categories = Category.all
   end
 
   def create
+
     if post_params[:tag_ids].reject(&:blank?).count < 9
 
       @post = current_user.posts.build(post_params)
-
-
 
       if @post.save
 

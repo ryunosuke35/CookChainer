@@ -28,23 +28,25 @@
     <%= form.file_field :image %>
   </div>
 
-<div class="fields">
-  <% TagCategory.all.each do |tag_category| %>
-    <div class="field">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= tag_category.name %>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
+  <div class="fields">
+    <% TagCategory.all.each do |tag_category| %>
+      <div class="field">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= tag_category.name %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+
+  <% @categories.each do |category| %>
+    <%= form.radio_button :category_ids, category[:id], checked: post.categories.include?(category) %>
+    <%= form.label :category_ids, category.name %>
   <% end %>
-</div>
-
-  <%= form.collection_radio_buttons(:category_ids, Category.all, :id, :name) %>
-
 
   <div class="actions">
     <%= form.submit %>

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_q, only: [:index2]
 
+  before_action :check_user, only: [:edit]
   skip_before_action :authenticate_user!, only: [:top, :index, :index2, :show]
 
   def top
@@ -91,4 +92,11 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:name, :url, :memo, :image, :image_cache, :search, :category_ids, tag_ids: [] )
   end
+
+  def check_user
+    unless current_user == @post.user
+      redirect_to user_path(current_user)
+    end
+  end
+
 end

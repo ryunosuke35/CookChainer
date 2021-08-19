@@ -18,12 +18,4 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path unless current_user
   end
 
-  def ensure_current_user
-    if @current_user.id != params[:id].to_i
-      redirect_to user_path(current_user), alert: "権限がありません"
-    end
-  end
-
-
-
 end

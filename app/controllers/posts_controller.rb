@@ -43,35 +43,30 @@ class PostsController < ApplicationController
   end
 
   def create
-
     if post_params[:tag_ids].reject(&:blank?).count < 9
-
       @post = current_user.posts.build(post_params)
 
       if @post.save
 
-
         user = current_user
         user.update(exp_point: user.exp_point + 5)
-
         levelSetting = LevelSetting.find_by(level: user.level + 1)
         if levelSetting.thresold <= user.exp_point
           user.update(level: user.level + 1)
         end
-        redirect_to action: :index
 
-
+        redirect_to posts_path, notice: "投稿しました!"
       else
         render :new, status: :unprocessable_entity
       end
     else
-      redirect_to new_post_path, notice: "食材は8つまでしか選べません"
+      redirect_to new_post_path, notice: "食材は8つまで選択可能です"
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "投稿内容を編集しました"
+      redirect_to posts_path, notice: "投稿内容を編集しました!"
     else
       render :edit, status: :unprocessable_entity
     end

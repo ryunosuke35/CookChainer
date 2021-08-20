@@ -1,54 +1,56 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="cp_iptxt">
-    <%= form.text_field :name, class:"ef" %>
-    <%= form.label :name %>
-  </div>
-
-  <div class="cp_iptxt">
-    <%= form.text_field :url, class:"ef" %>
-    <%= form.label :url %>
-  </div>
-
-  <div class="cp_iptxt">
-    <%= form.text_area :memo, class:"ef", style:"width: 400px; height: 100px; margin-top:20px;"%>
-    <%= form.label :memo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="fields">
-    <% TagCategory.all.each do |tag_category| %>
-      <div class="field">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= tag_category.name %>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
-          </div>
-        </div>
+<div class="post_form">
+  <%= form_with(model: post, local: true) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
       </div>
     <% end %>
-  </div>
+    <div class="cp_iptxt">
+      <%= form.text_field :name, class:"ef" %>
+      <%= form.label :name %>
+    </div>
 
-  <% @categories.each do |category| %>
-    <%= form.radio_button :category_ids, category[:id], checked: post.categories.include?(category) %>
-    <%= form.label :category_ids, category.name %>
+    <div class="cp_iptxt">
+      <%= form.text_field :url, class:"ef" %>
+      <%= form.label :url %>
+    </div>
+
+    <div class="cp_iptxt">
+      <%= form.text_area :memo, class:"ef", style:"width: 400px; height: 100px; margin-top:20px;"%>
+      <%= form.label :memo %>
+    </div>
+
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+
+    <div class="fields">
+      <% TagCategory.all.each do |tag_category| %>
+        <div class="field">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= tag_category.name %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% @categories.each do |category| %>
+      <%= form.radio_button :category_ids, category[:id], checked: post.categories.include?(category) %>
+      <%= form.label :category_ids, category.name %>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -26,10 +26,10 @@ RSpec.describe 'User', type: :system do
 
 
   describe 'ログインせずに画面遷移した際のテスト' do
-    context 'ログインせずにマイページにとぼうとした場合' do
-      it 'ログイン画面に遷移する' do
+    context 'ログインせずにマイページにとんだ場合' do
+      it 'マイページに遷移する' do
         visit user_path(general_user.id)
-        expect(current_path).to eq new_user_session_path
+        expect(current_path).to eq user_path(general_user.id)
       end
     end
     context 'ログインせずにプロフィール編集画面にとぼうとした場合' do
@@ -168,6 +168,7 @@ RSpec.describe 'User', type: :system do
         general_login
         visit user_path(general_user.id)
         click_link '退会'
+        page.driver.browser.switch_to.alert.accept
         expect(current_path).to eq new_user_registration_path
         expect(page).to have_content '退会しました'
       end
@@ -177,6 +178,7 @@ RSpec.describe 'User', type: :system do
         admin_login
         visit user_path(admin_user.id)
         click_link '退会'
+        page.driver.browser.switch_to.alert.accept
         expect(current_path).to eq user_path(admin_user.id)
         expect(page).to have_content '管理者は削除できません。'
       end
@@ -204,7 +206,6 @@ RSpec.describe 'User', type: :system do
         expect(current_path).to eq user_path(admin_user.id)
         expect(page).to have_content 'プロフィールを編集しました'
         expect(page).to have_content '管理者(編集済み)'
-        expect(page).to have_content 'edit_admin@gmail.com'
       end
     end
     context 'プロフィール編集画面で戻るボタンをクリックした場合' do

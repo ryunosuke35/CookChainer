@@ -4,7 +4,8 @@ RSpec.describe 'Post', type: :model do
 
   context '料理名、url、メモが入力された場合' do
     it "バリデーションが通る" do
-      post = FactoryBot.build(:post)
+      user = FactoryBot.create(:user)
+      post = FactoryBot.build(:post, user:user)
       expect(post).to be_valid
     end
   end

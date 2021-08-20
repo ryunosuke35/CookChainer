@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  skip_before_action :authenticate_user!, only: [:show]
+
   before_action :ensure_current_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:update, :destroy]
+
 
   def show
-    @next_level = LevelSetting.find_by(level: current_user.level + 1)
-    @now_level = LevelSetting.find_by(level: current_user.level)
   end
 
   def edit
@@ -38,6 +40,18 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :image, :password, :password_confirmation, :profile)
+  end
+
+  def ensure_current_user
+    if current_user.id != params[:id].to_i
+      redirect_to user_path(current_user), alert: "権限がありません"
+    end
+  end
+
+  def ensure_guest_user
+    if current_user.email == "guest@example.com" || current_user.email == "admin_guest@example.com"
+      redirect_to user_path(current_user), alert: "ゲストユーザーのため、操作できません"
+    end
   end
 
 end

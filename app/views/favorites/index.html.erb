@@ -1,12 +1,34 @@
 <h3>お気に入り一覧</h3>
-<table>
-  <% @favorites.each do |favorite| %>
-    <tr>
-      <td><%= image_tag favorite.image.url if favorite.image.present? %></td>
-      <td><%= link_to "#{favorite.name}", favorite.url, target: :_blank %></td>
-      <td><%= favorite.user.name %>さん</td>
-    </tr>
-  <% end %>
-</table>
 
-<%= link_to '戻る', user_path(current_user) %>
+
+<div class="favorite_index">
+
+<table>
+    <% @favorites.each do |favorite| %>
+      <tr>
+
+        <div class="user">
+          <td>
+            <div class="icon_image">
+              <% if favorite.user.image.present? %>
+                <%= image_tag favorite.user.image.url %>
+              <% else %>
+                <%= image_tag 'default_image.png' %>
+              <% end %>
+            </div>
+          </td>
+        </div>
+
+
+        <td>
+          <div class="cook_image">
+            <%= image_tag favorite.image.url if favorite.image.present? %>
+          </div>
+        </td>
+        <td><%= link_to "#{favorite.name}", post_path(favorite) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to '戻る', user_path(current_user) %>
+</div>

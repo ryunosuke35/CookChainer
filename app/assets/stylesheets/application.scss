@@ -16,7 +16,36 @@
  */
 
 
+
+// // スマホサイズ
+// @media (max-width: 767px) {
+//   p {
+//     color: red;
+//   }
+// }
+// // タブレットサイズ
+// @media (min-width: 768px) and (max-width: 991px) {
+//   p {
+//     color: blue;
+//   }
+// }
+// // PCサイズ
+// @media (min-width: 992px) and (max-width: 1199px) {
+//   p {
+//     color: yellow;
+//   }
+// }
+// // 大きなPCサイズ
+// @media (min-width: 1200px) {
+//   p {
+//     color: pink;
+//   }
+// }
+
+
+
 body {
+  font-family :sans-serif;
 }
 
 .container {

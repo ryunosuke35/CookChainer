@@ -50,7 +50,6 @@ RSpec.describe 'Category', type: :system do
       it '記録画面に遷移する' do
         admin_login
         visit user_path(admin_user.id)
-        binding.pry
         click_link '記録'
         expect(current_path).to eq posts_path
       end

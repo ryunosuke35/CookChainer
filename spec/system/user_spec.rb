@@ -26,10 +26,10 @@ RSpec.describe 'User', type: :system do
 
 
   # describe 'ログインせずに画面遷移した際のテスト' do
-  #   context 'ログインせずにマイページにとぼうとした場合' do
-  #     it 'ログイン画面に遷移する' do
+  #   context 'ログインせずにマイページにとんだ場合' do
+  #     it 'マイページに遷移する' do
   #       visit user_path(general_user.id)
-  #       expect(current_path).to eq new_user_session_path
+  #       expect(current_path).to eq user_path(general_user.id)
   #     end
   #   end
   #   context 'ログインせずにプロフィール編集画面にとぼうとした場合' do
@@ -51,7 +51,7 @@ RSpec.describe 'User', type: :system do
   #     end
   #   end
   # end
-
+  #
   # describe 'アカウント登録機能のテスト' do
   #   context 'アカウント登録をした場合' do
   #     it 'マイページが表示される' do
@@ -92,109 +92,107 @@ RSpec.describe 'User', type: :system do
   #     end
   #   end
   # end
-
-  describe 'ゲストログイン機能のテスト' do
-    # context 'アカウント作成ページからゲストログインをした場合' do
-    #   it '料理の一覧画面に遷移する' do
-    #     visit new_user_registration_path
-    #     click_on 'ゲストログイン'
-    #     expect(current_path).to eq index2_posts_path
-    #     expect(page).to have_content 'ゲストユーザーとしてログインしました。'
-    #   end
-    # end
-    # context 'アカウント作成ページから管理者ゲストログインをした場合' do
-    #   it '料理の一覧画面に遷移する' do
-    #     visit new_user_registration_path
-    #     click_on 'ゲストログイン(管理者)'
-    #     expect(current_path).to eq index2_posts_path
-    #     expect(page).to have_content '管理者としてログインしました。'
-    #   end
-    # end
-    # context 'ログインページからゲストログインした場合' do
-    #   it '料理の一覧画面に遷移する' do
-    #     visit new_user_session_path
-    #     click_on 'ゲストログイン'
-    #     expect(current_path).to eq index2_posts_path
-    #     expect(page).to have_content 'ゲストユーザーとしてログインしました。'
-    #   end
-    # end
-    # context 'ログインページ管理者のゲストログインした場合' do
-    #   it '料理の一覧画面に遷移する' do
-    #     visit new_user_session_path
-    #     click_on 'ゲストログイン(管理者)'
-    #     expect(current_path).to eq index2_posts_path
-    #     expect(page).to have_content '管理者としてログインしました。'
-    #   end
-    # end
-    context 'トップページからゲストログインした場合' do
-      it '料理の一覧画面に遷移する' do
-        visit root_path
-        binding.pry
-
-        click_on 'ゲストログイン'
-        expect(current_path).to eq index2_posts_path
-        expect(page).to have_content 'ゲストユーザーとしてログインしました。'
-        binding.pry
-
-      end
-    end
-    context 'トップページ管理者のゲストログインした場合' do
-      it '料理の一覧画面に遷移する' do
-        visit root_path
-        click_on 'ゲストログイン(管理者)'
-        expect(current_path).to eq index2_posts_path
-        expect(page).to have_content '管理者としてログインしました。'
-      end
-    end
-  end
-
-  # describe 'マイページ機能のテスト' do
-  #   context 'プロフィール編集をクリックした場合' do
-  #     it 'プロフィールの編集画面へ遷移する' do
-  #       admin_login
-  #       visit user_path(admin_user.id)
-  #       click_link 'プロフィール編集'
-  #       expect(current_path).to eq edit_user_path(admin_user.id)
-  #       expect(page).to have_content 'プロフィール編集'
+  #
+  # describe 'ゲストログイン機能のテスト' do
+  #   context 'アカウント作成ページからゲストログインをした場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit new_user_registration_path
+  #       click_on 'ゲストログイン'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content 'ゲストユーザーとしてログインしました。'
   #     end
   #   end
-  #   context 'お気に入り一覧をクリックした場合' do
-  #     it 'お気に入り一覧画面へ遷移する' do
-  #       admin_login
-  #       visit user_path(admin_user.id)
-  #       click_link 'お気に入り一覧'
-  #       expect(current_path).to eq favorites_path
-  #       expect(page).to have_content 'お気に入り一覧'
+  #   context 'アカウント作成ページから管理者ゲストログインをした場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit new_user_registration_path
+  #       click_on 'ゲストログイン(管理者)'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content '管理者としてログインしました。'
   #     end
   #   end
-  #   context '一般ユーザーが退会をクリックした場合' do
-  #     it 'トップページに遷移し、ユーザー情報が削除される' do
-  #       general_login
-  #       visit user_path(general_user.id)
-  #       click_link '退会'
-  #       expect(current_path).to eq new_user_registration_path
-  #       expect(page).to have_content '退会しました'
+  #   context 'ログインページからゲストログインした場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit new_user_session_path
+  #       click_on 'ゲストログイン'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content 'ゲストユーザーとしてログインしました。'
   #     end
   #   end
-  #   context '管理者が退会をクリックした場合' do
-  #     it 'アラートが出てマイページに遷移する' do
-  #       admin_login
-  #       visit user_path(admin_user.id)
-  #       click_link '退会'
-  #       expect(current_path).to eq user_path(admin_user.id)
-  #       expect(page).to have_content '管理者は削除できません。'
+  #   context 'ログインページ管理者のゲストログインした場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit new_user_session_path
+  #       click_on 'ゲストログイン(管理者)'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content '管理者としてログインしました。'
   #     end
   #   end
-  #   context '管理者画面をクリックした場合' do
-  #     it '管理者画面に遷移する' do
-  #       admin_login
-  #       visit user_path(admin_user.id)
-  #       click_link '管理者画面'
-  #       expect(current_path).to eq rails_admin_path
+  #   context 'トップページからゲストログインした場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit root_path
+  #       click_on 'ゲストログイン'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content 'ゲストユーザーとしてログインしました。'
+  #     end
+  #   end
+  #   context 'トップページ管理者のゲストログインした場合' do
+  #     it '料理の一覧画面に遷移する' do
+  #       visit root_path
+  #       click_on 'ゲストログイン(管理者)'
+  #       expect(current_path).to eq index2_posts_path
+  #       expect(page).to have_content '管理者としてログインしました。'
   #     end
   #   end
   # end
-  #
+
+  describe 'マイページ機能のテスト' do
+    # context 'プロフィール編集をクリックした場合' do
+    #   it 'プロフィールの編集画面へ遷移する' do
+    #     admin_login
+    #     visit user_path(admin_user.id)
+    #     click_link 'プロフィール編集'
+    #     expect(current_path).to eq edit_user_path(admin_user.id)
+    #     expect(page).to have_content 'プロフィール編集'
+    #   end
+    # end
+    # context 'お気に入り一覧をクリックした場合' do
+    #   it 'お気に入り一覧画面へ遷移する' do
+    #     admin_login
+    #     visit user_path(admin_user.id)
+    #     click_link 'お気に入り一覧'
+    #     expect(current_path).to eq favorites_path
+    #     expect(page).to have_content 'お気に入り一覧'
+    #   end
+    # end
+    context '一般ユーザーが退会をクリックした場合' do
+      it 'トップページに遷移し、ユーザー情報が削除される' do
+        general_login
+        visit user_path(general_user.id)
+        click_link '退会'
+        page.driver.browser.switch_to.alert.accept
+        expect(current_path).to eq new_user_registration_path
+        expect(page).to have_content '退会しました'
+      end
+    end
+    context '管理者が退会をクリックした場合' do
+      it 'アラートが出てマイページに遷移する' do
+        admin_login
+        visit user_path(admin_user.id)
+        click_link '退会'
+        page.driver.browser.switch_to.alert.accept
+        expect(current_path).to eq user_path(admin_user.id)
+        expect(page).to have_content '管理者は削除できません。'
+      end
+    end
+    # context '管理者画面をクリックした場合' do
+    #   it '管理者画面に遷移する' do
+    #     admin_login
+    #     visit user_path(admin_user.id)
+    #     click_link '管理者画面'
+    #     expect(current_path).to eq rails_admin_path
+    #   end
+    # end
+  end
+
   # describe 'プロフィール編集機能のテスト' do
   #   context 'プロフィール編集をした場合' do
   #     it 'マイページに遷移し、プロフィール内容が更新される' do

@@ -39,7 +39,7 @@ RSpec.describe 'Post', type: :system do
     click_button 'デフォルトのタグカテゴリー1'
     check '牛肉'
     check '鶏肉'
-    choose 'デフォルトのカテゴリー1'
+    page.all(".category_select input")[0].click
     click_on '登録する'
   end
 
@@ -84,7 +84,6 @@ RSpec.describe 'Post', type: :system do
       it '一覧画面に遷移し、投稿内容が表示される' do
         FactoryBot.create(:tag, name: '牛肉', tag_category: tag_category1)
         FactoryBot.create(:second_tag, name: '鶏肉', tag_category: tag_category1)
-
         general_login
         visit new_post_path
         fill_in 'post_name', with: 'だしなし簡単！肉じゃがの基本レシピ作り方'
@@ -94,7 +93,7 @@ RSpec.describe 'Post', type: :system do
         click_button 'デフォルトのタグカテゴリー1'
         check '牛肉'
         check '鶏肉'
-        choose 'デフォルトのカテゴリー1'
+        page.all(".category_select input")[0].click
         click_on '登録する'
         expect(current_path).to eq posts_path
         expect(page).to have_content 'だしなし簡単！肉じゃがの基本レシピ作り方'
@@ -145,10 +144,10 @@ RSpec.describe 'Post', type: :system do
         click_button 'デフォルトのタグカテゴリー1'
         uncheck 'デフォルトのタグ1'
         check 'デフォルトのタグ2'
-        choose 'デフォルトのカテゴリー2'
+        page.all(".category_select input")[1].click
         click_on '更新する'
-        expect(current_path).to eq post_path(post1.id)
-        expect(page).to have_content '投稿内容を編集しました'
+        expect(current_path).to eq posts_path
+        expect(page).to have_content '投稿内容を編集しました!'
         expect(page).to have_content 'デフォルトの料理名1(編集済み)'
       end
     end
@@ -204,7 +203,6 @@ RSpec.describe 'Post', type: :system do
         expect(page).not_to have_content 'デフォルトの料理名2'
       end
     end
-
     context 'タグ検索をした場合' do
       it 'タグが含まれる料理のみが表示される' do
         visit index2_posts_path
@@ -222,7 +220,6 @@ RSpec.describe 'Post', type: :system do
       it '記録画面に遷移し、経験値が上がる' do
         FactoryBot.create(:tag, name: '牛肉', tag_category: tag_category1)
         FactoryBot.create(:second_tag, name: '鶏肉', tag_category: tag_category1)
-
         general_login
         test_post1
         expect(current_path).to eq posts_path
@@ -235,7 +232,6 @@ RSpec.describe 'Post', type: :system do
       it 'レベルが上がる' do
         FactoryBot.create(:tag, name: '牛肉', tag_category: tag_category1)
         FactoryBot.create(:second_tag, name: '鶏肉', tag_category: tag_category1)
-
         general_login
         test_post1
         test_post1

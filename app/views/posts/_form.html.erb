@@ -44,10 +44,12 @@
       <% end %>
     </div>
 
-    <% @categories.each do |category| %>
-      <%= form.radio_button :category_ids, category[:id], checked: post.categories.include?(category) %>
-      <%= form.label :category_ids, category.name %>
-    <% end %>
+    <div class="category_select">
+      <% @categories.each do |category| %>
+        <%= form.radio_button :category_ids, category[:id], checked: post.categories.include?(category) %>
+        <%= form.label :category_ids, category.name %>
+      <% end %>
+    </div>
 
     <div class="actions">
       <%= form.submit %>

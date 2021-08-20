@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_q, only: [:index2]
 
   before_action :check_user, only: [:edit]
-  skip_before_action :authenticate_user!, only: [:top, :index, :index2, :show]
+  skip_before_action :authenticate_user!, only: [:top, :index2, :show]
 
   def top
   end

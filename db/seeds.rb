@@ -61,7 +61,7 @@ end
 
 
 #tag_category
-tag_category_array = ["野菜", "肉", "魚介類", "ハム・ソーセージ・加工品", "米・餅・麺・パスタ", "卵・乳製品", "豆腐・納豆・大豆加工品", "漬物・佃煮・練物・こんにゃく", "乾物・海藻", "粉類・製菓材料", "缶詰・瓶詰・レトルト", "パン・ジャム・シリアル", "フルーツ", "調味料・油", "菓子・ナッツ", "アイス・冷凍食品", "飲料・酒・茶・コーヒー"]
+tag_category_array = ["肉類", "魚介類", "やさい", "やさい（根菜）", "フルーツ", "きのこ類", "ハム・ソーセージ・加工品", "米・パン・麺・もち", "卵・乳製品", "豆腐・大豆加工品", "漬物・練物・こんにゃく", "乾物・海藻", "粉類・製菓材料", "缶詰・レトルト", "菓子・ナッツ", "飲料・酒・茶", "調味料・油"]
 tag_category_array.each do |tag_category|
   TagCategory.create!(
     name: tag_category
@@ -89,7 +89,8 @@ end
 
 #level_setting
 CSV.foreach('db/csv/level_setting.csv', headers: true) do |row|
-  LevelSetting.create!(level: row['level'],
+  LevelSetting.create!(
+    level: row['level'],
     thresold: row['thresold']
   )
 end

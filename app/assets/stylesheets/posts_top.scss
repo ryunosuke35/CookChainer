@@ -1,22 +1,20 @@
 .post_top {
 
 
-
-
 // 上
   .top {
     position: relative;
     width: 100%;
 
 
-    // トップ画像
+    // 画像
     img {
       width: 100%;
       height: 100%;
     }
 
 
-    // アニメーション
+    // 文字アニメーション
     .container{
       position:absolute;
       top: 0;
@@ -28,7 +26,7 @@
         position: absolute;
         width: 100%;
         height: 300px;
-        top: 60px;
+        top: 2%;
       }
 
       .bound span{
@@ -37,12 +35,32 @@
         left: 0;
         right: 0;
         margin: auto;
-        font-size:5em;
+
+        // font-size:5em;
+
         font-weight:bold;
         color:#0091EA;
         text-align:center;
         width:100px;
         height:100px;
+
+
+        // スマホサイズ
+        @media (max-width: 767px) {
+          font-size:2em;
+        }
+        // タブレットサイズ
+        @media (min-width: 768px) and (max-width: 991px) {
+          font-size:3em;
+        }
+        // PCサイズ
+        @media (min-width: 992px) and (max-width: 1199px) {
+          font-size:4em;
+        }
+        // 大きなPCサイズ
+        @media (min-width: 1200px) {
+          font-size:5em;
+        }
       }
 
       /*アニメーション指定
@@ -62,8 +80,7 @@
       .bound span:nth-child(11){ left: 7.0em; animation: bound-anim 2s 0.9s infinite;}
       .bound span:nth-child(12){ left: 8.4em; animation: bound-anim 2s 1s infinite;}
 
-      /*アニメーションキーフレーム
-      小さいフォントサイズの場合はtopの数値も縮小すると飛び過ぎない*/
+      /*アニメーションキーフレーム*/
       @keyframes bound-anim {
         0%,100% {top: 0;transform: scale(1);}
         30% {top: -5%;}
@@ -76,23 +93,21 @@
     // スライダー
     .top_slider{
       position: absolute;
-      top: 29%;
-      width:30%;
+      top: 27%;
+      width:32%;
       text-align: center;
-      margin-left: 37%;
+      margin-left: 36%;
+
+      img {
+        width:100%;
+        height: 100%;
       }
 
-    .top_slider img {
-    	width:100%;
-      height: 100%;
-    }
-    .slick-arrow:before{
-      content:""!important;
+      .slick-arrow:before{
+        content:""!important;
+      }
     }
   }
-
-
-
 
 
 

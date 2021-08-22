@@ -55,10 +55,9 @@ class PostsController < ApplicationController
         if levelSetting.thresold <= user.exp_point
           user.update(level: user.level + 1)
         end
-
         redirect_to posts_path, notice: "投稿しました!"
       else
-        render :new, status: :unprocessable_entity
+        redirect_to new_post_path, notice: "料理名を入力してください"
       end
     else
       redirect_to new_post_path, notice: "食材は8つまで選択可能です"

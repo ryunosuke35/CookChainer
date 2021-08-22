@@ -49,7 +49,7 @@ class PostsController < ApplicationController
         if levelSetting.thresold <= user.exp_point
           user.update(level: user.level + 1)
         end
-        redirect_to posts_path, notice: "投稿しました!"
+        redirect_to user_path(current_user), notice: "投稿しました!"
       else
         redirect_to new_post_path, notice: "料理名を入力してください"
       end
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "投稿内容を編集しました!"
+      redirect_to user_path(current_user), notice: "投稿内容を編集しました!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -68,7 +68,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: "「#{@post.name}」を削除しました"
+    redirect_to user_path(current_user), notice: "「#{@post.name}」を削除しました"
   end
 
 

@@ -1,82 +1,65 @@
-<div class="post_index">
+<div class="contain row">
 
-  <%= render 'level' %>
-
-  <div class="posts">
-    <% @array = {} %>
-
-    <% if @posts.present? %>
-      <% @posts.each_with_index do |post, id| %>
-
-        <%= content_tag :div, id: "box_#{id}" do %>
-          <%# 料理名 %>
-          <% if post.categories.empty? %>
-            <%= link_to "#{post.name}", post_path(post) %>
-          <% else %>
-            <% post.categories.each do |category| %>
-              <% if category.name == "主菜" %>
-                <% name = "red" %>
-              <% elsif category.name == "副菜" %>
-                <% name = "green" %>
-              <% elsif category.name == "汁もの" %>
-                <% name = "yellow" %>
-              <% elsif category.name == "主食" %>
-                <% name = "purple" %>
-              <% elsif category.name == "デザート" %>
-                <% name = "blue" %>
-              <% elsif category.name == "その他"%>
-                <% name = "gray" %>
-              <% end %>
-              <%= content_tag :div, class: "#{name}" do %>
-                <%= link_to "#{post.name}", post_path(post) %>
-              <% end %>
-            <% end %>
-          <% end %>
-          <%# 画像とタグ %>
-          <%= image_tag post.image.url if post.image.present? %>
-          <div class="tag_list">
-            <% post.tags.each do |tag| %>
-              <li><%= tag.name %></li>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%# 計算 %>
-        <% if @posts[id + 1].present? %>
-          <% array1 = post.tags.pluck(:name) %>
-          <% array2 = @posts[id + 1].tags.pluck(:name) %>
-          <% array = array1.concat(array2) %>
-          <% array_uniq = array.uniq %>
-          <% if array.length != array_uniq.length %>
-            <% match = true %>
-          <% else %>
-            <% match = false %>
-          <% end %>
-          <% @array[id] = match %>
-          <% conecting_name_array = [] %>
-          <% array_uniq.each do |element| %>
-            <% if array.grep(element).size > 1 %>
-              <% conecting_name_array.push(element) %>
-            <% end %>
-          <% end %>
-          <% if conecting_name_array.present? %>
-          <div class="conect">
-            <p ><%= conecting_name_array[0] %></p>
-          </div>
-          <% else %>
-            <p class="not_conect">　</p>
-          <% end %>
-        <% end %>
-        <%= javascript_tag do %>
-          var data = <%= @array.to_json.html_safe %>
-        <% end %>
-
-      <% end %>
-    <% else %>
-      <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
+  <div class="title_search">
+    <%= search_form_for @q, url: posts_path do |f| %>
+      <%= f.search_field :name_cont,class: 'field', placeholder: "何かお探しですか？" %>
+      <%= f.submit '検索' %>
     <% end %>
   </div>
 
-  <%= render 'chains' %>
+<aside class = "side_menu col-md-2">
+  <div class="category_search">
+    <%= form_with(url:posts_path, local: true, method: :get) do |form| %>
+      <%= form.select("category_id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
+      <%= form.submit "検索する" %>
+    <% end %>
+  </div>
 
+
+
+
+    <ul id="accordion" class="accordion">
+      <li>
+        <% @tag_categories.each do |tag_category| %>
+          <div class="link"><i class="fa fa-paint-brush"></i><%= tag_category.name %><i class="fa fa-chevron-down"></i></div>
+          <ul class="submenu">
+            <% tag_category.tags.each do |tag| %>
+              <li><%= link_to tag.name, posts_path(tag_id: "#{tag.id}") %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </li>
+    </ul>
+
+  </aside>
+
+
+
+
+
+  <div class="cards col-md-10 row">
+    <% @posts.each do |post| %>
+      <section class="card col-md-3">
+        <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
+        <div class="card-content">
+          <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
+        </div>
+        <div class="card-link">
+          <% if user_signed_in? %>
+            <% if post.user_id != current_user.id %>
+              <% favorite = current_user.favorites.find_by(post_id: post.id) %>
+              <% if favorite.present? %>
+                <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
+              <% else %>
+                <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+
+
+  <%= paginate @posts %>
 </div>

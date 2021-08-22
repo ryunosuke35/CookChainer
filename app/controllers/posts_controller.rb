@@ -1,20 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :set_q, only: [:index2]
+  before_action :set_q, only: [:index]
 
   before_action :check_user, only: [:edit]
-  skip_before_action :authenticate_user!, only: [:top, :index2, :show]
+  skip_before_action :authenticate_user!, only: [:top, :index, :show]
 
   def top
   end
 
   def index
-    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC")
-    @next_level = LevelSetting.find_by(level: current_user.level + 1)
-    @now_level = LevelSetting.find_by(level: current_user.level)
-  end
-
-  def index2
     if params[:q].present?
       @posts = @q.result
     elsif params[:category_id].present?
@@ -27,6 +21,12 @@ class PostsController < ApplicationController
     @posts = @posts.order(created_at: "DESC").page(params[:page]).per(30)
     @categories = Category.all
     @tag_categories = TagCategory.all
+  end
+
+  def index2
+    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC")
+    @next_level = LevelSetting.find_by(level: current_user.level + 1)
+    @now_level = LevelSetting.find_by(level: current_user.level)
   end
 
   def show

@@ -51,6 +51,7 @@ body {
 .container {
   position: relative;
   min-height: 100vh;
+  max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0 0 120px;
@@ -87,16 +88,20 @@ footer{
 
 
 
-
 /* 入力フォーム */
-.cp_iptxt input[type='text'] {
+.cp_iptxt {
+  max-width: 400px;
+  width: 80%;
+}
+.cp_iptxt input {
+  text-align: center;
 	font: 15px/24px sans-serif;
 	box-sizing: border-box;
 	width: 100%;
 	letter-spacing: 1px;
-	padding-left: 8em;
+	padding-left: 5rem;
 }
-.cp_iptxt input[type='text']:focus {
+.cp_iptxt input:focus {
 	outline: none;
 }
 .ef {
@@ -121,7 +126,7 @@ footer{
 }
 .ef ~ label {
 	position: absolute;
-	z-index: -1;
+	z-index: 1;
 	top: 4px;
 	left: 0;
 	width: 100%;

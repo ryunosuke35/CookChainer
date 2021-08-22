@@ -5,19 +5,19 @@
   <div class="cp_iptxt">
     <%= f.text_field :name, autocomplete: "name", class:"ef" %>
     <%= f.label :name %>
-    <span class="focus_line"></span>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="cp_iptxt">
     <%= f.email_field :email, autocomplete: "email", class:"ef" %>
     <%= f.label :email %>
-    <span class="focus_line"></span>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="cp_iptxt">
     <%= f.password_field :password, autocomplete: "current-password", class:"ef" %>
     <%= f.label :password %>
-    <span class="focus_line"></span>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <% if devise_mapping.rememberable? %>

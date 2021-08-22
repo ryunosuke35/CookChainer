@@ -4,11 +4,10 @@
 
 
 .user_show {
-  // border: solid 1px black;
+  border: solid 1px black;
 
   position: relative;
-  height: 500px;
-  width:  800px;
+  max-width: 600px;
   margin: 50px auto;
 
   img {
@@ -37,11 +36,16 @@
   // }
 
   .profile {
+    border: solid 1px;
+    width: 80%;
+    height: 200px;
     margin: 0 auto;
-    width: 50%;
-    height: 20%;
+
   }
 }
+
+
+
 
 
 

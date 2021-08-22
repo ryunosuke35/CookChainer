@@ -1,107 +1,105 @@
 <div class="user_show">
+  <div class="user_info">
 
-  <% if @user.image.present? %>
-    <%= image_tag @user.image.url %>
-  <% else %>
-    <%= image_tag 'default_image.png' %>
-  <% end %>
-
-  <p class="lebel">レベル<%= @user.level %></p>
-  <p class="name">名前：<%= @user.name %></p>
-  <p class="profile">プロフィール<br><%= @user.profile %></p>
-
-  <% if @user == current_user %>
-    <p><%= link_to "お気に入り一覧", favorites_path %></p>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
-    <% if current_user.admin == true %>
-      <p><%= link_to "管理者画面", rails_admin_path %></p>
-    <% end %>
-    <p><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
-  <% end %>
-</div>
-
-
-
-
-<div class="post_index">
-
-  <%= render 'level' %>
-
-  <div class="posts">
-    <% @array = {} %>
-
-    <% if @posts.present? %>
-      <% @posts.each_with_index do |post, id| %>
-
-        <%= content_tag :div, id: "box_#{id}" do %>
-          <%# 料理名 %>
-          <% if post.categories.empty? %>
-            <%= link_to "#{post.name}", post_path(post) %>
-          <% else %>
-            <% post.categories.each do |category| %>
-              <% if category.name == "主菜" %>
-                <% name = "red" %>
-              <% elsif category.name == "副菜" %>
-                <% name = "green" %>
-              <% elsif category.name == "汁もの" %>
-                <% name = "yellow" %>
-              <% elsif category.name == "主食" %>
-                <% name = "purple" %>
-              <% elsif category.name == "デザート" %>
-                <% name = "blue" %>
-              <% elsif category.name == "その他"%>
-                <% name = "gray" %>
-              <% end %>
-              <%= content_tag :div, class: "#{name}" do %>
-                <%= link_to "#{post.name}", post_path(post) %>
-              <% end %>
-            <% end %>
-          <% end %>
-          <%# 画像とタグ %>
-          <%= image_tag post.image.url if post.image.present? %>
-          <div class="tag_list">
-            <% post.tags.each do |tag| %>
-              <li><%= tag.name %></li>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%# 計算 %>
-        <% if @posts[id + 1].present? %>
-          <% array1 = post.tags.pluck(:name) %>
-          <% array2 = @posts[id + 1].tags.pluck(:name) %>
-          <% array = array1.concat(array2) %>
-          <% array_uniq = array.uniq %>
-          <% if array.length != array_uniq.length %>
-            <% match = true %>
-          <% else %>
-            <% match = false %>
-          <% end %>
-          <% @array[id] = match %>
-          <% conecting_name_array = [] %>
-          <% array_uniq.each do |element| %>
-            <% if array.grep(element).size > 1 %>
-              <% conecting_name_array.push(element) %>
-            <% end %>
-          <% end %>
-          <% if conecting_name_array.present? %>
-          <div class="conect">
-            <p ><%= conecting_name_array[0] %></p>
-          </div>
-          <% else %>
-            <p class="not_conect">　</p>
-          <% end %>
-        <% end %>
-        <%= javascript_tag do %>
-          var data = <%= @array.to_json.html_safe %>
-        <% end %>
-
-      <% end %>
+    <% if @user.image.present? %>
+      <%= image_tag @user.image.url %>
     <% else %>
-      <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
+      <%= image_tag 'default_image.png' %>
+    <% end %>
+
+    <%= render 'level' %>
+    <p class="name">名前：<%= @user.name %></p>
+    <p class="profile">プロフィール<br><%= @user.profile %></p>
+
+    <% if @user == current_user %>
+      <p><%= link_to "お気に入り一覧", favorites_path %></p>
+      <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+      <% if current_user.admin == true %>
+        <p><%= link_to "管理者画面", rails_admin_path %></p>
+      <% end %>
+      <p><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
     <% end %>
   </div>
 
-  <%= render 'chains' %>
 
+
+  <div class="user_record">
+    <div class="posts">
+      <% @array = {} %>
+
+      <% if @posts.present? %>
+        <% @posts.each_with_index do |post, id| %>
+
+          <%= content_tag :div, id: "box_#{id}" do %>
+            <%# 料理名 %>
+            <% if post.categories.empty? %>
+              <%= link_to "#{post.name}", post_path(post) %>
+            <% else %>
+              <% post.categories.each do |category| %>
+                <% if category.name == "主菜" %>
+                  <% name = "red" %>
+                <% elsif category.name == "副菜" %>
+                  <% name = "green" %>
+                <% elsif category.name == "汁もの" %>
+                  <% name = "yellow" %>
+                <% elsif category.name == "主食" %>
+                  <% name = "purple" %>
+                <% elsif category.name == "デザート" %>
+                  <% name = "blue" %>
+                <% elsif category.name == "その他"%>
+                  <% name = "gray" %>
+                <% end %>
+                <%= content_tag :div, class: "#{name}" do %>
+                  <%= link_to "#{post.name}", post_path(post) %>
+                <% end %>
+              <% end %>
+            <% end %>
+            <%# 画像とタグ %>
+            <%= image_tag post.image.url if post.image.present? %>
+            <div class="tag_list">
+              <% post.tags.each do |tag| %>
+                <li><%= tag.name %></li>
+              <% end %>
+            </div>
+          <% end %>
+
+          <%# 計算 %>
+          <% if @posts[id + 1].present? %>
+            <% array1 = post.tags.pluck(:name) %>
+            <% array2 = @posts[id + 1].tags.pluck(:name) %>
+            <% array = array1.concat(array2) %>
+            <% array_uniq = array.uniq %>
+            <% if array.length != array_uniq.length %>
+              <% match = true %>
+            <% else %>
+              <% match = false %>
+            <% end %>
+            <% @array[id] = match %>
+            <% conecting_name_array = [] %>
+            <% array_uniq.each do |element| %>
+              <% if array.grep(element).size > 1 %>
+                <% conecting_name_array.push(element) %>
+              <% end %>
+            <% end %>
+            <% if conecting_name_array.present? %>
+            <div class="conect">
+              <p ><%= conecting_name_array[0] %></p>
+            </div>
+            <% else %>
+              <p class="not_conect">　</p>
+            <% end %>
+          <% end %>
+          <%= javascript_tag do %>
+            var data = <%= @array.to_json.html_safe %>
+          <% end %>
+
+        <% end %>
+      <% else %>
+        <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
+      <% end %>
+    </div>
+
+    <%= render 'chains' %>
+
+  </div>
 </div>

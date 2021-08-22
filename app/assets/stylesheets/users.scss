@@ -2,47 +2,181 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .user_show {
-  border: solid 1px black;
-
   position: relative;
-  max-width: 600px;
-  margin: 50px auto;
 
-  img {
-    // position: absolute;
-    // left:0;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 50px;
+  .user_info {
+    border: solid 1px black;
+    max-width: 500px;
+    margin: 50px auto;
+    position: absolute;
+    left: 0;
+    position: relative;
+
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 50px;
+    }
+
+    .level_display {
+      width: 50%;
+
+      .user_level {
+        float: left;
+        margin-right: 10px;
+      }
+      .exp_ratio {
+        float: left;
+        margin-right: 10px;
+      }
+      .exp_ratio2 {
+      }
+      .exp_bar {
+        clear: both;
+      }
+    }
+
+    .profile {
+      border: solid 1px;
+      width: 80%;
+      height: 200px;
+      margin: 0 auto;
+
+    }
   }
-  //
-  // p {
-  //   width: 400px;
-  //   font-size: 25px;
-  // }
-  //
-  // .name {
-  //   position: absolute;
-  //   top: 200px;
-  // }
-  //
-  // .email {
-  //   position: absolute;
-  //   top: 250px;
-  // }
 
-  .profile {
-    border: solid 1px;
-    width: 80%;
-    height: 200px;
-    margin: 0 auto;
 
+  .user_record {
+    position: relative;
+    text-align: center;
+    border: solid 2px #fff;
+
+
+    .chains {
+      position: absolute;
+      top: 100px;
+      right: 5%;
+      width: 20%;
+    }
+
+    .posts {
+      // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
+      @for $i from 0 through 100 {
+        #box_#{$i} {
+          position: relative;
+          width: 40%;
+          height: 208px;
+          margin: 50px auto;
+          font-weight: bold;
+          color: #d2b48c;
+          border: solid 6px;
+          border-radius: 20px;
+          box-shadow: 5px 3px 4px #ccc;
+          background-color: #fff;
+
+
+          .cooking_name {
+            width: 100%;
+            height: 20%;
+            margin: 0;
+            padding-top: 10px;
+            border-bottom: 1px solid red;
+            background-color: red;
+          }
+          %card_style {
+            height: 20%;
+            padding-top: 10px;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+          }
+          .red {
+            @extend %card_style;
+            background-color: #ffcccc;
+          }
+          .blue {
+            @extend %card_style;
+            background-color: #cefcff;
+          }
+          .yellow {
+            @extend %card_style;
+            background-color: #fff0ce;
+          }
+          .green {
+            @extend %card_style;
+            background-color: #e7ffce;
+          }
+          .purple {
+            @extend %card_style;
+            background-color: #ebccff;
+          }
+          .gray {
+            @extend %card_style;
+            background-color: #bebfc6;
+          }
+          img {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40%;
+            height: 80%;
+            object-fit: cover;
+            border-bottom-left-radius: 14px;
+          }
+          .tag_list {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60%;
+            height: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 16px;
+
+            li {
+              width: 90px;
+              height: 22px;
+              list-style: none;
+              margin: 0 13px 10px 13px;
+              border: solid 1px;
+              border-radius: 20px;
+              box-shadow: 1px 2px 3px #ccc;
+            }
+          }
+        }
+      }
+
+      .conect {
+        margin-left: 55%;
+        width: 100px;
+        height: 30px;
+        border: solid 1px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 3px #ccc;
+        background: linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);
+        opacity: 0.4;
+
+        p {
+          color: #black;
+          font-size: 20px;
+        }
+      }
+
+      .guide {
+        color: gray;
+        margin: 300px 0;
+      }
+    }
   }
+
+
 }
+
+
+
+
 
 
 

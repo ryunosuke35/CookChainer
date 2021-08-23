@@ -8,6 +8,7 @@
   .user_info {
     border: solid 1px black;
     max-width: 500px;
+    margin: 0;
     position: absolute;
     left: 0;
     position: relative;
@@ -16,7 +17,7 @@
       width: 150px;
       height: 150px;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: 10%;
       margin: 50px;
     }
 

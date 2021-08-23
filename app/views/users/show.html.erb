@@ -7,10 +7,27 @@
       <%= image_tag 'default_user_image.png' %>
     <% end %>
 
-    <%= render 'level' %>
+    <div class="level_display">
+      <% user = current_user %>
+      <div class="user_level">Lv.<%= user.level %></div>
+      <div class="exp_ratio"><%= user.exp_point %>/<%= @next_level.thresold %></div>
+      <div class="exp_ratio2">
+        <% a = @next_level.thresold - user.exp_point %>
+        <% b = @next_level.thresold - @now_level.thresold %>
+        <% exp_ratio = ((1 - a.to_f / b.to_f) * 100).round %>
+        <div><%= exp_ratio %>%</div>
+      </div>
+      <div class="exp_bar">
+        <div style="width: 80%;">
+          <div style="background-color: #808080; border-radius: 3px;">
+            <div style="background-color: #669eff; border-radius: 3px; height:13px; width:<%= exp_ratio %>%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <p class="name">名前：<%= @user.name %></p>
     <p class="profile">プロフィール<br><%= @user.profile %></p>
-
     <% if @user == current_user %>
       <p><%= link_to "お気に入り一覧", favorites_path %></p>
       <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
@@ -21,16 +38,14 @@
     <% end %>
   </div>
 
-
-
   <div class="user_record">
     <div class="posts">
       <% @array = {} %>
 
       <% if @posts.present? %>
         <% @posts.each_with_index do |post, id| %>
-
           <%= content_tag :div, id: "box_#{id}" do %>
+
             <%# 料理名 %>
             <% if post.categories.empty? %>
               <% name = "no_category" %>
@@ -97,14 +112,31 @@
           <%= javascript_tag do %>
             var data = <%= @array.to_json.html_safe %>
           <% end %>
-
         <% end %>
       <% else %>
         <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
       <% end %>
     </div>
 
-    <%= render 'chains' %>
+    <div class="chains">
+      <% chain_array = []
+      chain = 0
+      @array.each { |key, value|
+        if value
+          chain += 1
+        else
+          chain = 0
+        end
+        chain_array << chain
+      } %>
+      <div>
+        <% if chain_array.empty? %>
+          <h4>連鎖回数：0回</h4>
+        <% else %>
+          <h4>連鎖記録：<%= chain_array.max %>回</h4>
+        <% end %>
+      </div>
+    </div>
 
   </div>
 </div>

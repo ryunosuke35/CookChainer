@@ -116,6 +116,11 @@
             @extend %card_style;
             background-color: #bebfc6;
           }
+          .no_category {
+            @extend %card_style;
+            background-color: #fff;
+            border-bottom: solid 1px #998b7b;
+          }
           img {
             position: absolute;
             left: 0;

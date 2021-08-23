@@ -33,7 +33,7 @@
           <%= content_tag :div, id: "box_#{id}" do %>
             <%# 料理名 %>
             <% if post.categories.empty? %>
-              <%= link_to "#{post.name}", post_path(post) %>
+              <% name = "no_category" %>
             <% else %>
               <% post.categories.each do |category| %>
                 <% if category.name == "主菜" %>
@@ -49,11 +49,12 @@
                 <% elsif category.name == "その他"%>
                   <% name = "gray" %>
                 <% end %>
-                <%= content_tag :div, class: "#{name}" do %>
-                  <%= link_to "#{post.name}", post_path(post) %>
-                <% end %>
               <% end %>
             <% end %>
+            <%= content_tag :div, class: "#{name}" do %>
+              <%= link_to "#{post.name}", post_path(post) %>
+            <% end %>
+
             <%# 画像とタグ %>
             <% if post.image.present? %>
               <%= image_tag post.image.url %>

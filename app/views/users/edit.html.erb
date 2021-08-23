@@ -1,12 +1,12 @@
 <div class="user_edit">
-  
+
   <h3>プロフィール編集</h3>
 
   <div class="icon_image">
     <% if @user.image.present? %>
       <%= image_tag @user.image.url %>
     <% else %>
-      <%= image_tag 'default_image.png' %>
+      <%= image_tag 'default_user_image.png' %>
     <% end %>
   </div>
 

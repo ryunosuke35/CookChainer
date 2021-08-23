@@ -4,7 +4,7 @@
     <% if @user.image.present? %>
       <%= image_tag @user.image.url %>
     <% else %>
-      <%= image_tag 'default_image.png' %>
+      <%= image_tag 'default_user_image.png' %>
     <% end %>
 
     <%= render 'level' %>
@@ -55,7 +55,11 @@
               <% end %>
             <% end %>
             <%# 画像とタグ %>
-            <%= image_tag post.image.url if post.image.present? %>
+            <% if post.image.present? %>
+              <%= image_tag post.image.url %>
+            <% else %>
+              <%= image_tag 'default_cook_image.png' %>
+            <% end %>
             <div class="tag_list">
               <% post.tags.each do |tag| %>
                 <li><%= tag.name %></li>

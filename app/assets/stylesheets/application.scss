@@ -58,7 +58,7 @@ body {
 
   // スマホサイズ
   @media (max-width: 767px) {
-    min-width: 100%;
+    min-width: 100vw;
     color: red;
   }
 }

@@ -55,7 +55,17 @@ body {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0 0 120px;
+
+  // スマホサイズ
+  @media (max-width: 767px) {
+    min-width: 100%;
+    color: red;
+  }
 }
+
+
+
+
 
 header {
   border-bottom: 1px solid #d2b48c;

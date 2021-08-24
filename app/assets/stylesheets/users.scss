@@ -41,7 +41,7 @@
         height:13px;
       }
     }
-  
+
     img {
       float: left;
       width: 50%;
@@ -91,7 +91,7 @@
   .posts {
     float: right;
     min-width: 310px;
-    width: 60%;
+    width: 63%;
 
     position: relative;
     text-align: center;
@@ -99,12 +99,12 @@
     margin: 2.5%;
 
 
-
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-    @for $i from 0 through 100 {
+    @for $i from 0 through 10 {
       #box_#{$i} {
         position: relative;
-        width: 40%;
+        min-width: 290px;
+        width: 60%;
         height: 208px;
         margin: 50px auto;
         font-weight: bold;

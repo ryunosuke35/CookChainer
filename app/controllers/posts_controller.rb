@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    if post_params[:tag_ids].reject(&:blank?).count < 9
+    if post_params[:tag_ids].reject(&:blank?).count < 5
       @post = current_user.posts.build(post_params)
 
       if @post.save
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
         redirect_to new_post_path, notice: "料理名を入力してください"
       end
     else
-      redirect_to new_post_path, notice: "食材は8つまで選択可能です"
+      redirect_to new_post_path, notice: "食材は4つまで選択可能です"
     end
   end
 

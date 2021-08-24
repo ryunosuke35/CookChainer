@@ -1,20 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :set_q, only: [:index2]
+  before_action :set_q, only: [:index]
 
   before_action :check_user, only: [:edit]
-  skip_before_action :authenticate_user!, only: [:top, :index2, :show]
+  skip_before_action :authenticate_user!, only: [:top, :index, :show]
 
   def top
   end
 
   def index
-    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC").page(params[:page]).per(10)
-    @next_level = LevelSetting.find_by(level: current_user.level + 1)
-    @now_level = LevelSetting.find_by(level: current_user.level)
-  end
-
-  def index2
     if params[:q].present?
       @posts = @q.result
     elsif params[:category_id].present?
@@ -44,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    if post_params[:tag_ids].reject(&:blank?).count < 9
+    if post_params[:tag_ids].reject(&:blank?).count < 5
       @post = current_user.posts.build(post_params)
 
       if @post.save
@@ -55,18 +49,18 @@ class PostsController < ApplicationController
         if levelSetting.thresold <= user.exp_point
           user.update(level: user.level + 1)
         end
-        redirect_to posts_path, notice: "投稿しました!"
+        redirect_to user_path(current_user), notice: "投稿しました!"
       else
         redirect_to new_post_path, notice: "料理名を入力してください"
       end
     else
-      redirect_to new_post_path, notice: "食材は8つまで選択可能です"
+      redirect_to new_post_path, notice: "食材は4つまで選択可能です"
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "投稿内容を編集しました!"
+      redirect_to user_path(current_user), notice: "投稿内容を編集しました!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -74,7 +68,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: "「#{@post.name}」を削除しました"
+    redirect_to user_path(current_user), notice: "「#{@post.name}」を削除しました"
   end
 
 

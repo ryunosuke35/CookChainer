@@ -36,9 +36,13 @@
     <% end %>
   </div>
 
-  <div class="posts">
-    <% @array = {} %>
 
+  <div class="posts">
+    <div id="box">
+      <%= link_to '料理を投稿する', new_post_path %>
+    </div>
+
+    <% @array = {} %>
     <% if @posts.present? %>
       <% @posts.each_with_index do |post, id| %>
         <%= content_tag :div, id: "box_#{id}" do %>
@@ -113,25 +117,25 @@
     <% else %>
       <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
     <% end %>
-  </div>
 
-  <div class="chains">
-    <% chain_array = []
-    chain = 0
-    @array.each { |key, value|
-      if value
-        chain += 1
-      else
-        chain = 0
-      end
-      chain_array << chain
-    } %>
-    <div>
-      <% if chain_array.empty? %>
-        <h4>連鎖回数：0回</h4>
-      <% else %>
-        <h4>連鎖記録：<%= chain_array.max %>回</h4>
-      <% end %>
+    <div class="chains">
+      <% chain_array = []
+      chain = 0
+      @array.each { |key, value|
+        if value
+          chain += 1
+        else
+          chain = 0
+        end
+        chain_array << chain
+      } %>
+      <div>
+        <% if chain_array.empty? %>
+          <h4>連鎖回数：0回</h4>
+        <% else %>
+          <h4>連鎖記録：<%= chain_array.max %>回</h4>
+        <% end %>
+      </div>
     </div>
   </div>
 

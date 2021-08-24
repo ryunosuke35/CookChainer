@@ -1,7 +1,15 @@
 $(document).ready(function () {
 
-  Object.keys(data).forEach(function(key) {
+  new LeaderLine(
+  document.getElementById("box"),
+    document.getElementById("box_0"),{
+      color: '#696969',
+      endPlug: 'behind',
+      dash: {len: 5, gap: 9},
+    }
+  );
 
+  Object.keys(data).forEach(function(key) {
     num = parseInt(key) + 1;
 
     if (data[key]){

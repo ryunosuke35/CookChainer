@@ -3,11 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user_show {
-  height: 50px;
 
   .user_info {
     border: solid 1px black;
-    float: left;
     width: 310px;
     height: 450px;
     margin: 2.5%;
@@ -91,7 +89,6 @@
 
   .posts {
     position: relative;
-    float: right;
     min-width: 310px;
     width: 50%;
     text-align: center;

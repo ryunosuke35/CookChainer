@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
 
   def show
+    @posts = Post.where(user_id: current_user.id).order(created_at: "DESC")
+    @next_level = LevelSetting.find_by(level: current_user.level + 1)
+    @now_level = LevelSetting.find_by(level: current_user.level)
   end
 
   def edit

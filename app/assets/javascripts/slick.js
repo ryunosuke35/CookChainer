@@ -11,6 +11,8 @@ $(function() {
   });
 
   $('.sliders').slick({
+
+
     autoplay: true,
     autoplaySpeed: 3000,
     speed: 1000,
@@ -19,6 +21,22 @@ $(function() {
     pauseOnHover: false,
     slidesToShow: 3,
     slidesToScroll: 1,
+
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+    ]
+
   });
   $('.slick-dots li').on('mouseover', function() {
   $('.sliders').slick('goTo', $(this).index());

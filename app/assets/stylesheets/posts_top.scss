@@ -1,22 +1,20 @@
 .post_top {
 
 
-
-
 // 上
   .top {
     position: relative;
     width: 100%;
 
 
-    // トップ画像
+    // 画像
     img {
       width: 100%;
       height: 100%;
     }
 
 
-    // アニメーション
+    // 文字アニメーション
     .container{
       position:absolute;
       top: 0;
@@ -28,7 +26,7 @@
         position: absolute;
         width: 100%;
         height: 300px;
-        top: 60px;
+        top: 2%;
       }
 
       .bound span{
@@ -37,12 +35,32 @@
         left: 0;
         right: 0;
         margin: auto;
-        font-size:5em;
+
+        // font-size:5em;
+
         font-weight:bold;
         color:#0091EA;
         text-align:center;
         width:100px;
         height:100px;
+
+
+        // スマホサイズ
+        @media (max-width: 767px) {
+          font-size:2em;
+        }
+        // タブレットサイズ
+        @media (min-width: 768px) and (max-width: 991px) {
+          font-size:3em;
+        }
+        // PCサイズ
+        @media (min-width: 992px) and (max-width: 1199px) {
+          font-size:4em;
+        }
+        // 大きなPCサイズ
+        @media (min-width: 1200px) {
+          font-size:5em;
+        }
       }
 
       /*アニメーション指定
@@ -62,8 +80,7 @@
       .bound span:nth-child(11){ left: 7.0em; animation: bound-anim 2s 0.9s infinite;}
       .bound span:nth-child(12){ left: 8.4em; animation: bound-anim 2s 1s infinite;}
 
-      /*アニメーションキーフレーム
-      小さいフォントサイズの場合はtopの数値も縮小すると飛び過ぎない*/
+      /*アニメーションキーフレーム*/
       @keyframes bound-anim {
         0%,100% {top: 0;transform: scale(1);}
         30% {top: -5%;}
@@ -76,23 +93,21 @@
     // スライダー
     .top_slider{
       position: absolute;
-      top: 29%;
-      width:30%;
+      top: 27%;
+      width:32%;
       text-align: center;
-      margin-left: 37%;
+      margin-left: 36%;
+
+      img {
+        width:100%;
+        height: 100%;
       }
 
-    .top_slider img {
-    	width:100%;
-      height: 100%;
-    }
-    .slick-arrow:before{
-      content:""!important;
+      .slick-arrow:before{
+        content:""!important;
+      }
     }
   }
-
-
-
 
 
 
@@ -104,7 +119,7 @@
   .content {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 550px;
     background-color: #f9f5ea;
     font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
     padding: 0;
@@ -113,84 +128,73 @@
     .text {
       position: absolute;
       left: 0;
-      top: 100px;
+      top: 15%;
+      width: 50%;
       box-sizing: border-box;
-      height: 500px;
       padding: 0;
+    }
 
+    .text p {
+      font-size: 2rem;
+      margin: 30px;
+    }
 
-      p {
-        font-size: 25px;
-        margin: 30px;
-
-        strong {
-          font-size: 40px;
-          color:#0091EA;
-          margin: 10px;
-        }
-
-      }
+    .text p strong {
+      font-size: 40px;
+      color:#0091EA;
+      margin: 10px;
     }
 
 
-
-    .button {
+    .buttons {
       position: absolute;
       right: 0;
-      top: 100px;
+      top: 12%;
+      width: 50%;
       box-sizing: border-box;
-      height: 500px;
       padding: 0;
+    }
 
-      a {
-        margin: 20px;
-      }
+    .buttons a {
+      margin: 25px;
+    }
 
-      .button10 a {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        margin: 0 auto;
-        padding: 1em 2em;
-        width: 300px;
-        color: #333;
-        font-size: 18px;
-        font-weight: 700;
-        background-color: #f7f6f4;
-        border-radius: 50vh;
-        transition: 0.3s;
-      }
+    .buttons .btn-sticky {
+      display: inline-block;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      background: #f7f7f7;
+      border-left: solid 6px #ff7c5c;/*左線*/
+      color: #4c4c4c;/*文字色*/
+      font-weight: bold;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    }
 
-      .button10 a::before {
-        content: '';
+    .buttons .btn-sticky:active {
+      box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+      transform: translateY(2px);
+    }
+
+
+    // スマホサイズ
+    @media (max-width: 767px) {
+      height: 900px;
+
+      .text {
         position: absolute;
-        top: -5px;
-        left: -5px;
-        width: calc(100% - 4px);
-        height: calc(100% - 4px);
-        border: 2px solid #ff8c00;
-        border-radius: 50vh;
-        transition: 0.2s;
+        top: 5%;
+        width: 100%;
       }
 
-      .button10 a::after {
-        content: '';
-        width: 5px;
-        height: 5px;
-        border-top: 3px solid #333333;
-        border-right: 3px solid #333333;
-        transform: rotate(45deg);
+      .text p {
+        font-size: 1.7rem;
+        margin: 30px;
       }
 
-      .button10 a:hover::before {
-        top: 0;
-        left: 0;
-      }
-
-      .button10 a:hover {
-        text-decoration: none;
-        background-color: #ffe4bf;
+      .buttons {
+        position: absolute;
+        top: 50%;
+        width: 100%;
       }
     }
   }
@@ -200,18 +204,6 @@
 
 
 // 下
-  // .slick-dots {
-  //   li {
-  //     font-size: 20px !important;
-  //     button:before {
-  //       content: "★" !important;
-  //       font-size: 14px !important;
-  //       color: rgb(60, 60, 60) !important;
-  //     }
-  //   }
-  // }
-
-
   .sliders {
   	width: 90%;
   	margin:0 auto;
@@ -230,23 +222,4 @@
       }
     }
   }
-
-
-  .btn-sticky {
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    background: #f7f7f7;
-    border-left: solid 6px #ff7c5c;/*左線*/
-    color: #4c4c4c;/*文字色*/
-    font-weight: bold;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  }
-  .btn-sticky:active {
-    box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
-    transform: translateY(2px);
-  }
-
-
-
 }

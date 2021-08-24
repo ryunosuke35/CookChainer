@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -23,16 +23,16 @@
         <% if user_signed_in? %>
           <%= link_to 'マイページ', user_path(current_user.id) %>
           <%= link_to '投稿', new_post_path %>
-          <%= link_to "記録", posts_path %>
-          <%= link_to "一覧", index2_posts_path %>
+          <%= link_to "一覧", posts_path %>
           <% if current_user.admin? %>
             <%= link_to "カテゴリ", categories_path %>
             <%= link_to "タグ", tags_path %>
             <%= link_to "タグカテゴリ", tag_categories_path %>
+            <%= link_to "管理者画面", rails_admin_path %>
           <% end %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to "一覧", index2_posts_path %>
+          <%= link_to "一覧", posts_path %>
           <%= link_to "アカウント作成", new_user_registration_path %>
           <%= link_to "ログイン", new_user_session_path %>
         <% end %>

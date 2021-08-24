@@ -6,6 +6,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :authenticate_user!, only: [:new, :create]
 
 
+  def after_sign_up_path_for(resource)
+    user_path(current_user)
+  end
+
   # GET /resource/sign_up
   # def new
   #   super

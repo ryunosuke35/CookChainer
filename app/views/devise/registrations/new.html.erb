@@ -1,26 +1,30 @@
+<%= render "devise/shared/error_messages", resource: resource %>
 <h3><%= t('.sign_up') %></h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="cp_iptxt">
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", class:"ef" %>
-    <%= f.label :name %><br/>
+    <%= f.text_field :name, autocomplete: "name", class:"form-control", class:"ef" %>
+    <%= f.label :name %>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="cp_iptxt">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", class:"ef", style: "width: 400px; padding-left: 122px;" %>
-    <%= f.label :email %><br/>
+    <%= f.email_field :email, autocomplete: "email", class:"form-control", class:"ef" %>
+    <%= f.label :email %>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="cp_iptxt">
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", class:"ef", style: "width: 400px; padding-left: 122px;" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", class:"ef" %>
     <%= f.label :password %>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="cp_iptxt">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", class:"ef", style: "width: 400px; padding-left: 122px;" %>
-    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", class:"ef" %>
+    <%= f.label :password_confirmation %>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="actions">

@@ -1,65 +1,64 @@
 <div class="contain row">
 
-  <div class="title_search">
-    <%= search_form_for @q, url: posts_path do |f| %>
-      <%= f.search_field :name_cont,class: 'field', placeholder: "何かお探しですか？" %>
-      <%= f.submit '検索' %>
-    <% end %>
-  </div>
-
-<aside class = "side_menu col-md-2">
-  <div class="category_search">
-    <%= form_with(url:posts_path, local: true, method: :get) do |form| %>
-      <%= form.select("category_id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
-      <%= form.submit "検索する" %>
-    <% end %>
-  </div>
-
-
-
-
-    <ul id="accordion" class="accordion">
-      <li>
-        <% @tag_categories.each do |tag_category| %>
-          <div class="link"><i class="fa fa-paint-brush"></i><%= tag_category.name %><i class="fa fa-chevron-down"></i></div>
-          <ul class="submenu">
-            <% tag_category.tags.each do |tag| %>
-              <li><%= link_to tag.name, posts_path(tag_id: "#{tag.id}") %></li>
-            <% end %>
-          </ul>
+  <aside class = "side_menu col-md-3">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <div class="category_search">
+        <%= form_with(url:posts_path, local: true, method: :get) do |form| %>
+          <%= form.select("category_id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
+          <%= form.submit "検索する" %>
         <% end %>
-      </li>
-    </ul>
-
+      </div>
+      <ul id="accordion" class="accordion">
+        <li>
+          <% @tag_categories.each do |tag_category| %>
+            <div class="link"><%= tag_category.name %><i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+              <% tag_category.tags.each do |tag| %>
+                <li><%= link_to tag.name, posts_path(tag_id: "#{tag.id}") %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-1">
+    </div>
   </aside>
 
-
-
-
-
-  <div class="cards col-md-10 row">
-    <% @posts.each do |post| %>
-      <section class="card col-md-3">
-        <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
-        <div class="card-content">
-          <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
-        </div>
-        <div class="card-link">
-          <% if user_signed_in? %>
-            <% if post.user_id != current_user.id %>
-              <% favorite = current_user.favorites.find_by(post_id: post.id) %>
-              <% if favorite.present? %>
-                <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
-              <% else %>
-                <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
+  <div class="cards col-md-9 row">
+    <div class="col-md-11">
+      <div class="title_search">
+        <%= search_form_for @q, url: posts_path do |f| %>
+          <%= f.search_field :name_cont,class: 'field', placeholder: "何かお探しですか？" %>
+          <%= f.submit '検索' %>
+        <% end %>
+      </div>
+      <% @posts.each do |post| %>
+        <section class="card col-md-3">
+          <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
+          <div class="card-content">
+            <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
+          </div>
+          <div class="card-link">
+            <% if user_signed_in? %>
+              <% if post.user_id != current_user.id %>
+                <% favorite = current_user.favorites.find_by(post_id: post.id) %>
+                <% if favorite.present? %>
+                  <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
+                <% else %>
+                  <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
-      </section>
-    <% end %>
+          </div>
+        </section>
+      <% end %>
+    </div>
+    <div class="col-md-1">
+    </div>
   </div>
-
 
   <%= paginate @posts %>
 </div>

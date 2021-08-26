@@ -151,7 +151,10 @@ Resources
 
 .side_menu {
   margin: 0;
-  padding: 0
+
+  .accordion .link {
+    padding-left: 0;
+  }
 }
 .title_search {
   margin-top: 13px;
@@ -164,7 +167,10 @@ Resources
   margin: 30px;
 }
 
-
+.accordion li:last-child .link {
+    padding-left: 0;
+    border-bottom: solid thin #adadad;
+}
 
 
 
@@ -173,11 +179,12 @@ Resources
 
 .cards {
   margin: 0;
+
 }
 .card {
   width: 22%;
   height: 340px;
-  background: #F7F7F7;
+  background-color: #F7F7F7;
   border-radius: 5px;
   box-shadow: 0 2px 10px #ccc;
   margin: 13px;

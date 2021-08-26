@@ -96,8 +96,6 @@
     margin-top: 30px;
 
 
-
-
     #box {
       min-width: 290px;
       width: 70%;
@@ -112,7 +110,7 @@
     }
 
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-    @for $i from 0 through 10 {
+    @for $i from 0 through 100 {
       #box_#{$i} {
         position: relative;
         min-width: 290px;
@@ -246,12 +244,14 @@
 
 .user_edit {
   img {
-    // position: absolute;
-    // left:0;
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
+  }
+
+  p {
+    margin: 20px 0 50px 40%;
   }
 }
 

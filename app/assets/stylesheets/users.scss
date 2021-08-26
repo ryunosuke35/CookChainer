@@ -5,12 +5,8 @@
 .user_show {
 
   .user_info {
-    border: solid 1px black;
-    width: 310px;
-    height: 450px;
-    margin: 2.5%;
+    margin-top: 60px;
     position: relative;
-
 
     .level_display {
       max-width: 200px;
@@ -42,20 +38,20 @@
     }
 
     img {
-      float: left;
-      width: 50%;
+      position: absolute;
+      top: 65px;
+      left: 10%;
+      width: 40%;
       object-fit: cover;
-      margin: 0 15px 40px 15px;
-      padding: 15px;
     }
+
 
     .name {
       position: absolute;
-      top: 190px;
-      text-align: center;
+      top: 200px;
       width: 50%;
-      margin: 0 15px 0 15px;
       font-size: 20px;
+      margin: 0;
     }
 
     .edit {
@@ -75,25 +71,30 @@
     }
 
     .delete {
+      margin: 0;
+      position: absolute;
+      top: 384px;
+      left: 44%;
     }
 
     .profile {
-      clear: both;
-      border: solid 1px;
+      position: absolute;
+      top: 220px;
+      left: 0;
+      border: solid 1px #a0a0a0;
       width: 90%;
-      height: 150px;
+      height: 120px;
       margin: 20px 5%;
+      border-radius: 5px;
     }
   }
 
 
   .posts {
     position: relative;
-    min-width: 310px;
-    width: 50%;
     text-align: center;
-    border: solid 1px black;
-    margin: 2.5%;
+    margin-top: 30px;
+
 
 
 
@@ -216,7 +217,7 @@
 
     .guide {
       color: gray;
-      margin: 300px 0;
+      padding-top: 50px;
     }
 
     .chains {

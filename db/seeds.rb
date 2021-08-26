@@ -9,28 +9,27 @@
 
 require "csv"
 
-
 #user
 user = User.create!(
-  name: "松村龍之介",
+  name: "管理者",
   email: "matsumura@gmail.com",
   password: "asdf123",
   password_confirmation:"asdf123",
-  profile: "こんにちは！管理者の松村龍之介です。",
+  profile: "こんにちは！これは管理者のアカウントです。",
   admin: true,
   public_or_private: true
 )
-(2..9).each do |n|
-  User.create!(
-    name: "松村龍之介#{n}",
-    email: "matsumura#{n}@gmail.com",
-    password: "asdf123",
-    password_confirmation:"asdf123",
-    profile: "こんにちは！一般ユーザーの松村龍之介#{n}です。",
-    admin: false,
-    public_or_private: true
-  )
-end
+# (2..9).each do |n|
+#   User.create!(
+#     name: "松村龍之介#{n}",
+#     email: "matsumura#{n}@gmail.com",
+#     password: "asdf123",
+#     password_confirmation:"asdf123",
+#     profile: "こんにちは！一般ユーザーの松村龍之介#{n}です。",
+#     admin: false,
+#     public_or_private: true
+#   )
+# end
 
 
 # #post
@@ -61,7 +60,7 @@ end
 
 
 #tag_category
-tag_category_array = ["肉類", "魚介類", "やさい", "やさい（根菜）", "フルーツ", "きのこ類", "ハム・ソーセージ・加工品", "米・パン・麺・もち", "卵・乳製品", "豆腐・大豆加工品", "漬物・練物・こんにゃく", "乾物・海藻", "粉類・製菓材料", "缶詰・レトルト", "菓子・ナッツ", "飲料・酒・茶", "調味料・油"]
+tag_category_array = ["肉類", "魚介類", "野菜", "野菜（根菜）", "フルーツ", "きのこ類", "ハム・ソーセージ・加工品", "米・パン・麺・もち", "卵・乳製品", "豆腐・大豆加工品", "漬物・練物・こんにゃく", "乾物・海藻", "粉類・製菓材料", "缶詰・レトルト", "菓子・ナッツ", "飲料・酒・茶", "調味料・油"]
 tag_category_array.each do |tag_category|
   TagCategory.create!(
     name: tag_category

@@ -8,14 +8,14 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     user.update(admin: false)
     sign_in user
-    redirect_to index2_posts_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to posts_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def admin_guest_sign_in
     user = User.admin_guest
     sign_in user
     user.update(admin: true)
-    redirect_to index2_posts_path, notice: '管理者としてログインしました。'
+    redirect_to posts_path, notice: '管理者としてログインしました。'
   end
 
   def after_sign_in_path_for(resource)

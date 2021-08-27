@@ -5,7 +5,7 @@
 .user_show {
 
   .user_info {
-    margin-top: 60px;
+    margin: 60px auto;
     position: relative;
 
     .level_display {
@@ -38,22 +38,18 @@
     }
 
     img {
-      position: absolute;
-      top: 65px;
-      left: 10%;
       width: 40%;
       height: 32%;
       border-radius: 50%;
       object-fit: cover;
+      margin: 20px;
     }
 
 
     .name {
-      position: absolute;
-      top: 200px;
       width: 50%;
       font-size: 20px;
-      margin: 0;
+      margin: 0 auto;
     }
 
     .edit {
@@ -89,6 +85,84 @@
       margin: 20px 5%;
       border-radius: 5px;
     }
+
+
+
+
+    // スマホサイズ
+    @media (max-width: 767px) {
+      width: 70%;
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+      .level_display {
+        width: 170px;
+        font-size: 14px;
+      }
+
+
+
+
+    }
+    // タブレットサイズ
+    @media (min-width: 768px) and (max-width: 991px) {
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+      .level_display {
+        width: 95px;
+        font-size: 14px;
+
+        .user_level {
+          margin-right: 0;
+        }
+        .exp_ratio {
+          margin-right: 0;
+        }
+      }
+    }
+    // PCサイズ
+    @media (min-width: 992px) and (max-width: 1199px) {
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+      .level_display {
+        width: 75px;
+        font-size: 12px;
+
+        .user_level {
+          margin-right: 0;
+        }
+        .exp_ratio {
+          margin-right: 0;
+        }
+      }
+
+
+    }
+    // 大きなPCサイズ
+    @media (min-width: 1200px) {
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+      .level_display {
+        width: 129px;
+      }
+
+    }
+
+
+
+
+
   }
 
 
@@ -97,10 +171,15 @@
     text-align: center;
     margin-top: 30px;
 
+    // スマホサイズ
+    @media (max-width: 767px) {
+    }
+
+
 
     #box {
       min-width: 290px;
-      width: 70%;
+      width: 80%;
       height: 120px;
       margin: 30px auto 80px;
       color: #d2b48c;
@@ -116,7 +195,7 @@
       #box_#{$i} {
         position: relative;
         min-width: 290px;
-        width: 70%;
+        width: 80%;
         height: 208px;
         margin: 50px auto;
         font-weight: bold;
@@ -218,12 +297,37 @@
     .guide {
       color: gray;
       padding-top: 50px;
+
+      // スマホサイズ
+      @media (max-width: 767px) {
+        font-size: 25px;
+        padding: 0;
+      }
+      // タブレットサイズ
+      @media (min-width: 768px) and (max-width: 991px) {
+        font-size: 30px;
+      }
     }
 
     .chains {
       position: absolute;
       top: 100px;
       left: 42%;
+
+      // スマホサイズ
+      @media (max-width: 767px) {
+        top: 74px;
+        left: 37%;
+      }
+
+      // タブレットサイズ
+      @media (min-width: 768px) and (max-width: 991px) {
+        top: 76px;
+        left: 39%;
+        p {
+          color: blue;
+        }
+      }
     }
 
     .chains h4 {

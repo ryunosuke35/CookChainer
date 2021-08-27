@@ -52,12 +52,6 @@ body {
   min-height: 100vh;
   width: 100vw;
   padding: 0 0 120px;
-
-  // スマホサイズ
-  @media (max-width: 767px) {
-    min-width: 100vw;
-    color: red;
-  }
 }
 
 

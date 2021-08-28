@@ -40,7 +40,11 @@
 
       <% @posts.each do |post| %>
         <section class="card col-lg-3 col-md-3 col-sm-4">
-          <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
+          <% if post.image.present? %>
+            <%= image_tag post.image.url, class: "card-img" %>
+          <% else %>
+            <%= image_tag 'default_cook_image.png', class: "card-img" %>
+          <% end %>
           <div class="card-content">
             <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
           </div>

@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-    @posts = @posts.order(created_at: "DESC").page(params[:page]).per(30)
+    @posts = @posts.order(created_at: "ASC").page(params[:page]).per(30)
     @categories = Category.all
     @tag_categories = TagCategory.all
   end

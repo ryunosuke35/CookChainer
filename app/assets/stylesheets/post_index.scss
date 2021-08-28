@@ -180,6 +180,58 @@ Resources
 .cards {
   margin: 0;
 
+  .cards_right {
+    // スマホサイズ
+    @media (max-width: 767px) {
+      img {
+        width: 42%;
+        height: 138px;
+        margin: 10px;
+        float: left;
+        border-radius: 5px;
+      }
+      .card {
+        width: 80%;
+        margin: 10px auto;
+        height: 158px;
+      }
+      .card-link {
+        border-top: 1px solid #F7F7F7;
+      }
+    }
+    // タブレットサイズ
+    @media (min-width: 768px) and (max-width: 991px) {
+      img {
+        width: 84%;
+        height: 170px;
+      }
+      .card {
+        margin: 1.1%;
+        width: 31%;
+      }
+    }
+    // PCサイズ
+    @media (min-width: 992px) and (max-width: 1199px) {
+      img {
+        width: 84%;
+        height: 170px;
+      }
+      .card {
+        margin: 1.5%;
+      }
+    }
+    // 大きなPCサイズ
+    @media (min-width: 1200px) {
+      img {
+        width: 84%;
+        height: 170px;
+      }
+      .card {
+        margin: 1.5%;
+      }
+    }
+  }
+
 }
 .card {
   width: 22%;
@@ -192,8 +244,6 @@ Resources
 }
 .card-img {
   border-radius: 5px 5px 0 0;
-  width: 170px;
-  height: 170px;
   object-fit: cover;
   margin-top: 14px;
 }

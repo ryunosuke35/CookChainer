@@ -1,6 +1,6 @@
 <div class="contain row">
 
-  <aside class = "side_menu col-md-3">
+  <aside class = "side_menu col-lg-3 col-md-3 col-sm-3">
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
@@ -27,16 +27,19 @@
     </div>
   </aside>
 
-  <div class="cards col-md-9 row">
-    <div class="col-md-11">
+  <div class="cards col-lg-9 col-md-9 col-sm-9 row">
+
+    <div class="cards_right col-lg-11 col-md-12 col-sm-12 row">
+
       <div class="title_search">
         <%= search_form_for @q, url: posts_path do |f| %>
           <%= f.search_field :name_cont,class: 'field', placeholder: "何かお探しですか？" %>
           <%= f.submit '検索' %>
         <% end %>
       </div>
+
       <% @posts.each do |post| %>
-        <section class="card col-md-3">
+        <section class="card col-lg-3 col-md-3 col-sm-4">
           <%= image_tag post.image.url, class: "card-img" if post.image.present?%>
           <div class="card-content">
             <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
@@ -53,8 +56,10 @@
           </div>
         </section>
       <% end %>
+
     </div>
-    <div class="col-md-1">
+
+    <div class=" col-lg-1">
     </div>
   </div>
 

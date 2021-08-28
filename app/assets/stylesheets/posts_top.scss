@@ -47,7 +47,7 @@
 
         // スマホサイズ
         @media (max-width: 767px) {
-          font-size:2.4em;
+          font-size:2.0em;
         }
         // タブレットサイズ
         @media (min-width: 768px) and (max-width: 991px) {
@@ -174,6 +174,10 @@
 
     .buttons a {
       margin: 25px;
+      // スマホサイズ
+      @media (max-width: 767px) {
+        margin: 18px;
+      }
     }
 
     .buttons .btn-sticky {

@@ -43,7 +43,7 @@
           <% if post.image.present? %>
             <%= image_tag post.image.url, class: "card-img" %>
           <% else %>
-            <%= image_tag 'default_cook_image.png', class: "card-img" %>
+            <%= image_tag 'default_cook_image2.png', class: "card-img" %>
           <% end %>
           <div class="card-content">
             <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>

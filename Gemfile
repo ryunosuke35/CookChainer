@@ -26,6 +26,9 @@ gem 'kaminari'
 
 gem 'ransack'
 
+gem 'fog-aws'
+gem 'dotenv-rails'
+
 
 
 gem 'bootsnap', '>= 1.1.0', require: false

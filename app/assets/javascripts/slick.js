@@ -8,11 +8,10 @@ $(function() {
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false
   });
 
   $('.sliders').slick({
-
-
     autoplay: true,
     autoplaySpeed: 3000,
     speed: 1000,

@@ -1,6 +1,6 @@
 $(function() {
 
-  $('.top_slider').slick({
+  $('.post_top .top .slider').slick({
     autoplay: true,
     autoplaySpeed: 2000,
     speed: 1000,
@@ -11,7 +11,7 @@ $(function() {
     arrows: false,
   });
 
-  $('.usage').slick({
+  $('.post_top .usage_slider').slick({
     autoplay: true,
     autoplaySpeed: 6000,
     speed: 2000,
@@ -35,9 +35,4 @@ $(function() {
       },
     ]
   });
-
-  $('.slick-dots li').on('mouseover', function() {
-    $('.sliders').slick('goTo', $(this).index());
-  });
-
 });

@@ -15,7 +15,7 @@
 
 
     // 文字アニメーション
-    .container{
+    .title{
       position:absolute;
       top: 0;
       width:100%;
@@ -91,7 +91,7 @@
 
 
     // スライダー
-    .top_slider{
+    .slider{
       position: absolute;
       top: 27%;
       width:32%;
@@ -104,7 +104,6 @@
       }
     }
   }
-
 
 
 
@@ -221,7 +220,7 @@
 
 
 // 下
-  .usage {
+  .usage_slider {
   	width: 90%;
   	margin:0 auto;
     padding: 0px;

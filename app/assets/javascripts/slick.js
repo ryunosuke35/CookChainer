@@ -8,19 +8,18 @@ $(function() {
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false
+    arrows: false,
   });
 
-  $('.sliders').slick({
+  $('.usage').slick({
     autoplay: true,
-    autoplaySpeed: 3000,
-    speed: 1000,
-    dots: true,
+    autoplaySpeed: 6000,
+    speed: 2000,
     infinite: true,
-    pauseOnHover: false,
+    pauseOnHover: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-
+    dots: true,
     responsive: [
       {
         breakpoint: 991,
@@ -35,10 +34,10 @@ $(function() {
         }
       },
     ]
-
   });
+
   $('.slick-dots li').on('mouseover', function() {
-  $('.sliders').slick('goTo', $(this).index());
+    $('.sliders').slick('goTo', $(this).index());
   });
 
 });

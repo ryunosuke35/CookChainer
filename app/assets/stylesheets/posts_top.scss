@@ -221,7 +221,7 @@
 
 // 下
   .usage_slider {
-  	width: 90%;
+  	width: 80%;
   	margin:0 auto;
     padding: 0px;
 
@@ -237,5 +237,17 @@
         color: #6b6b6b;
       }
     }
+
+    .slick-prev::before,
+    .slick-next::before{
+      color: #000;
+      font-size: 40px;
+    }
+
+    .slick-prev {
+      left: -45px;
+    }
+
+
   }
 }

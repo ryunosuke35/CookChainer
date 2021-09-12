@@ -14,7 +14,7 @@ $(function() {
   $('.post_top .usage_slider').slick({
     autoplay: true,
     autoplaySpeed: 6000,
-    speed: 2000,
+    speed: 1500,
     infinite: true,
     pauseOnHover: true,
     slidesToShow: 3,

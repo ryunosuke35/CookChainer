@@ -43,26 +43,28 @@
         <h1 class="guide">投稿お待ちしています！</h1>
       <% else %>
         <% @posts.each do |post| %>
-          <section class="card col-lg-3 col-md-3 col-sm-4">
-            <% if post.image.present? %>
-              <%= image_tag post.image.url, class: "card-img" %>
-            <% else %>
-              <%= image_tag 'default_cook_image2.png', class: "card-img" %>
-            <% end %>
-            <div class="card-content">
-              <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
-            </div>
-            <div class="card-link">
-              <% if user_signed_in? %>
-                <% favorite = current_user.favorites.find_by(post_id: post.id) %>
-                <% if favorite.present? %>
-                  <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
-                <% else %>
-                  <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
-                <% end %>
+          <%= link_to post_path(post) do %>
+            <div class="card col-lg-3 col-md-3 col-sm-4">
+              <% if post.image.present? %>
+                <%= image_tag post.image.url, class: "card-img" %>
+              <% else %>
+                <%= image_tag 'default_cook_image2.png', class: "card-img" %>
               <% end %>
+              <div class="card-content">
+                <h1 class="card-title"><%= post.name %></h1>
+              </div>
+              <div class="card-link">
+                <% if user_signed_in? %>
+                  <% favorite = current_user.favorites.find_by(post_id: post.id) %>
+                  <% if favorite.present? %>
+                    <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
+                  <% else %>
+                    <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-          </section>
+          <% end %>
         <% end %>
       <% end %>
 

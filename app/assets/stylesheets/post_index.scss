@@ -21,26 +21,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: black;
-  opacity: 0.6;
-}
-
-/** =======================
- * Contenedor Principal
- ===========================*/
-// h1 {
-//   color: #FFF;
-//   font-size: 24px;
-//   font-weight: 400;
-//   text-align: center;
-//   margin-top: 80px;
-//  }
-//
-// h1 a {
-//   color: #c12c42;
-//   font-size: 16px;
-//  }
 
  .accordion {
   width: 100%;
@@ -134,10 +114,6 @@ a:hover {
   background: #b63b4d;
   color: #FFF;
  }
-
-
-
-Resources
 
 
 
@@ -251,11 +227,17 @@ Resources
 .card {
   width: 22%;
   height: 340px;
-  background-color: #F7F7F7;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px #ccc;
   margin: 13px;
   padding: 0;
+  border-radius: 5px;
+  background-color: #F7F7F7;
+  box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
+  transform:translate(0, -2px);
+  transition:box-shadow 0.3s, transform 0.1s;
+}
+.card:hover {
+  box-shadow:0 1px 5px rgba(0, 0, 0, 0.3);
+  transform:initial;
 }
 .card-img {
   border-radius: 5px 5px 0 0;

@@ -104,7 +104,7 @@ a {
   text-decoration: none;
   color: #d9d9d9;
   padding: 12px;
-  padding-left: 42px;
+  padding-left: 10px;
   -webkit-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
   transition: all 0.25s ease;
@@ -120,17 +120,9 @@ a {
 
 
 
-
-
-
-
-
 .side_menu {
   margin: 0;
-
-  .accordion .link {
-    padding-left: 0;
-  }
+  padding: 0;
 }
 .title_search {
   margin-top: 13px;
@@ -144,8 +136,8 @@ a {
 }
 
 .accordion li:last-child .link {
-    padding-left: 0;
-    border-bottom: solid thin #dcdcdc;
+  padding-left: 15px;
+  border-bottom: solid thin #dcdcdc;
 }
 
 

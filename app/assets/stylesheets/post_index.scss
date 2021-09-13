@@ -244,26 +244,28 @@ a {
   object-fit: cover;
   margin-top: 14px;
 }
-.card-content {
-  padding: 10px 20px;
-  height: 95px;
-}
 .card-title {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100px;
+  padding: 0 15px;
   font-size: 17px;
-  margin-bottom: 20px;
-  text-align: center;
   color: #333;
 }
-.card-link {
+.favorite {
   text-align: center;
   border-top: 1px solid #eee;
-  padding: 20px;
 }
-.card-link a {
-  text-decoration: none;
-  color: #0bd;
-  margin: 0 10px;
+.favorite a {
+  padding: 18px 0;
+  width: 100%;
 }
-.card-link a:hover {
-  color: #0090aa;
+.favorite a:hover {
+  opacity: 0.6;
+}
+.favorite .register {
+  color: #4D4F4F;
+}
+.favorite .lift {
+  color: #EF6C6E;
 }

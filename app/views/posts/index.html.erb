@@ -1,9 +1,9 @@
 <div class="contain row">
 
   <aside class = "side_menu col-lg-3 col-md-3 col-sm-3">
-    <div class="col-md-1">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <div class="category_search">
         <%= form_with(url:posts_path, local: true, method: :get) do |form| %>
           <%= form.select("category_id", Category.pluck(:name, :id), { include_blank: 'カテゴリで検索' }) %>
@@ -38,27 +38,33 @@
         <% end %>
       </div>
 
-      <% @posts.each do |post| %>
-        <section class="card col-lg-3 col-md-3 col-sm-4">
-          <% if post.image.present? %>
-            <%= image_tag post.image.url, class: "card-img" %>
-          <% else %>
-            <%= image_tag 'default_cook_image2.png', class: "card-img" %>
-          <% end %>
-          <div class="card-content">
-            <h1 class="card-title"><%= link_to "#{post.name}", post_path(post) %></h1>
-          </div>
-          <div class="card-link">
-            <% if user_signed_in? %>
-              <% favorite = current_user.favorites.find_by(post_id: post.id) %>
-              <% if favorite.present? %>
-                <%= link_to 'お気に入り解除', favorite_path(id: favorite.id), method: :delete %>
+
+      <% if @posts.empty? %>
+        <h1 class="guide">投稿お待ちしています！</h1>
+      <% else %>
+
+        <% @posts.each do |post| %>
+          <%= link_to post_path(post) do %>
+            <div class="card col-lg-3 col-md-3 col-sm-4">
+              <% if post.image.present? %>
+                <%= image_tag post.image.url, class: "card-img" %>
               <% else %>
-                <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %>
+                <%= image_tag 'default_cook_image2.png', class: "card-img" %>
               <% end %>
-            <% end %>
-          </div>
-        </section>
+              <h1 class="card-title"><%= post.name %></h1>
+              <div class="favorite">
+                <% if user_signed_in? %>
+                  <% favorite = current_user.favorites.find_by(post_id: post.id) %>
+                  <% if favorite.present? %>
+                    <%= link_to ' お気に入り', favorite_path(id: favorite.id), class:"fas fa-heart lift", method: :delete %>
+                  <% else %>
+                    <%= link_to ' お気に入りに追加', favorites_path(post_id: post.id), class:"far fa-heart register", method: :post %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
 
     </div>

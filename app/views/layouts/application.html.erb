@@ -33,7 +33,7 @@
         <% if user_signed_in? %>
           <%= link_to 'マイページ', user_path(current_user.id) %>
           <%= link_to '投稿', new_post_path %>
-          <%= link_to "一覧", posts_path %>
+          <%= link_to "献立", posts_path %>
           <% if current_user.admin? %>
             <%= link_to "カテゴリ", categories_path %>
             <%= link_to "タグ", tags_path %>
@@ -43,7 +43,7 @@
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to "トップページ", root_path %>
-          <%= link_to "一覧", posts_path %>
+          <%= link_to "献立", posts_path %>
           <%= link_to "アカウント作成", new_user_registration_path %>
           <%= link_to "ログイン", new_user_session_path %>
         <% end %>

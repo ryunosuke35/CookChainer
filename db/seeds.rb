@@ -9,7 +9,7 @@
 
 require "csv"
 
-#user
+# user
 user = User.create!(
   name: "管理者",
   email: "matsumura@gmail.com",

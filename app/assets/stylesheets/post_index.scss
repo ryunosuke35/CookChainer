@@ -230,8 +230,23 @@ Resources
         margin: 1.5%;
       }
     }
-  }
 
+    .guide {
+      color: gray;
+      padding-top: 50px;
+
+      // スマホサイズ
+      @media (max-width: 767px) {
+        font-size: 25px;
+        padding: 0;
+      }
+      // タブレットサイズ
+      @media (min-width: 768px) and (max-width: 991px) {
+        font-size: 30px;
+      }
+    }
+
+  }
 }
 .card {
   width: 22%;

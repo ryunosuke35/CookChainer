@@ -237,9 +237,11 @@ a {
   margin-top: 14px;
 }
 .card-title {
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100px;
+  margin: 0;
   padding: 0 15px;
   font-size: 17px;
   color: #333;
@@ -249,7 +251,7 @@ a {
   border-top: 1px solid #eee;
 }
 .favorite a {
-  padding: 18px 0;
+  padding: 21px 0;
   width: 100%;
 }
 .favorite a:hover {

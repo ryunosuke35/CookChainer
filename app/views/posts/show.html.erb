@@ -1,6 +1,9 @@
 <p><%= link_to "#{@post.name}", @post.url, target: :_blank %></p>
 <p><%= image_tag @post.image.url if @post.image.present? %></p>
-<p><%= @post.memo %></p>
+<div class="memo">
+  <span class="title">メモ</span>
+  <p><%= @post.memo %></p>
+</div>
 
 <% if current_user == @post.user %>
   <%= link_to '編集する', edit_post_path(@post) %>

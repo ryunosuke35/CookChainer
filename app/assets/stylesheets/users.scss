@@ -194,9 +194,10 @@
       transition: 0.2s ease-in-out;
     }
     #box:hover {
-      opacity: 0.9;
+      opacity: 0.8;
       box-shadow:0 1px 5px rgba(0, 0, 0, 0.3);
       transition: 0.2s ease-in-out;
+      background-color: #F7F7F7;
     }
 
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
@@ -287,9 +288,10 @@
         }
       }
       #box_#{$i}:hover {
-        opacity: 0.9;
+        opacity: 0.8;
         box-shadow:0 1px 5px rgba(0, 0, 0, 0.3);
         transition: 0.2s ease-in-out;
+        background-color: #F7F7F7;
       }
     }
 

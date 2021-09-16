@@ -44,31 +44,132 @@ body {
 
 
 
+.post_show {
+  width: 40%;
+  min-width: 350px;
+  margin: 50px auto;
+  padding: 15px;
+  border: solid 1px;
 
 
-.memo {
-    position: relative;
-    margin: 2em auto;
+  .name {
+    width: 80%;
+    font-size: 30px;
+    margin: 25px auto;
+    border-bottom: medium solid #828282;
+  }
+
+  .image {
+    margin: 30px auto;
+    img {
+      width: 60%;
+    }
+  }
+
+  .user {
+    width: 30%;
+    min-width: 200px;
+    margin: 0 auto;
+    img {
+      width: 50px;
+      margin: 0 10px;
+    }
+  }
+  .user:hover {
+    opacity: 0.6;
+  }
+
+  .recipe {
+    width: 80%;
+    min-width: 200px;
+    margin: 0 auto;
     padding: 0.5em 1em;
-    border: solid 3px #ffa500;
-    border-radius: 8px;
-    min-width: 500px;
-    width: 50%;
-    min-height: 100px;
-}
-.memo .title {
-    position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 19px;
-    background: #FFF;
-    color: #ffa500;
+    margin: 2em auto;
     font-weight: bold;
-}
-.memo p {
-    margin: 0;
-    padding: 0;
+    color: #ec7505;
+    background: #FFF;
+    border: solid 3px #ec7505;
+    border-radius: 10px;
+  }
+  .recipe p {
+      margin: 0;
+      padding: 0;
+  }
+  .recipe:hover {
+    opacity: 0.6;
+  }
+
+
+  .memo {
+      position: relative;
+      margin: 2em auto;
+      padding: 0.5em 1em;
+      border: solid 3px #828282;
+      border-radius: 8px;
+      min-width: 200px;
+      width: 80%;
+      min-height: 100px;
+  }
+  .memo .title {
+      position: absolute;
+      display: inline-block;
+      top: -13px;
+      left: 10px;
+      padding: 0 9px;
+      line-height: 1;
+      font-size: 19px;
+      background: #FFF;
+      color: #828282;
+      font-weight: bold;
+  }
+  .memo p {
+      margin: 0;
+      padding: 0;
+  }
+
+
+  .edit {
+    display: inline-block;
+    width: 65px;
+    padding: 0.5em 1em;
+    margin: 1em;
+    font-weight: bold;
+    color: #828282;
+    background: #FFF;
+    border: solid 3px #828282;
+    border-radius: 10px;
+  }
+  .edit p {
+      margin: 0;
+      padding: 0;
+  }
+  .edit:hover {
+    opacity: 0.6;
+  }
+
+
+
+
+
+  .delete {
+    display: inline-block;
+    width: 65px;
+    padding: 0.5em 1em;
+    margin: 1em;
+    font-weight: bold;
+    color: #828282;
+    background: #FFF;
+    border: solid 3px #828282;
+    border-radius: 10px;
+  }
+  .delete p {
+      margin: 0;
+      padding: 0;
+  }
+  .delete:hover {
+    opacity: 0.6;
+  }
+
+
+
 }

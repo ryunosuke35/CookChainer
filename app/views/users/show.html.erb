@@ -51,9 +51,11 @@
 
     <div class="col-md-10">
 
-      <div id="box">
-        <%= link_to '料理を投稿する', new_post_path %>
-      </div>
+      <%= link_to new_post_path do %>
+        <div id="box">
+          <p>料理を投稿する</p>
+        </div>
+      <% end %>
 
       <% @array = {} %>
       <% if @posts.present? %>
@@ -142,13 +144,12 @@
           end
           chain_array << chain
         } %>
-        <div>
-          <% if chain_array.empty? %>
-            <h4>連鎖回数：0回</h4>
-          <% else %>
-            <h4>連鎖記録：<%= chain_array.max %>回</h4>
-          <% end %>
-        </div>
+
+        <% if chain_array.empty? %>
+          <h4>連鎖回数：0回</h4>
+        <% else %>
+          <h4>連鎖記録：<%= chain_array.max %>回</h4>
+        <% end %>
       </div>
     </div>
 

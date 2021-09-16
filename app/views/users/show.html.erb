@@ -35,7 +35,8 @@
         <i class="edit"><%= link_to "", edit_user_path(@user.id), class:"fas fa-user-edit fa-2x color" %></i>
         <i class="stock"><%= link_to "", favorites_path, class:"fas fa-star fa-2x color" %></i>
       <% end %>
-      <p class="profile"><%= @user.profile %></p>
+      <p class="profile"><%=safe_join(@user.profile.split("\n"),tag(:br))%></p>
+
       <% if @user == current_user %>
       <p class="delete"><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
       <% end %>

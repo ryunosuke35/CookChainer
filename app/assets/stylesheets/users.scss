@@ -188,9 +188,15 @@
       color: #d2b48c;
       border: solid 6px;
       border-radius: 20px;
-      box-shadow: 5px 3px 4px #ccc;
       background-color: #fff;
       padding: 10px;
+      box-shadow: 5px 3px 4px #ccc;
+      transition: 0.2s ease-in-out;
+    }
+    #box:hover {
+      opacity: 0.9;
+      box-shadow:0 1px 5px rgba(0, 0, 0, 0.3);
+      transition: 0.2s ease-in-out;
     }
 
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
@@ -205,8 +211,9 @@
         color: #d2b48c;
         border: solid 6px;
         border-radius: 20px;
-        box-shadow: 5px 3px 4px #ccc;
         background-color: #fff;
+        box-shadow: 5px 3px 4px #ccc;
+        transition: 0.2s ease-in-out;
 
 
         .cooking_name {
@@ -278,6 +285,11 @@
             box-shadow: 1px 2px 3px #ccc;
           }
         }
+      }
+      #box_#{$i}:hover {
+        opacity: 0.9;
+        box-shadow:0 1px 5px rgba(0, 0, 0, 0.3);
+        transition: 0.2s ease-in-out;
       }
     }
 

@@ -19,7 +19,7 @@
 
   <div class="memo">
     <span class="title">メモ</span>
-    <p><%= @post.memo %></p>
+    <p><%=safe_join(@post.memo.split("\n"),tag(:br))%></p>
   </div>
 
 

@@ -60,43 +60,46 @@
       <% @array = {} %>
       <% if @posts.present? %>
         <% @posts.each_with_index do |post, id| %>
-          <%= content_tag :div, id: "box_#{id}" do %>
 
-            <%# 料理名 %>
-            <% if post.categories.empty? %>
-              <% name = "no_category" %>
-            <% else %>
-              <% post.categories.each do |category| %>
-                <% if category.name == "主菜" %>
-                  <% name = "red" %>
-                <% elsif category.name == "副菜" %>
-                  <% name = "green" %>
-                <% elsif category.name == "汁もの" %>
-                  <% name = "yellow" %>
-                <% elsif category.name == "主食" %>
-                  <% name = "purple" %>
-                <% elsif category.name == "デザート" %>
-                  <% name = "blue" %>
-                <% elsif category.name == "その他"%>
-                  <% name = "gray" %>
+          <%= link_to post_path(post) do %>
+            <%= content_tag :div, id: "box_#{id}" do %>
+
+              <%# 料理名 %>
+              <% if post.categories.empty? %>
+                <% name = "no_category" %>
+              <% else %>
+                <% post.categories.each do |category| %>
+                  <% if category.name == "主菜" %>
+                    <% name = "red" %>
+                  <% elsif category.name == "副菜" %>
+                    <% name = "green" %>
+                  <% elsif category.name == "汁もの" %>
+                    <% name = "yellow" %>
+                  <% elsif category.name == "主食" %>
+                    <% name = "purple" %>
+                  <% elsif category.name == "デザート" %>
+                    <% name = "blue" %>
+                  <% elsif category.name == "その他"%>
+                    <% name = "gray" %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-            <%= content_tag :div, class: "#{name}" do %>
-              <%= link_to "#{post.name}", post_path(post) %>
-            <% end %>
-
-            <%# 画像とタグ %>
-            <% if post.image.present? %>
-              <%= image_tag post.image.url %>
-            <% else %>
-              <%= image_tag 'default_cook_image.png' %>
-            <% end %>
-            <div class="tag_list">
-              <% post.tags.each do |tag| %>
-                <li><%= tag.name %></li>
+              <%= content_tag :div, class: "#{name}" do %>
+                <p><%= post.name %></p>
               <% end %>
-            </div>
+
+              <%# 画像とタグ %>
+              <% if post.image.present? %>
+                <%= image_tag post.image.url %>
+              <% else %>
+                <%= image_tag 'default_cook_image.png' %>
+              <% end %>
+              <div class="tag_list">
+                <% post.tags.each do |tag| %>
+                  <li><%= tag.name %></li>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
 
           <%# 計算 %>

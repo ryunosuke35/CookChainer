@@ -13,16 +13,12 @@
       width: 50%;
       margin: 10px;
 
-
       .user_level {
         float: left;
         margin-right: 10px;
       }
-      .exp_ratio {
-        float: left;
-        margin-right: 10px;
-      }
-      .exp_ratio2 {
+      .exp_ratio p {
+        margin: 0;
       }
       .exp_bar1 {
         width: 100%;
@@ -85,7 +81,7 @@
       position: absolute;
       top: 220px;
       left: 0;
-      border: solid 1px #a0a0a0;
+      border: solid 2px #a0a0a0;
       width: 90%;
       height: 120px;
       margin: 20px 5%;

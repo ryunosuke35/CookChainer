@@ -10,12 +10,11 @@
       <div class="level_display">
         <% user = current_user %>
         <div class="user_level">Lv.<%= user.level %></div>
-        <div class="exp_ratio">exp.<%= @next_level.thresold %></div>
-        <div class="exp_ratio2">
+        <div class="exp_ratio">
           <% a = @next_level.thresold - user.exp_point %>
           <% b = @next_level.thresold - @now_level.thresold %>
           <% exp_ratio = ((1 - a.to_f / b.to_f) * 100).round %>
-          <div><%= exp_ratio %>%</div>
+          <%= exp_ratio %>%
         </div>
         <div class="exp_bar1">
           <div class="exp_bar2">

@@ -14,8 +14,8 @@
           <% a = @next_level.thresold - user.exp_point %>
           <% b = @next_level.thresold - @now_level.thresold %>
           <% exp_ratio = ((1 - a.to_f / b.to_f) * 100).round %>
-          <%= exp_ratio %>%
         </div>
+        <div class="exp">exp. <%= user.exp_point %>/<%= @next_level.thresold %></div>
         <div class="exp_bar1">
           <div class="exp_bar2">
             <div class="exp_bar3" style="width:<%= exp_ratio %>%"></div>

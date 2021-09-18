@@ -92,9 +92,6 @@
       text-align: left;
     }
 
-
-
-
     // スマホサイズ
     @media (max-width: 767px) {
       width: 80%;
@@ -107,14 +104,9 @@
         width: 50%;
         font-size: 14px;
       }
-
-
-
-
     }
     // タブレットサイズ
     @media (min-width: 768px) and (max-width: 991px) {
-
       img {
         width: 110px;
         height: 110px;
@@ -133,7 +125,6 @@
     }
     // PCサイズ
     @media (min-width: 992px) and (max-width: 1199px) {
-
       img {
         width: 110px;
         height: 110px;
@@ -149,12 +140,9 @@
           margin-right: 0;
         }
       }
-
-
     }
     // 大きなPCサイズ
     @media (min-width: 1200px) {
-
       img {
         width: 110px;
         height: 110px;
@@ -162,13 +150,7 @@
       .level_display {
         width: 129px;
       }
-
     }
-
-
-
-
-
   }
 
 
@@ -180,7 +162,6 @@
     // スマホサイズ
     @media (max-width: 767px) {
     }
-
 
 
     #box {
@@ -223,7 +204,6 @@
         box-shadow: 5px 3px 4px #ccc;
         transition: 0.2s ease-in-out;
 
-
         .cooking_name {
           width: 100%;
           height: 20%;
@@ -232,38 +212,38 @@
           border-bottom: 1px solid red;
           background-color: red;
         }
-        %card_style {
+        %card_color {
           height: 20%;
           padding-top: 10px;
           border-top-left-radius: 14px;
           border-top-right-radius: 14px;
         }
         .red {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #ffcccc;
         }
         .blue {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #cefcff;
         }
         .yellow {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #fff0ce;
         }
         .green {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #e7ffce;
         }
         .purple {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #ebccff;
         }
         .gray {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #bebfc6;
         }
         .no_category {
-          @extend %card_style;
+          @extend %card_color;
           background-color: #fff;
           border-bottom: solid 1px #998b7b;
         }
@@ -348,14 +328,7 @@
       margin: 0 auto;
     }
   }
-
-
 }
-
-
-
-
-
 
 
 
@@ -375,17 +348,11 @@
 }
 
 
-
-
 .form-group {
   padding: 0;
   margin: 30px auto;
   width: 400px;
 }
-
-
-
-
 
 
 .cp_iptxt {

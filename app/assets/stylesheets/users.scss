@@ -5,8 +5,14 @@
 .user_show {
 
   .user_info {
-    margin: 60px auto;
     position: relative;
+    height: 420px;
+    width: 70%;
+    min-width: 300px;
+    background-color: #F7F7F7;
+    margin: 60px auto;
+    box-shadow: 0 2px 10px #ccc;
+    border-radius: 5px;
 
     .level_display {
       width: 90%;

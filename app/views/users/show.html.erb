@@ -1,11 +1,7 @@
 <div class="user_show cow">
 
-  <div class="user_info col-md-5 col-sm-5 cow">
-
-    <div class="col-md-4 col-sm-2">
-    </div>
-
-    <div class="col-md-7 col-sm-10" style="box-shadow: 0 2px 10px #ccc; border-radius: 5px; height: 420px; background-color: #F7F7F7;">
+  <div class="col-sm-5 cow">
+    <div class="user_info">
 
       <div class="level_display">
         <% user = current_user %>
@@ -40,15 +36,10 @@
       <p class="delete"><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
       <% end %>
     </div>
-
-    <div class="col-md-1">
-    </div>
-
   </div>
 
-  <div class="posts col-md-7 col-sm-7 cow">
-
-    <div class="col-md-10">
+  <div class="col-sm-7 cow">
+    <div class="posts">
 
       <%= link_to new_post_path do %>
         <div id="box">
@@ -154,9 +145,5 @@
         <% end %>
       </div>
     </div>
-
-    <div class="col-md-2">
-    </div>
-
   </div>
 </div>

@@ -10,7 +10,6 @@ body {
 }
 
 
-
 // _form
 .post_form {
 
@@ -36,11 +35,25 @@ body {
     .field .dropdown button {
       width: 200px;
     }
+
+    .field .dropdown .dropdown-menu {
+      width: 200px;
+      height: 290px;
+      overflow: scroll;
+    }
+
+    .field .dropdown .dropdown-item {
+      width: 200px;
+    }
+
+    .field .dropdown .dropdown-item label {
+      width: 187px;
+    }
   }
 }
 
 
-
+// _show
 .post_show {
   width: 45%;
   min-width: 350px;

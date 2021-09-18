@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_q, only: [:index]
-
   before_action :check_user, only: [:edit]
   skip_before_action :authenticate_user!, only: [:top, :index, :show]
 
@@ -18,7 +17,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-    @posts = @posts.order(created_at: "ASC").page(params[:page]).per(30)
+    @posts = @posts.order(created_at: "DESC").page(params[:page]).per(30)
     @categories = Category.all
     @tag_categories = TagCategory.all
   end

@@ -11,35 +11,32 @@ body {
 
 
 
-
-
-
-
-
 // _form
 .post_form {
 
-  .field {
+  .image {
     #post_image {
-      margin-left: 40%;
+      width: 243px;
+      margin: 0 auto;
     }
-
   }
 
   .fields {
     margin: 30px auto;
     padding: 0;
-    width: 400px;
+    width: 450px;
     display: flex;
     flex-wrap: wrap;
-  }
+    justify-content: space-between;
 
-  .fields .field {
-    text-align: left;
-    width: 200px;
-    margin: 10px 0;
-  }
+    .field {
+      margin: 10px 0;
+    }
 
+    .field .dropdown button {
+      width: 200px;
+    }
+  }
 }
 
 
@@ -170,7 +167,4 @@ body {
   .delete:hover {
     opacity: 0.6;
   }
-
-
-
 }

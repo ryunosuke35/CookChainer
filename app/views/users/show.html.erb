@@ -32,7 +32,7 @@
       <p class="name"><%= @user.name %></p>
       <% if @user == current_user %>
         <i class="edit"><%= link_to "", edit_user_path(@user.id), class:"fas fa-user-edit fa-2x color" %></i>
-        <i class="stock"><%= link_to "", favorites_path, class:"fas fa-star fa-2x color" %></i>
+        <i class="favorite"><%= link_to "", favorites_path, class:"fas fa-star fa-2x color" %></i>
       <% end %>
       <p class="profile"><%=safe_join(@user.profile.split("\n"),tag(:br))%></p>
 

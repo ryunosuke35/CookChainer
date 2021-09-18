@@ -47,8 +47,6 @@
       width: 50%;
       font-size: 20px;
       margin: 0 auto;
-
-
     }
 
     .edit {
@@ -56,13 +54,17 @@
       top: 16px;
       right: 75px;
     }
-
-    .stock {
+    .edit:hover {
+      opacity: 0.6;
+    }
+    .favorite {
       position: absolute;
       top: 16px;
       right: 25px;
     }
-
+    .favorite:hover {
+      opacity: 0.6;
+    }
     .color {
       color: #808080;
     }
@@ -206,7 +208,7 @@
     }
 
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-    @for $i from 0 through 100 {
+    @for $i from 0 through 1 {
       #box_#{$i} {
         position: relative;
         min-width: 290px;

@@ -16,7 +16,7 @@ body {
   .image {
     #post_image {
       width: 243px;
-      margin: 0 auto;
+      margin: 15px auto 50px;
     }
   }
 
@@ -64,6 +64,27 @@ body {
     .guide {
       margin: 50px auto 10px;
     }
+  }
+
+
+  .text-line {
+    width: 80%;
+  	display: flex;
+  	align-items: center;
+    margin: 100px auto 20px;
+  }
+
+  .text-line:before,
+  .text-line:after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: #000;
+    margin:0 2em;
+  }
+
+  .text-line p {
+    margin: 0;
   }
 }
 

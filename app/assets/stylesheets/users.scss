@@ -99,6 +99,7 @@
 
     #box {
       min-width: 290px;
+      max-width: 450px;
       width: 80%;
       height: 120px;
       margin: 60px auto 70px;
@@ -122,11 +123,12 @@
     }
 
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-    @for $i from 0 through 1 {
+    @for $i from 0 through 10 {
       #box_#{$i} {
         position: relative;
-        min-width: 290px;
         width: 80%;
+        min-width: 290px;
+        max-width: 450px;
         height: 208px;
         margin: 50px auto;
         font-weight: bold;

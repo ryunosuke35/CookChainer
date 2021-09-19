@@ -20,39 +20,50 @@ body {
     }
   }
 
-  .fields {
-    margin: 30px auto;
-    padding: 0;
-    width: 450px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .food_stuff {
 
-    .field {
-      margin: 10px 0;
+    .guide {
+      margin: 50px auto 10px;
     }
 
-    .field .dropdown button {
-      width: 200px;
-    }
+    .fields {
+      margin: 0px auto 30px;
+      padding: 0;
+      width: 450px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
 
-    .field .dropdown .dropdown-menu {
-      width: 200px;
-      height: 290px;
-      overflow: scroll;
-    }
+      .field {
+        margin: 10px 0;
+      }
 
-    .field .dropdown .dropdown-item {
-      width: 200px;
-    }
+      .field .dropdown button {
+        width: 200px;
+      }
 
-    .field .dropdown .dropdown-item label {
-      width: 187px;
+      .field .dropdown .dropdown-menu {
+        width: 200px;
+        height: 290px;
+        overflow: scroll;
+      }
+
+      .field .dropdown .dropdown-item {
+        width: 200px;
+      }
+
+      .field .dropdown .dropdown-item label {
+        width: 187px;
+      }
     }
   }
 
   .category_select {
     margin-bottom: 30px;
+
+    .guide {
+      margin: 50px auto 10px;
+    }
   }
 }
 
@@ -92,6 +103,7 @@ body {
   .user:hover {
     opacity: 0.6;
   }
+
 
   .recipe {
     width: 80%;
@@ -161,9 +173,6 @@ body {
   .edit:hover {
     opacity: 0.6;
   }
-
-
-
 
 
   .delete {

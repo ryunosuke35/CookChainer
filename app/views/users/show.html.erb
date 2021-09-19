@@ -30,8 +30,7 @@
         <i class="edit"><%= link_to "編集", edit_user_path(@user.id), class:"fas fa-user-edit color" %></i>
         <i class="favorite"><%= link_to "お気に入り一覧", favorites_path, class:"fas fa-heart color" %></i>
       <% end %>
-      <div class="profile"><%=safe_join(@user.profile.split("\n"),tag(:br))%></div>
-
+      <div class="profile"><%= safe_join(@user.profile.split("\n"),tag(:br)) if @user.profile.present? %></div>
       <% if @user == current_user %>
         <p class="delete"><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
       <% end %>
@@ -122,8 +121,6 @@
             var data = <%= @array.to_json.html_safe %>
           <% end %>
         <% end %>
-      <% else %>
-        <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
       <% end %>
 
       <div class="chains">

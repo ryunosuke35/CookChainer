@@ -100,7 +100,7 @@
       min-width: 290px;
       width: 80%;
       height: 120px;
-      margin: 30px auto 80px;
+      margin: 60px auto 10px;
       color: #d2b48c;
       border: solid 6px;
       border-radius: 20px;
@@ -230,21 +230,6 @@
       p {
         color: #black;
         font-size: 20px;
-      }
-    }
-
-    .guide {
-      color: gray;
-      padding-top: 50px;
-
-      // スマホサイズ
-      @media (max-width: 767px) {
-        font-size: 25px;
-        padding: 0;
-      }
-      // タブレットサイズ
-      @media (min-width: 768px) and (max-width: 991px) {
-        font-size: 30px;
       }
     }
 

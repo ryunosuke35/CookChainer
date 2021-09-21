@@ -22,10 +22,7 @@
     <p><%=safe_join(@post.memo.split("\n"),tag(:br))%></p>
   </div>
 
-
-
   <% if current_user == @post.user %>
-
     <%= link_to edit_post_path(@post) do %>
       <div class="edit">
         <p>編集</p>
@@ -36,7 +33,6 @@
         <p>削除</p>
       </div>
     <% end %>
-
   <% else %>
     <%= link_to user_path(@post.user) do %>
       <div class="user">
@@ -49,7 +45,5 @@
       </div>
     <% end %>
   <% end %>
-
-
 
 </div>

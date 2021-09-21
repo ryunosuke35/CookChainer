@@ -7,7 +7,6 @@ RSpec.describe 'Category', type: :system do
   let!(:category1) { FactoryBot.create(:category) }
   let!(:category2) { FactoryBot.create(:second_category) }
 
-
   def general_login
     visit new_user_session_path
     fill_in 'user_name', with: '一般ユーザー'

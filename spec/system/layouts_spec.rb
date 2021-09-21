@@ -28,7 +28,6 @@ RSpec.describe 'Category', type: :system do
   end
 
 
-
   describe 'グローバルナビゲーションのテスト' do
     context 'マイページをクリックした場合' do
       it 'マイページに遷移する' do

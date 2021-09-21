@@ -35,6 +35,7 @@ class CategoriesController < ApplicationController
     redirect_to categories_url, notice: "「#{@category.name}」を削除しました"
   end
 
+
   private
   def set_category
     @category = Category.find(params[:id])

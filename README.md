@@ -1,4 +1,3 @@
-
 # Cook Chainer
 
 #### 料理を上達させたいけど、なかなか継続できない。そんな経験ありませんか？
@@ -6,10 +5,9 @@
 
 ポートフォリオURL:http://35.76.196.103/  
 
-
 ## 機能一覧
-![機能一覧](./app/assets/images/readme_img/readme1.png)
-![機能一覧](./app/assets/images/readme_img/readme2.png)
+![機能一覧1](./app/assets/images/readme_img/機能一覧1.png)
+![機能一覧2](./app/assets/images/readme_img/機能一覧2.png)
 
 
 ## 開発言語

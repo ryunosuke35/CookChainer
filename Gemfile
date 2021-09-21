@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # ruby '2.6.5'
-
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails_admin', '~> 2.0'
@@ -30,8 +29,6 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 
 gem 'unicorn' # アプリケーションサーバのunicorn
-
-
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

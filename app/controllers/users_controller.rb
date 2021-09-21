@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  skip_before_action :authenticate_user!, only: [:show]
-
   before_action :ensure_current_user, only: [:edit]
   before_action :ensure_guest_user, only: [:update, :destroy]
-
+  skip_before_action :authenticate_user!, only: [:show]
 
   def show
     @posts = Post.where(user_id: @user.id).order(created_at: "DESC")

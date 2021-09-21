@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Tag', type: :model do
 
-
-
   context 'タグ名が入力された場合' do
     it "バリデーションが通る" do
       tag_category = FactoryBot.create(:tag_category)

@@ -36,6 +36,7 @@ class TagsController < ApplicationController
     redirect_to tags_url, notice: "「#{@tag.name}」を削除しました"
   end
 
+
   private
   def set_tag
     @tag = Tag.find(params[:id])

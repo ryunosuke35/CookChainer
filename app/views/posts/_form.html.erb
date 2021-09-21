@@ -9,6 +9,7 @@
         </ul>
       </div>
     <% end %>
+
     <div class="cp_iptxt">
       <%= form.text_field :name, class:"ef" %>
       <%= form.label :name %>
@@ -24,27 +25,38 @@
       <%= form.label :memo %>
     </div>
 
-    <div class="field">
-      <%= form.label :image %>
+    <div class="image">
+      <div class="text-line">
+        <p>画像を選択してください</p>
+      </div>
+      <% form.label :image %>
       <%= form.file_field :image %>
     </div>
 
-    <div class="fields">
-      <% TagCategory.all.each do |tag_category| %>
-        <div class="field">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= tag_category.name %>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
+    <div class="food_stuff">
+      <div class="text-line">
+        <p>食材を選択してください(4つまで選択できます)</p>
+      </div>
+      <div class="fields">
+        <% TagCategory.all.each do |tag_category| %>
+          <div class="field">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= tag_category.name %>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <p class="dropdown-item"><%= form.collection_check_boxes(:tag_ids, tag_category.tags, :id, :name) %></p>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="category_select">
+      <div class="text-line">
+        <p>料理のカテゴリーを選択してください</p>
+      </div>
       <% @categories.each do |category| %>
         <%= form.radio_button :category_ids, category[:id], checked: post.categories.include?(category) %>
         <%= form.label :category_ids, category.name %>

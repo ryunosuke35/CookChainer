@@ -1,10 +1,55 @@
-<p><%= link_to "#{@post.name}", @post.url, target: :_blank %></p>
-<p><%= image_tag @post.image.url if @post.image.present? %></p>
-<p><%= @post.memo %></p>
+<div class="post_show">
+  <div class="name">
+    <%= @post.name %>
+  </div>
 
-<% if current_user == @post.user %>
-  <%= link_to '編集する', edit_post_path(@post) %>
-  <%= link_to '削除する', @post, method: :delete, data: { confirm: "「#{@post.name}」を削除しますか？" } %>
-<% end %>
+  <div class="image">
+    <% if @post.image.present? %>
+      <%= image_tag @post.image.url %>
+    <% else %>
+      <%= image_tag 'default_cook_image2.png' %>
+    <% end %>
+  </div>
 
-<%= link_to '戻る', posts_path %>
+  <%= link_to @post.url, target: :_blank do %>
+    <div class="recipe">
+      <p>つくり方はこちら</p>
+    </div>
+  <% end %>
+
+  <div class="memo">
+    <span class="title">メモ</span>
+    <p><%=safe_join(@post.memo.split("\n"),tag(:br))%></p>
+  </div>
+
+
+
+  <% if current_user == @post.user %>
+
+    <%= link_to edit_post_path(@post) do %>
+      <div class="edit">
+        <p>編集</p>
+      </div>
+    <% end %>
+    <%= link_to @post, method: :delete, data: { confirm: "「#{@post.name}」を削除しますか？" } do %>
+      <div class="delete">
+        <p>削除</p>
+      </div>
+    <% end %>
+
+  <% else %>
+    <%= link_to user_path(@post.user) do %>
+      <div class="user">
+        <% if @post.user.image.present? %>
+          <%= image_tag @post.user.image.url %>
+        <% else %>
+          <%= image_tag 'default_user_image.png' %>
+        <% end %>
+        <p><%= @post.user.name %>さん</p>
+      </div>
+    <% end %>
+  <% end %>
+
+
+
+</div>

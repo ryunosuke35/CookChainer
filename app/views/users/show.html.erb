@@ -1,22 +1,17 @@
 <div class="user_show cow">
 
-  <div class="user_info col-md-5 col-sm-5 cow">
-
-    <div class="col-md-4 col-sm-2">
-    </div>
-
-    <div class="col-md-7 col-sm-10" style="box-shadow: 0 2px 10px #ccc; border-radius: 5px; height: 420px; background-color: #F7F7F7;">
+  <div class="col-sm-5 cow">
+    <div class="user_info">
 
       <div class="level_display">
         <% user = current_user %>
         <div class="user_level">Lv.<%= user.level %></div>
-        <div class="exp_ratio">exp.<%= @next_level.thresold %></div>
-        <div class="exp_ratio2">
+        <div>
           <% a = @next_level.thresold - user.exp_point %>
           <% b = @next_level.thresold - @now_level.thresold %>
           <% exp_ratio = ((1 - a.to_f / b.to_f) * 100).round %>
-          <div><%= exp_ratio %>%</div>
         </div>
+        <div class="exp">exp. <%= user.exp_point %>/<%= @next_level.thresold %></div>
         <div class="exp_bar1">
           <div class="exp_bar2">
             <div class="exp_bar3" style="width:<%= exp_ratio %>%"></div>
@@ -32,68 +27,68 @@
 
       <p class="name"><%= @user.name %></p>
       <% if @user == current_user %>
-        <i class="edit"><%= link_to "", edit_user_path(@user.id), class:"fas fa-user-edit fa-2x color" %></i>
-        <i class="stock"><%= link_to "", favorites_path, class:"fas fa-star fa-2x color" %></i>
+        <i class="edit"><%= link_to "編集", edit_user_path(@user.id), class:"fas fa-user-edit color" %></i>
+        <i class="favorite"><%= link_to "お気に入り一覧", favorites_path, class:"fas fa-heart color" %></i>
       <% end %>
-      <p class="profile"><%= @user.profile %></p>
+      <div class="profile"><%= safe_join(@user.profile.split("\n"),tag(:br)) if @user.profile.present? %></div>
       <% if @user == current_user %>
-      <p class="delete"><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
+        <p class="delete"><%= link_to "退会", user_path(@user.id), method: :delete, data: { confirm: '退会するとデータは削除されます。よろしいですか？' } %></p>
       <% end %>
     </div>
-
-    <div class="col-md-1">
-    </div>
-
   </div>
 
-  <div class="posts col-md-7 col-sm-7 cow">
+  <div class="col-sm-7 cow">
+    <div class="posts">
 
-    <div class="col-md-10">
-
-      <div id="box">
-        <%= link_to '料理を投稿する', new_post_path %>
-      </div>
+      <%= link_to new_post_path do %>
+        <div id="box">
+          <p>料理を投稿する</p>
+        </div>
+      <% end %>
 
       <% @array = {} %>
       <% if @posts.present? %>
         <% @posts.each_with_index do |post, id| %>
-          <%= content_tag :div, id: "box_#{id}" do %>
 
-            <%# 料理名 %>
-            <% if post.categories.empty? %>
-              <% name = "no_category" %>
-            <% else %>
-              <% post.categories.each do |category| %>
-                <% if category.name == "主菜" %>
-                  <% name = "red" %>
-                <% elsif category.name == "副菜" %>
-                  <% name = "green" %>
-                <% elsif category.name == "汁もの" %>
-                  <% name = "yellow" %>
-                <% elsif category.name == "主食" %>
-                  <% name = "purple" %>
-                <% elsif category.name == "デザート" %>
-                  <% name = "blue" %>
-                <% elsif category.name == "その他"%>
-                  <% name = "gray" %>
+          <%= link_to post_path(post) do %>
+            <%= content_tag :div, id: "box_#{id}" do %>
+
+              <%# 料理名 %>
+              <% if post.categories.empty? %>
+                <% name = "no_category" %>
+              <% else %>
+                <% post.categories.each do |category| %>
+                  <% if category.name == "主菜" %>
+                    <% name = "red" %>
+                  <% elsif category.name == "副菜" %>
+                    <% name = "green" %>
+                  <% elsif category.name == "汁もの" %>
+                    <% name = "yellow" %>
+                  <% elsif category.name == "主食" %>
+                    <% name = "purple" %>
+                  <% elsif category.name == "デザート" %>
+                    <% name = "blue" %>
+                  <% elsif category.name == "その他"%>
+                    <% name = "gray" %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-            <%= content_tag :div, class: "#{name}" do %>
-              <%= link_to "#{post.name}", post_path(post) %>
-            <% end %>
-
-            <%# 画像とタグ %>
-            <% if post.image.present? %>
-              <%= image_tag post.image.url %>
-            <% else %>
-              <%= image_tag 'default_cook_image.png' %>
-            <% end %>
-            <div class="tag_list">
-              <% post.tags.each do |tag| %>
-                <li><%= tag.name %></li>
+              <%= content_tag :div, class: "#{name}" do %>
+                <p><%= post.name %></p>
               <% end %>
-            </div>
+
+              <%# 画像とタグ %>
+              <% if post.image.present? %>
+                <%= image_tag post.image.url %>
+              <% else %>
+                <%= image_tag 'default_cook_image.png' %>
+              <% end %>
+              <div class="tag_list">
+                <% post.tags.each do |tag| %>
+                  <li><%= tag.name %></li>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
 
           <%# 計算 %>
@@ -126,8 +121,6 @@
             var data = <%= @array.to_json.html_safe %>
           <% end %>
         <% end %>
-      <% else %>
-        <h1 class="guide">投稿ボタンから料理を投稿して、記録に残してみよう！</h1>
       <% end %>
 
       <div class="chains">
@@ -141,18 +134,13 @@
           end
           chain_array << chain
         } %>
-        <div>
-          <% if chain_array.empty? %>
-            <h4>連鎖回数：0回</h4>
-          <% else %>
-            <h4>連鎖記録：<%= chain_array.max %>回</h4>
-          <% end %>
-        </div>
+
+        <% if chain_array.empty? %>
+          <h4>連鎖回数：0回</h4>
+        <% else %>
+          <h4>連鎖記録：<%= chain_array.max %>回</h4>
+        <% end %>
       </div>
     </div>
-
-    <div class="col-md-2">
-    </div>
-
   </div>
 </div>

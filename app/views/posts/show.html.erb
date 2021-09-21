@@ -38,7 +38,7 @@
     <% end %>
 
   <% else %>
-    <%= link_to user_path(@post) do %>
+    <%= link_to user_path(@post.user) do %>
       <div class="user">
         <% if @post.user.image.present? %>
           <%= image_tag @post.user.image.url %>

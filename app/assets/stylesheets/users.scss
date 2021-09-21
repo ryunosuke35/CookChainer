@@ -7,7 +7,7 @@
   .user_info {
     position: relative;
     height: 420px;
-    width: 70%;
+    width: 60%;
     min-width: 300px;
     margin: 60px auto;
     padding: 10px;
@@ -123,7 +123,7 @@
     }
 
     // index.html.erbのidを持ってきたいが、できなかったのでやむなく0~100で指定
-    @for $i from 0 through 10 {
+    @for $i from 0 through 50 {
       #box_#{$i} {
         position: relative;
         width: 80%;

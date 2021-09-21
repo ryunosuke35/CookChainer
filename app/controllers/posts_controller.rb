@@ -41,7 +41,6 @@ class PostsController < ApplicationController
       @post = current_user.posts.build(post_params)
 
       if @post.save
-
         user = current_user
         user.update(exp_point: user.exp_point + 5)
         levelSetting = LevelSetting.find_by(level: user.level + 1)

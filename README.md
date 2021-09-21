@@ -1,27 +1,26 @@
 
-# README
+# Cook Chainer
+
+料理が上手くなりたいけど、なかなか継続できない。そんな経験ありませんか？
+CookChainerは、ゲーム感覚で楽しく料理を継続できるようになるアプリケーションです。
+
+ポートフォリオURL:http://35.76.196.103/
+
+## 機能一覧
+![機能一覧](./app/assets/images/readme_img/readme1.png)
+![機能一覧](./app/assets/images/readme_img/readme2.png)
+
 
 ## 開発言語
 
 - ruby2.6.5
 - Rails5.2.5
 
-## 就業Teamの技術
-
-- devise
-- お気に入り機能
-
-## カリキュラム外の機能
-
-- ancestry
-- rinku
-- ransack
-
 ## 実行手順
 
 ```
-$ git clone git@github.com:ryunosuke35/CookChainer_test.git
-$ cd CookChainer_test
+$ git clone git@github.com:ryunosuke35/CookChainer.git
+$ cd CookChainer
 $ bundle install
 $ rails db:create db:migrate
 $ rails s

@@ -29,7 +29,7 @@ gem 'ransack'
 gem 'fog-aws'
 gem 'dotenv-rails'
 
-gem 'unicorn' # アプリケーションサーバのunicorn
+gem 'unicorn'
 
 
 
@@ -48,7 +48,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
 
-  gem 'capistrano', '3.16.0' # capistranoのツール一式
+  gem 'capistrano', '3.16.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'

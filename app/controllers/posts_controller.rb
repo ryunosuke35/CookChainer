@@ -4,9 +4,6 @@ class PostsController < ApplicationController
   before_action :check_user, only: [:edit]
   skip_before_action :authenticate_user!, only: [:top, :index, :show]
 
-  def top
-  end
-
   def index
     if params[:q].present?
       @posts = @q.result

@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root 'posts#top'
+  root 'tops#index'
 
-  resources :posts do
-    collection do
-      get '/top', to: 'posts#top'
-    end
-  end
+  resources :posts
+  resources :tops, only: [:index]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
